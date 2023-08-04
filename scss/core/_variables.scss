@@ -1,0 +1,103 @@
+:root {
+  /* Gap, MaxWidth Of Page, Container-Fluid, Container */
+  --gap: 28px;
+
+  --max-width-page: 2560px;
+  --max-width-container-fluid: 1920px;
+  --max-width-container: calc(1200px + calc(var(--gap) * 2)); // 1200px tuỳ thuộc bản thiết kế */
+
+  /* Colors Variable Demo*/
+  --main-cl: #0328ee;
+  --bg-cl: #010725;
+  --white-cl: #ffffff;
+  --black-cl: #141414;
+  --dark-blue: #010d50;
+  --hover-cl: #031fb4;
+
+  // Fontsize - Lineheight Variable Demo
+  --fs-h1: 6.6rem;
+  --lh-h1: 8rem;
+  --ls-h1: -0.1rem;
+
+  --fs-h2: 4.2rem;
+  --lh-h2: 5.5rem;
+  --ls-h2: 0rem;
+
+  --fs-lb: 1.8rem;
+  --lh-lb: 2.6rem;
+  --ls-lb: 0.09rem;
+
+  --fs-btn: 1.6rem;
+  --lh-btn: 1.6rem;
+  --ls-btn: 0.16rem;
+
+  --fs-body: 1.8rem;
+  --lh-body: 3.2rem;
+
+  --fs-body1: 1.6rem;
+  --lh-body1: 2.6rem;
+
+  --fs-menu: 1.4rem;
+  --lh-menu: 1.6rem;
+  --ls-menu: 0.14rem;
+
+  --fs-tag: 1.4rem;
+  --lh-tag: 1.8rem;
+  --ls-tag: 0.07rem;
+
+  // General Variable Demo
+  --height-header: 132px;
+  --height-button: 42px;
+  --pd-section: 90px;
+  --brus: 40px;
+  // Timing Transition Variable Demo
+  --t: 0.3s;
+  --cubic: cubic-bezier(0.59, 0.29, 0.15, 0.93);
+
+  // Responsive
+  @include md {
+    --container-max-width: 1140px;
+  }
+  @include sm {
+    --container-max-width: 960px; // hoặc max-width: 100% tuỳ yêu cầu
+    --pd-section: 70px;
+  }
+  @include xs {
+    --container-max-width: 100%; // hoặc max-width: 100% tuỳ yêu cầu
+    --gap: 15px;
+
+    // DEMO
+    --fs-h1: 3.8rem;
+    --lh-h1: 4.6rem;
+    --ls-h1: -0.1rem;
+
+    --fs-h2: 2.8rem;
+    --lh-h2: 3.6rem;
+    --ls-h2: 0rem;
+
+    --fs-lb: 1.4rem;
+    --lh-lb: 1.8rem;
+    --ls-lb: 0.07rem;
+
+    --fs-btn: 1.6rem;
+    --lh-btn: 1.6rem;
+    --ls-btn: 0.16rem;
+
+    --fs-body1: 1.6rem;
+    --lh-body1: 2.6rem;
+
+    --fs-body1: 1.6rem;
+    --lh-body1: 2.6rem;
+
+    --fs-menu: 2.6rem;
+    --lh-menu: 100%;
+    --ls-menu: 0.14rem;
+
+    --fs-tag: 1.4rem;
+    --lh-tag: 1.8rem;
+    --ls-tag: 0.07rem;
+  }
+  @include xxs {
+    --container-max-width: 100%;
+  }
+}

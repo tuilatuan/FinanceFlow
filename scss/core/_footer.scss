@@ -1,0 +1,166 @@
+.footer {
+  background: var(--dark-blue);
+  padding-top: 56px;
+  &_top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 92px;
+    &-social {
+      display: flex;
+      gap: 12px;
+    }
+  }
+  &_center {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 26px;
+    margin-bottom: 125px;
+    &-menu {
+      grid-area: 1/1/2/4;
+      .label {
+        display: block;
+        padding-bottom: 30px;
+        border-bottom: 1px solid var(--white-cl);
+        width: 100%;
+      }
+      .nav {
+        width: 100%;
+        column-count: 2;
+        column-gap: 117px;
+        margin-top: 25px;
+        .item {
+          list-style: none;
+          a {
+            @include text(dr, var(--fs-menu), var(--lh-menu), var(--white-cl), uppercase);
+            letter-spacing: var(--ls-menu);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            &::before {
+              content: "";
+              background: var(--white-cl);
+              width: 98%;
+              height: 1px;
+              position: absolute;
+              left: 0;
+              bottom: 0;
+              @include transition(var(--t));
+              @include transform(scale(0));
+            }
+            &:hover {
+              &::before {
+                @include transform(scale(1));
+                @include transition(var(--t));
+              }
+            }
+          }
+          &.active {
+            a {
+              @include text(db, var(--fs-menu), var(--lh-menu), var(--white-cl), uppercase);
+            }
+          }
+        }
+      }
+    }
+    &-btnbox {
+      grid-area: 1/8/2/13;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: var(--brus);
+      padding: 44px 32px;
+      .desc {
+        margin-top: 7px;
+        margin-bottom: 24px;
+      }
+      .btnlist {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+      }
+    }
+  }
+  &_bottom {
+    padding: 32px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    span {
+      @include text(dr, var(--fs-body1), var(--lh-body1), var(--white-cl));
+    }
+  }
+  @include md {
+    &_center {
+      grid-template-columns: 1fr 1fr;
+      margin-bottom: 75px;
+      &-menu {
+        grid-area: 1/1/2/2;
+      }
+      &-btnbox {
+        grid-area: 1/2/2/3;
+      }
+    }
+  }
+  @include sm {
+    &_center {
+      grid-template-columns: 1fr;
+      margin-bottom: 32px;
+
+      &-menu {
+        grid-area: auto;
+        .nav {
+          text-align: center;
+        }
+      }
+      &-btnbox {
+        grid-area: auto;
+      }
+    }
+    &_bottom {
+      text-align: center;
+    }
+  }
+  @include xs {
+    &_center {
+      gap: 50px;
+      &-menu {
+        .nav {
+          .item {
+            a {
+              font-size: 1.4rem;
+              line-height: 1.6rem;
+            }
+            &.active {
+              a {
+                font-size: 1.4rem;
+                line-height: 1.6rem;
+              }
+            }
+          }
+        }
+      }
+      &-btnbox {
+        .btnlist {
+          flex-direction: column;
+          .btn {
+            width: 100%;
+          }
+        }
+      }
+    }
+    &_top {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 24px;
+      margin-bottom: 45px;
+    }
+  }
+  @include xxs {
+    &_center {
+      &-menu {
+        grid-area: auto;
+        .nav {
+          text-align: initial;
+        }
+      }
+    }
+  }
+}

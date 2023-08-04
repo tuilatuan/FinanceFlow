@@ -1,0 +1,581 @@
+.homepage {
+  .main {
+    .banner {
+      overflow: hidden;
+      position: relative;
+      min-height: 100vh;
+      width: 100%;
+      padding-bottom: 550px;
+      .container {
+        width: 100%;
+        display: flex;
+        padding-top: 110px;
+      }
+
+      &_plannet {
+        position: absolute;
+        bottom: 0;
+        right: -295px;
+      }
+
+      &_blur {
+        position: absolute;
+        z-index: -1;
+        top: -49%;
+        left: -24%;
+        @include transform(translate(50%, 50%));
+        max-width: 951px;
+      }
+      &_textbox {
+        max-width: 780px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 70%;
+        .text {
+          max-width: 568px;
+          margin-top: 10px;
+          margin-bottom: 40px;
+        }
+      }
+      &_btngr {
+        display: flex;
+        flex-direction: row;
+        gap: var(--gap);
+      }
+    }
+    .build {
+      padding-top: 173px;
+      position: relative;
+      overflow: hidden;
+      &_textbox {
+        text-align: center;
+        .text {
+          max-width: 465px;
+          margin: 0 auto;
+          margin-top: 15px;
+        }
+      }
+      &_grbox {
+        margin-top: 80px;
+        display: grid;
+        grid-template-columns: 325px 485px 325px;
+        grid-template-rows: repeat(2, 295px);
+        gap: 32px;
+        &-item {
+          background: var(--dark-blue);
+          border-radius: 40px;
+          padding: 48px 23px;
+
+          .textbox {
+            margin-top: 15px;
+          }
+          &.item3 {
+            background: var(--main-cl);
+            grid-area: 1/2/3/3;
+            overflow: hidden;
+            padding-top: 44px;
+            .textbox {
+              .text {
+                margin-top: 25px;
+              }
+            }
+            .img {
+              width: 100%;
+              margin: 0 auto;
+              margin-top: 73px;
+              img {
+                margin: 0 auto;
+              }
+            }
+          }
+        }
+      }
+      &_btn {
+        margin-top: 48px;
+        .btnblue {
+          margin: 0 auto;
+        }
+      }
+      &_blur {
+        position: absolute;
+        z-index: -1;
+        top: -9%;
+        right: -95px;
+      }
+      @include sm {
+        padding-top: 65px;
+        &_grbox {
+          grid-template-columns: 1fr;
+          grid-template-rows: max-content;
+          gap: var(--gap);
+          margin-top: 14px;
+          &-item {
+            &.item3 {
+              grid-area: auto;
+              .textbox {
+                .text {
+                  margin-top: 16px;
+                }
+              }
+              .img {
+                margin-bottom: -191px;
+                margin-top: 25px;
+              }
+            }
+          }
+        }
+        &_btn {
+          margin-top: 40px;
+        }
+        &_textbox {
+          .text {
+            margin-top: 5px;
+          }
+        }
+        &_blur {
+          top: 0;
+          right: -200px;
+          max-width: 200%;
+        }
+      }
+      @include xs {
+        &_textbox {
+          text-align: initial;
+          .text {
+            max-width: none;
+          }
+        }
+      }
+    }
+    .earnmobile {
+      .container {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: var(--gap);
+      }
+      &_img {
+        grid-area: 1/1/2/7;
+      }
+      &_content {
+        grid-area: 1/8/2/13;
+        margin: auto 0;
+        &-title {
+          margin-bottom: 19px;
+        }
+      }
+      &_blur {
+        position: absolute;
+        z-index: -1;
+      }
+      @include sm {
+        .container {
+          grid-template-columns: 1fr;
+        }
+        &_img {
+          grid-area: auto;
+          margin: 0 auto;
+        }
+        &_content {
+          grid-area: auto;
+          &-title {
+            margin-bottom: 8px;
+          }
+          &-listicon {
+            margin-top: 13px;
+          }
+        }
+      }
+    }
+    .earnlaptop {
+      overflow: hidden;
+      margin-top: 10px;
+      .container {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: var(--gap);
+      }
+      &_content {
+        grid-area: 1/1/2/6;
+        margin: auto 0;
+      }
+      &_img {
+        grid-area: 1/6/2/13;
+        margin-right: -300px;
+      }
+      @include sm {
+        .container {
+          grid-template-columns: 1fr;
+        }
+        &_content {
+          grid-area: auto;
+          margin: auto 0;
+          margin-top: 10px;
+        }
+        &_img {
+          grid-area: auto;
+          margin-right: auto;
+        }
+      }
+    }
+    .explore {
+      background: var(--main-cl);
+      margin-top: 218px;
+      .container {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: var(--gap);
+        // padding: 120px 0;
+        max-height: 513px;
+      }
+      &_content {
+        grid-area: 1/1/2/7;
+        margin: auto 0;
+        &-title {
+          margin-bottom: 16px;
+        }
+        &-btn {
+          margin-top: 32px;
+        }
+      }
+      &_img {
+        grid-area: 1/7/2/13;
+        margin-top: -56px;
+        // img {
+        //   // overflow: hidden;
+        //   // position: absolute;
+        // }
+      }
+      @include sm {
+        margin-top: 80px;
+        .container {
+          grid-template-columns: 1fr;
+          padding-top: 40px;
+          padding-bottom: 0;
+          max-height: initial;
+          overflow: hidden;
+        }
+        &_content {
+          grid-area: auto;
+          text-align: center;
+          &-title {
+            margin-bottom: 10px;
+          }
+          &-btn {
+            margin: 0 auto;
+            max-width: max-content;
+            margin-top: var(--gap);
+          }
+        }
+        &_img {
+          grid-area: auto;
+          margin: 0 auto;
+          margin-bottom: -190px;
+        }
+      }
+      @include xs {
+        .container {
+          gap: 5px;
+        }
+        &_content {
+          &-title {
+            margin-bottom: 5px;
+          }
+        }
+        &_img {
+          margin-bottom: -80px;
+        }
+      }
+    }
+    .review {
+      position: relative;
+      .container {
+        display: flex;
+        flex-direction: column;
+      }
+      &_top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 33px;
+      }
+      &_carousel {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--gap);
+        &-item {
+          background: var(--dark-blue);
+          border-radius: 40px;
+          padding: 65px 50px;
+          // opacity: 0.3;
+          .decs {
+            margin-bottom: 25px;
+          }
+        }
+      }
+      &_dotted {
+        @include mid(true);
+        gap: 14px;
+        margin-top: 40px;
+        .dot {
+          width: 14px;
+          height: 14px;
+          background: var(--white-cl);
+          opacity: 0.4;
+          border-radius: 50%;
+          cursor: pointer;
+          &.active {
+            opacity: 1;
+          }
+        }
+      }
+      &_blur {
+        position: absolute;
+        top: 0;
+        z-index: -1;
+      }
+      @include xs {
+        &_top {
+          flex-direction: column;
+          align-items: initial;
+          &-btn {
+            margin-top: 22px;
+          }
+        }
+        &_carousel {
+          grid-template-columns: 1fr;
+        }
+        &_dotted {
+          margin-top: 32px;
+        }
+      }
+    }
+    .video {
+      padding-top: 150px;
+      .container {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: var(--gap);
+      }
+      &_content {
+        grid-area: 1/1/2/6;
+        margin: auto 0;
+      }
+      &_imgbox {
+        grid-area: 1/6/2/13;
+        margin-left: 26px;
+        &-img {
+          border-radius: 40px;
+          overflow: hidden;
+          position: relative;
+          aspect-ratio: 662/400;
+          width: 100%;
+          &::after {
+            content: "";
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: rgba(1, 7, 37, 0.6);
+          }
+          .img {
+            @include midimg;
+          }
+          .btn {
+            z-index: 2;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            @include transform(translate(-50%, -50%) scale(1));
+            @include transition(var(--t));
+            img {
+              @include mid;
+            }
+          }
+          @keyframes pulse {
+            0% {
+              @include transform(translate(-50%, -50%) scale(1));
+            }
+            25% {
+              @include transform(translate(-50%, -50%) scale(1.05));
+            }
+            50% {
+              @include transform(translate(-50%, -50%) scale(1));
+            }
+            75% {
+              @include transform(translate(-50%, -50%) scale(1.05));
+            }
+            100% {
+              @include transform(translate(-50%, -50%) scale(1));
+            }
+          }
+          &:hover {
+            .img {
+              @include imghover(1.05);
+            }
+            .btn {
+              @include animation(pulse 0.8s alternate infinite);
+              @include transition(var(--t));
+            }
+          }
+        }
+      }
+      @include sm {
+        .container {
+          grid-template-columns: 1fr;
+        }
+        &_content {
+          grid-area: auto;
+        }
+        &_imgbox {
+          grid-area: auto;
+          margin-left: 0;
+        }
+      }
+      @include xxxs {
+        // .container {
+        //   grid-template-columns: 1fr;
+        // }
+        // &_content {
+        //   grid-area: auto;
+        // }
+        &_imgbox {
+          grid-area: auto;
+          margin-left: 0;
+          &-img {
+            aspect-ratio: 358/400;
+          }
+        }
+      }
+    }
+    .blog {
+      padding-top: 170px;
+      &_top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 48px;
+        &-text {
+          max-width: 432px;
+          margin-right: 35px;
+        }
+      }
+      &_list {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 26px;
+      }
+      &_btn {
+        padding: 27px 32xp;
+        margin: 0 auto;
+        margin-top: 40px;
+      }
+      @include sm {
+        padding-top: 60px;
+        &_top {
+          flex-direction: column;
+          align-items: flex-start;
+          margin-bottom: 24px;
+          &-text {
+            max-width: none;
+          }
+        }
+        &_list {
+          grid-template-columns: 1fr;
+        }
+        &_btn {
+          margin-top: 16px;
+        }
+      }
+    }
+    .down {
+      padding-bottom: 120px;
+      &_top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 48px;
+        &-text {
+          max-width: 432px;
+          margin-right: 35px;
+        }
+      }
+      &_list {
+        display: flex;
+        justify-content: space-between;
+        gap: 70px;
+        &-item {
+          background: var(--dark-blue);
+          border-radius: var(--brus);
+          padding: 48px 48px 0 48px;
+
+          overflow: hidden;
+          .content {
+            margin-bottom: 40px;
+
+            .desc {
+              margin-top: 16px;
+              margin-bottom: 32px;
+            }
+            .btn {
+              max-width: max-content;
+              display: flex;
+              gap: 8px;
+            }
+          }
+          .img {
+            margin-bottom: -440px;
+            img {
+              margin: 0 auto;
+            }
+          }
+        }
+      }
+      @include sm {
+        &_top {
+          flex-direction: column;
+          align-items: flex-start;
+          margin-bottom: 24px;
+          &-text {
+            max-width: none;
+            margin-right: 0;
+          }
+        }
+        &_list {
+          flex-direction: column;
+          gap: 16px;
+          &-item {
+            padding: 32px 32px 0 32px;
+            .img {
+              margin-bottom: -400px;
+            }
+          }
+        }
+      }
+      @include xs {
+        &_list {
+          &-item {
+            .img {
+              margin-bottom: -445px;
+            }
+          }
+        }
+      }
+      @include xxs {
+        &_list {
+          &-item {
+            .img {
+              margin-bottom: -329px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,100 @@
+.header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  height: 132px;
+  z-index: 999;
+  .container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &_nav {
+    position: absolute;
+    left: 50%;
+    @include transform(translateX(-50%));
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 27px;
+    padding: 7px 1px;
+    a {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      letter-spacing: 1.4px;
+      @include transition(var(--t));
+      @include text(dm, var(--fs-menu), var(--lh-menu), var(--white-cl), uppercase);
+      &::before {
+        content: "";
+        background: var(--white-cl);
+        width: 98%;
+        height: 1px;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        @include transition(var(--t));
+        @include transform(scale(0));
+      }
+      &:hover {
+        &::before {
+          @include transform(scale(1));
+          @include transition(var(--t));
+        }
+      }
+    }
+  }
+  &_btn {
+    max-height: 56px;
+    .btnmobile {
+      display: none;
+      flex-direction: column;
+      @include transition(var(--t));
+      gap: 7px;
+
+      .line {
+        height: 2px;
+        width: 25px;
+        background: var((--white-cl));
+        @include transition(var(--t));
+      }
+      &.active {
+        // @include transition(var(--t));
+
+        .l2 {
+          display: none;
+        }
+        .l1 {
+          // @include transition(var(--t));
+
+          @include transform(translate(2px, 4px) rotate(45deg));
+        }
+        .l3 {
+          @include transition(var(--t));
+
+          @include transform(translate(2px, -5px) rotate(-45deg));
+        }
+      }
+    }
+  }
+  @include sm {
+    &_nav {
+      display: none;
+    }
+    &_btn {
+      width: 45px;
+      height: 45px;
+      padding: 13px 10px;
+      .text {
+        display: none;
+      }
+      .btnmobile {
+        display: flex;
+      }
+    }
+  }
+  @include xs {
+    height: 73px;
+  }
+}

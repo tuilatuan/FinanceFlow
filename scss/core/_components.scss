@@ -1,0 +1,208 @@
+// css img, button, title, icon, elements...
+img {
+  max-width: 100%;
+  height: auto;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  display: block;
+  outline: 0;
+  object-fit: contain;
+  &.--center {
+    margin: 0 auto;
+    display: block;
+  }
+}
+
+a {
+  text-decoration: none;
+  outline: 0;
+}
+.--h2 {
+  @include text(db, var(--fs-h1), var(--lh-h1), var(--white-cl));
+}
+.--h3 {
+  @include text(db, var(--fs-h2), var(--lh-h2), var(--white-cl));
+}
+.--h4 {
+  @include text(db, 2.2rem, 3.1rem, var(--white-cl));
+}
+.label {
+  @include text(db, var(--fs-lb), var(--lh-lb), var(--white-cl), uppercase);
+  letter-spacing: var(--ls-lb);
+}
+.textbody1 {
+  @include text(dr, var(--fs-body1), var(--lh-body1), var(--white-cl));
+}
+strong {
+  font-family: ab; // optional
+}
+
+.--hidden {
+  display: none;
+}
+
+sub {
+  vertical-align: sub;
+  font-size: smaller;
+}
+sup {
+  vertical-align: super;
+  font-size: smaller;
+}
+.btnblue {
+  background: var(--main-cl);
+  padding: 27px 32px;
+  border-radius: 80px;
+  cursor: pointer;
+  @include transition(var(--t));
+  @include mid(true);
+  @include text(db, var(--fs-btn), var(--lh-btn), var(--white-cl), uppercase);
+  letter-spacing: 1.6px;
+  max-height: 56px;
+  gap: 8px;
+  &:hover {
+    @include transition(var(--t));
+    background: var(--hover-cl);
+  }
+}
+.btngray {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 27px 32px;
+  border-radius: 80px;
+  cursor: pointer;
+  @include transition(var(--t));
+  @include mid(true);
+  @include text(db, var(--fs-btn), var(--lh-btn), var(--white-cl), uppercase);
+  letter-spacing: 1.6px;
+  max-height: 56px;
+  &:hover {
+    @include transition(var(--t));
+    background: var(--hover-cl);
+  }
+}
+.btnwhite {
+  background: var(--white-cl);
+
+  padding: 27px 32px;
+  border-radius: 80px;
+  cursor: pointer;
+  @include transition(var(--t));
+  @include mid(true);
+  @include text(db, var(--fs-btn), var(--lh-btn), var(--main-cl), uppercase);
+  letter-spacing: 1.6px;
+  max-height: 56px;
+  &:hover {
+    @include transition(var(--t));
+    background: var(--hover-cl);
+    color: var(--white-cl);
+  }
+}
+.lgcompany {
+  &_textbox {
+    text-align: center;
+  }
+  &_listlogo {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 27px;
+    margin-top: 36px;
+  }
+  @include sm {
+    &_listlogo {
+      gap: 16px;
+    }
+  }
+  @include xs {
+    &_listlogo {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: initial;
+      margin-top: 25px;
+      a:last-child {
+        grid-column: 1/3;
+        @include mid(0);
+      }
+      .img {
+        margin: 0 auto;
+      }
+    }
+  }
+}
+.author {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 22px;
+  height: 58px;
+  .img {
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  .textbox {
+    padding: 8px 0;
+    .name {
+      @include text(db, var(--fs-btn), var(--lh-btn), var(--white-cl), uppercase);
+    }
+    .text {
+      @include text(dr, var(--fs-btn), var(--lh-btn), var(--white-cl), uppercase);
+    }
+  }
+}
+.gricon {
+  margin-top: 32px;
+  .item {
+    display: flex;
+    align-items: center;
+    gap: 17px;
+    &:not(:last-child) {
+      margin-bottom: 17px;
+    }
+  }
+}
+
+.blogcard {
+  overflow: hidden;
+  border-radius: var(--brus);
+  background: var(--dark-blue);
+  .blogimg {
+    aspect-ratio: 382/215;
+    width: 100%;
+    position: relative;
+    img {
+      @include midimg;
+    }
+  }
+  .bloginfo {
+    padding: 0 23px 34px 30px;
+    margin-top: -18px;
+    z-index: 1;
+    position: relative;
+    .content {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      .btnblue {
+        max-width: max-content;
+        @include text(dm, var(--fs-tag), var(--lh-tag), var(--white-cl), uppercase);
+        letter-spacing: var(--ls-tag);
+        padding: 9px 15px;
+        margin-bottom: 24px;
+      }
+      .desc {
+        margin-top: 16px;
+        margin-bottom: 30px;
+        @include overtext(3);
+      }
+    }
+    .author {
+      margin-top: 23px;
+    }
+  }
+  &:hover {
+    .blogimg {
+      img {
+        @include imghover(1.05);
+      }
+    }
+  }
+}
