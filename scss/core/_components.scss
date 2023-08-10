@@ -63,6 +63,9 @@ sup {
   letter-spacing: 1.6px;
   max-height: 56px;
   gap: 8px;
+  a {
+    color: var(--white-cl);
+  }
   &:hover {
     @include transition(var(--t));
     background: var(--hover-cl);
@@ -110,7 +113,10 @@ sup {
     gap: 27px;
     margin-top: 36px;
   }
+
   @include sm {
+    margin-top: initial;
+
     &_listlogo {
       gap: 16px;
     }
@@ -161,26 +167,38 @@ sup {
     }
   }
 }
-
 .blogcard {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
   overflow: hidden;
   border-radius: var(--brus);
   background: var(--dark-blue);
+  gap: var(--gap);
+
   .blogimg {
-    aspect-ratio: 382/215;
+    grid-column: 7/13;
+
+    aspect-ratio: 586/334;
     width: 100%;
     position: relative;
+    height: 100%;
+    overflow: hidden;
     img {
       @include midimg;
     }
   }
   .bloginfo {
-    padding: 0 23px 34px 30px;
-    margin-top: -18px;
+    grid-column: 1/7;
+    grid-row: 1/2;
+
+    padding: 55px 78px 58px 48px;
+    margin-top: initial;
     z-index: 1;
     position: relative;
     .content {
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      .title {
+        @include overtext(2);
+      }
       .btnblue {
         max-width: max-content;
         @include text(dm, var(--fs-tag), var(--lh-tag), var(--white-cl), uppercase);
@@ -195,13 +213,59 @@ sup {
       }
     }
     .author {
-      margin-top: 23px;
+      display: none;
     }
   }
   &:hover {
     .blogimg {
       img {
         @include imghover(1.05);
+      }
+    }
+  }
+  @include xs {
+    display: flex;
+    flex-direction: column;
+    .blogimg {
+      aspect-ratio: 382/215;
+      width: 100%;
+      position: relative;
+      img {
+        @include midimg;
+      }
+    }
+    .bloginfo {
+      padding: 0 23px 34px 30px;
+      margin-top: -18px;
+      z-index: 1;
+      position: relative;
+      .content {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        .title {
+          @include overtext(2);
+        }
+        .btnblue {
+          max-width: max-content;
+          @include text(dm, var(--fs-tag), var(--lh-tag), var(--white-cl), uppercase);
+          letter-spacing: var(--ls-tag);
+          padding: 9px 15px;
+          margin-bottom: 24px;
+        }
+        .desc {
+          margin-top: 16px;
+          margin-bottom: 30px;
+          @include overtext(3);
+        }
+      }
+      .author {
+        margin-top: 23px;
+      }
+    }
+    &:hover {
+      .blogimg {
+        img {
+          @include imghover(1.05);
+        }
       }
     }
   }

@@ -1,0 +1,67 @@
+.erropage {
+  .main {
+    .erro {
+      width: 100%;
+      height: 100vh;
+      //   overflow: hidden;ddddsss
+      .container {
+        width: 100%;
+        height: 100%;
+        @include mid(true);
+      }
+      &_textbox {
+        max-width: 560px;
+        text-align: center;
+        &-num {
+          @include text(db, 18rem, 16rem, var(--main-cl));
+          margin-bottom: 15px;
+        }
+        &-desc {
+          margin-top: 16px;
+        }
+        &-grbtn {
+          @include mid(true);
+          gap: 23px;
+          margin-top: 40px;
+        }
+      }
+      &_blur {
+        @include mid;
+        max-width: initial;
+        height: 100%;
+        z-index: -1;
+      }
+      @include md {
+        overflow: hidden;
+      }
+      @include xs {
+        &_textbox {
+          &-num {
+            @include text(db, 12rem, 12rem, var(--main-cl));
+            margin-bottom: 32px;
+          }
+          &-grbtn {
+            flex-direction: column;
+            gap: 23px;
+            margin-top: 32px;
+            .btn {
+              width: 100%;
+            }
+          }
+        }
+      }
+      @include xxxs {
+        &_textbox {
+          &-num {
+            @include text(db, 9rem, 9rem, var(--main-cl));
+            margin-bottom: 25px;
+          }
+          &-grbtn {
+            gap: 15px;
+            margin-top: 16px;
+          }
+        }
+      }
+    }
+  }
+}

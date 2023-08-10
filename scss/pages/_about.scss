@@ -1,0 +1,287 @@
+.aboutpage {
+  .main {
+    .info {
+      &_intro {
+        padding-top: 192px;
+        max-width: 700px;
+        margin: 0 auto;
+        text-align: center;
+        margin-bottom: 122px;
+        &-title {
+          margin-bottom: 21px;
+        }
+      }
+      &_top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        &-desc {
+          max-width: 505px;
+        }
+      }
+      &_list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--gap);
+        margin-top: 29px;
+        &-item {
+          display: flex;
+          align-items: flex-start;
+          padding: 58px 32px;
+          gap: 24px;
+          background: var(--dark-blue);
+          border-radius: var(--brus);
+          .img {
+            width: 68px;
+          }
+          .content {
+            .desc {
+              margin-top: 2px;
+            }
+          }
+        }
+      }
+      &_blur {
+        max-width: initial;
+        position: absolute;
+        z-index: -1;
+        top: 0%;
+        left: -35%;
+      }
+      @include sm {
+        overflow: hidden;
+        padding-bottom: 0;
+        &_intro {
+          margin-bottom: 60px;
+          padding-top: 120px;
+        }
+        &_top {
+          display: block;
+          text-align: center;
+          &-desc {
+            margin: 0 auto;
+          }
+        }
+        &_blur {
+          left: -50%;
+        }
+      }
+      @include xs {
+        &_intro {
+          text-align: initial;
+          margin-bottom: 48px;
+          padding-top: 121px;
+        }
+        &_top {
+          display: block;
+          text-align: initial;
+          &-desc {
+            margin: 0;
+            max-width: 100%;
+          }
+        }
+        &_list {
+          grid-template-columns: 1fr;
+          grid-template-rows: initial;
+          &-item {
+            flex-direction: column;
+          }
+        }
+        &_blur {
+          left: -70%;
+        }
+      }
+      @include xxs {
+        &_blur {
+          left: -200%;
+        }
+      }
+    }
+    .our {
+      overflow: hidden;
+      .container {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: var(--gap);
+      }
+      &_content {
+        grid-column: 1/8;
+        padding-right: 80px;
+        &-item {
+          &:not(:last-child) {
+            margin-bottom: 78px;
+          }
+          .title {
+            margin-bottom: 16px;
+            &::first-letter {
+              text-transform: uppercase;
+            }
+          }
+        }
+      }
+      &_img {
+        grid-column: 8/13;
+        margin-right: -157px;
+      }
+      @include md {
+        padding-bottom: 0;
+        .container {
+          grid-template-columns: 1fr;
+        }
+        &_content {
+          grid-column: initial;
+          padding-right: initial;
+        }
+        &_img {
+          grid-column: initial;
+          max-width: max-content;
+          margin: 0 auto;
+          margin-top: 20px;
+        }
+      }
+      @include sm {
+        padding-bottom: 0;
+      }
+    }
+    .timeline {
+      .container {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: var(--gap);
+        position: relative;
+      }
+      &_intro {
+        grid-column: 1/5;
+        height: 240px;
+        max-width: 385px;
+        position: sticky;
+        top: 90px;
+        .title {
+          margin-bottom: 16px;
+        }
+      }
+      &_list {
+        grid-column: 6/13;
+        display: flex;
+        flex-direction: column;
+        gap: 80px;
+        .item {
+          padding-bottom: 40px;
+          display: flex;
+          gap: 54px;
+          border-bottom: 1px solid var(--white-cl);
+          .content {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            .year {
+              @include text(db, 2.8rem, 3rem, var(--white-cl), uppercase);
+              letter-spacing: 0.028rem;
+            }
+          }
+        }
+      }
+      @include sm {
+        .container {
+          grid-template-columns: 1fr;
+        }
+        &_intro {
+          grid-column: auto;
+          position: relative;
+          max-width: 100%;
+          top: initial;
+          height: auto;
+          margin-bottom: 40px;
+        }
+        &_list {
+          grid-column: auto;
+        }
+      }
+    }
+    .team {
+      .container {
+      }
+      &_top {
+        margin-bottom: 49px;
+        display: flex;
+        justify-content: space-between;
+        &-title {
+          text-transform: capitalize;
+        }
+        &-desc {
+          max-width: 496px;
+        }
+      }
+      &_cards {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 38px;
+        &-card {
+          border-radius: var(--brus);
+          padding: 24px;
+          background: var(--dark-blue);
+          .img {
+            aspect-ratio: 327/400;
+            position: relative;
+            border-radius: 32px;
+            overflow: hidden;
+            margin-bottom: 32px;
+            cursor: pointer;
+
+            img {
+              @include midimg;
+            }
+          }
+          .info {
+            @include text(dr, 1.6rem, 1.8rem, var(--white-cl), uppercase);
+            .name {
+              cursor: pointer;
+
+              @include text(db, 1.6rem, 1.8rem, var(--white-cl), uppercase);
+              margin-bottom: 18px;
+            }
+            :hover {
+              .name {
+                color: var(--main-cl);
+              }
+            }
+          }
+          &:hover {
+            .img {
+              img {
+                @include imghover(1.05);
+              }
+            }
+          }
+        }
+      }
+      @include xxs {
+        &_top {
+          flex-direction: column;
+        }
+        &_cards {
+          grid-template-columns: 1fr;
+          &-card {
+            .info {
+              text-align: center;
+            }
+          }
+        }
+      }
+    }
+    .lgcompany {
+      padding-bottom: 230px;
+      &_textbox {
+        margin-bottom: 5px;
+        .text {
+          max-width: 500px;
+          margin: 0 auto;
+          margin-top: 16px;
+        }
+      }
+      @include sm {
+        padding-bottom: 75px;
+      }
+    }
+  }
+}

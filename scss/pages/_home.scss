@@ -3,45 +3,104 @@
     .banner {
       overflow: hidden;
       position: relative;
-      min-height: 100vh;
+      height: 100vh;
       width: 100%;
-      padding-bottom: 550px;
       .container {
-        width: 100%;
+        height: 100%;
         display: flex;
-        padding-top: 110px;
+        align-items: center;
+        padding-top: 100px;
       }
 
       &_plannet {
-        position: absolute;
-        bottom: 0;
-        right: -295px;
-      }
+        width: 650px;
+        position: relative;
 
+        .plannet {
+          max-width: initial;
+          margin-right: -210px;
+        }
+        .blur {
+          position: absolute;
+          z-index: -1;
+          max-width: initial;
+          left: 70%;
+
+          top: 50%;
+          @include transform(translate(-50%, -50%));
+        }
+      }
       &_blur {
         position: absolute;
         z-index: -1;
-        top: -49%;
-        left: -24%;
-        @include transform(translate(50%, 50%));
-        max-width: 951px;
+        top: 7%;
+        left: 13%;
+        @include transform(translate(-50%, -50%));
       }
       &_textbox {
-        max-width: 780px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        width: 70%;
+        // max-width: 780px;
+        // position: absolute;
+        // top: 50%;
+
+        // left: 0%;
+        // @include transform(translateY(-50%));
+        // display: flex;
+        // flex-direction: column;
+        // justify-content: center;
+        // width: 70%;
         .text {
           max-width: 568px;
           margin-top: 10px;
           margin-bottom: 40px;
         }
+        &-btngr {
+          display: flex;
+          flex-direction: row;
+          gap: var(--gap);
+        }
       }
-      &_btngr {
-        display: flex;
-        flex-direction: row;
-        gap: var(--gap);
+
+      @include sm {
+        height: initial;
+        padding-bottom: 30px;
+        .container {
+          flex-direction: column;
+        }
+        &_blur {
+          display: none;
+        }
+        &_plannet {
+          width: 100%;
+          margin-top: 32px;
+          .plannet {
+            max-width: 100%;
+            margin-right: initial;
+            margin: 0 auto;
+          }
+          .blur {
+            left: 100%;
+            top: 0%;
+            @include transform(translate(-50%, -50%));
+          }
+        }
+      }
+      @include xs {
+        .container {
+          flex-direction: column;
+        }
+        &_plannet {
+          .blur {
+            top: -27%;
+          }
+        }
+        &_textbox {
+          &-btngr {
+            flex-direction: column;
+          }
+        }
+        &_blur {
+          display: none;
+        }
       }
     }
     .build {
@@ -95,6 +154,7 @@
         margin-top: 48px;
         .btnblue {
           margin: 0 auto;
+          max-width: max-content;
         }
       }
       &_blur {
@@ -102,6 +162,11 @@
         z-index: -1;
         top: -9%;
         right: -95px;
+      }
+      @include md {
+        &_grbox {
+          grid-template-columns: repeat(3, 1fr);
+        }
       }
       @include sm {
         padding-top: 65px;
@@ -134,9 +199,11 @@
           }
         }
         &_blur {
-          top: 0;
-          right: -200px;
-          max-width: 200%;
+          top: -9%;
+          right: initial;
+          left: 50%;
+          @include transform(translateX(-50%));
+          max-width: initial;
         }
       }
       @include xs {
@@ -149,6 +216,7 @@
       }
     }
     .earnmobile {
+      position: relative;
       .container {
         display: grid;
         grid-template-columns: repeat(12, 1fr);
@@ -167,8 +235,12 @@
       &_blur {
         position: absolute;
         z-index: -1;
+        top: 25%;
+        left: 50%;
+        @include transform(translateX(-50%));
       }
       @include sm {
+        overflow: hidden;
         .container {
           grid-template-columns: 1fr;
         }
@@ -184,6 +256,10 @@
           &-listicon {
             margin-top: 13px;
           }
+        }
+        &_blur {
+          max-width: 217%;
+          top: 0;
         }
       }
     }

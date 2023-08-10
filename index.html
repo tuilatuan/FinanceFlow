@@ -40,34 +40,49 @@
   <body class="homepage">
     <header class="header">
       <div class="container">
-        <div class="header_logo">
-          <a href="#">
-            <h1>
-              <picture>
-                <source media="(max-width: 768px)" srcset="./img/logo-crypto.svg" />
-                <img src="./img/logo-finanlow.svg" alt="" />
-              </picture>
-            </h1>
-          </a>
+        <div class="header_left">
+          <div class="header_left-logo">
+            <a href="#">
+              <h1>
+                <picture>
+                  <source media="(max-width: 768px)" srcset="./img/logo-crypto.svg" />
+                  <img src="./img/logo-finanlow.svg" alt="" />
+                </picture>
+              </h1>
+            </a>
+          </div>
+          <nav class="header_left-nav">
+            <a href="./index.html" class="active">home</a>
+            <a href="./about.html">about</a>
+            <a href="pricing.html">pricing</a>
+            <a href="tokens.html">tokens</a>
+            <a href="blog.html">blog</a>
+            <a href="">contact us</a>
+          </nav>
         </div>
-        <nav class="header_nav">
-          <a href="">home</a>
-          <a href="">about</a>
-          <a href="">pricing</a>
-          <a href="">tokens</a>
-          <a href="">blog</a>
-          <a href="">contact us</a>
-        </nav>
-        <button class="header_btn btnblue">
-          <div class="text">download app</div>
+
+        <div class="header_btn btnblue">
+          <a href="https://cfdcircle.vn/" class="text">download app</a>
           <div class="btnmobile">
             <span class="line l1"></span>
             <span class="line l2"></span>
             <span class="line l3"></span>
           </div>
-        </button>
+        </div>
       </div>
     </header>
+    <div class="menumobile">
+      <nav class="nav">
+        <a href="index.html" class="active">home</a>
+        <a href="">about</a>
+        <a href="">pricing</a>
+        <a href="">tokens</a>
+        <a href="">blog</a>
+        <a href="">contact us</a>
+        <a href="https://cfdcircle.vn/"><button class="btn btnblue">download app</button></a>
+      </nav>
+      <img src="./img/blur3.png" alt="" class="blur" />
+    </div>
     <main class="main">
       <section class="banner">
         <div class="container">
@@ -77,17 +92,18 @@
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Feugiat nulla suspendisse tortor aenean dis
               placerat.
             </p>
-            <div class="banner_btngr">
-              <button class="banner_btngr-down btnblue">download app</button>
-              <button class="banner_btngr-down btngray">view pricing</button>
+            <div class="banner_textbox-btngr">
+              <a href="https://cfdcircle.vn/" class="banner_btngr-down btnblue">download app</a>
+              <a href="#" class="banner_btngr-down btngray">view pricing</a>
             </div>
           </div>
+          <div class="banner_plannet">
+            <img src="./img/planet.png" alt="" class="plannet" />
+            <img src="./img/blur1.png" alt="" class="blur" />
+          </div>
         </div>
-        <div class="banner_plannet">
-          <img srcset="./img/plannetcp.png 2x" alt="" class="plannet" />
-          <!-- <img src="./img/blur1.png" alt="" class="blur" /> -->
-        </div>
-        <!-- <div class="banner_blur"><img src="./img/blur2.png" alt="" /></div> -->
+
+        <img class="banner_blur" src="./img/blur2.png" alt="" />
       </section>
       <section class="lgcompany">
         <div class="container">
@@ -169,7 +185,7 @@
             </div>
           </div>
           <div class="build_btn">
-            <button class="btnblue">download app</button>
+            <a href="https://cfdcircle.vn/" class="btnblue">download app</a>
           </div>
         </div>
         <img src="./img/blur3.png" class="build_blur" alt="" />
@@ -199,10 +215,8 @@
               </div>
             </div>
           </div>
-          <div class="earnmobile_blur">
-            <img src="./img/blur3.png" alt="" />
-          </div>
         </div>
+        <img class="earnmobile_blur" src="./img/blur3.png" alt="" />
       </section>
       <section class="earnlaptop pt">
         <div class="container">
@@ -239,7 +253,7 @@
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Feugiat nulla suspendisse tortor aene.
             </div>
             <div class="explore_content-btn">
-              <button class="btnwhite">download app</button>
+              <a href="https://cfdcircle.vn/" class="btnwhite">download app</a>
             </div>
           </div>
           <div class="explore_img">
@@ -251,7 +265,7 @@
         <div class="container">
           <div class="review_top">
             <h3 class="review_top-title --h3">What our users say?</h3>
-            <button class="review_top-btn btnblue">download app</button>
+            <a href="https://cfdcircle.vn/" class="review_top-btn btnblue">download app</a>
           </div>
           <div class="review_carousel">
             <div class="review_carousel-item">
@@ -345,7 +359,9 @@
               <div class="bloginfo">
                 <div class="content">
                   <div class="btnblue">product</div>
-                  <a href="#"><h4 class="title --h4">The Basics about Cryptocurrency</h4></a>
+                  <a href="#">
+                    <h4 class="title --h4">The Basics about Cryptocurrency</h4>
+                  </a>
                   <p class="desc">
                     Lorem ipsum dolor sit ametero irseo, consectetur adipiscing elit. Scelerisque viverra donec diammeo.
                   </p>
@@ -368,7 +384,9 @@
               <div class="bloginfo">
                 <div class="content">
                   <div class="btnblue">product</div>
-                  <a href="#"><h4 class="title --h4">The Basics about Cryptocurrency</h4></a>
+                  <a href="#">
+                    <h4 class="title --h4">The Basics about Cryptocurrency</h4>
+                  </a>
                   <p class="desc">
                     Lorem ipsum dolor sit ametero irseo, consectetur adipiscing elit. Scelerisque viverra donec diammeo.
                   </p>
@@ -391,7 +409,9 @@
               <div class="bloginfo">
                 <div class="content">
                   <div class="btnblue">product</div>
-                  <a href="#"><h4 class="title --h4">The Basics about Cryptocurrency</h4></a>
+                  <a href="#">
+                    <h4 class="title --h4">The Basics about Cryptocurrency</h4>
+                  </a>
                   <p class="desc">
                     Lorem ipsum dolor sit ametero irseo, consectetur adipiscing elit. Scelerisque viverra donec diammeo.
                   </p>
@@ -427,10 +447,10 @@
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sed nulla integer in pellentesque
                   tortor semper elementum. Felis.
                 </p>
-                <div class="btn btnblue">
+                <a href="https://cfdcircle.vn/" class="btn btnblue">
                   <img src="./img/i-apple.svg" alt="" />
                   <span>App Store</span>
-                </div>
+                </a>
               </div>
               <div class="img">
                 <img src="./img/iPhone14.png" alt="" />
@@ -443,10 +463,10 @@
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sed nulla integer in pellentesque
                   tortor semper elementum. Felis.
                 </p>
-                <div class="btn btnblue">
+                <a href="https://cfdcircle.vn/" class="btn btnblue">
                   <img src="./img/i-androi.svg" alt="" />
                   <span>play store</span>
-                </div>
+                </a>
               </div>
               <div class="img">
                 <img src="./img/iPhone14.png" alt="" />

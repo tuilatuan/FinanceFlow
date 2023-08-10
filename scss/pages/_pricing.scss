@@ -1,0 +1,80 @@
+.pricingpage {
+  .main {
+    .price {
+      padding-top: 172px;
+      padding-bottom: 255px;
+      &_textbox {
+        max-width: 660px;
+        margin: 0 auto;
+        text-align: center;
+        padding: 0 46px;
+        &-title {
+          margin-bottom: 16px;
+        }
+      }
+      &_icons {
+        // display: flex;
+        // justify-content: space-between;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        margin-top: 40px;
+        &-item {
+          display: flex;
+          gap: 24px;
+          align-items: center;
+        }
+      }
+      &_list {
+        margin-top: 56px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 26px;
+        &-card {
+          background: var(--dark-blue);
+          border-radius: var(--brus);
+          padding: 48px 30px 42px;
+          .priceinfo {
+            margin-bottom: 40px;
+            .tag {
+              max-width: 81px;
+              padding: 9px 14px;
+              margin-bottom: 16px;
+            }
+            .desc {
+              margin-top: 19px;
+            }
+          }
+          .info {
+            .list {
+              margin-top: 11px;
+              display: flex;
+              flex-direction: column;
+              gap: 16px;
+              margin-bottom: 56px;
+            }
+          }
+        }
+      }
+      @include sm {
+        padding-top: 90px;
+        padding-bottom: 96px;
+        &_icons {
+          grid-template-columns: 1fr 1fr;
+          gap: var(--gap);
+        }
+        &_list {
+          grid-template-columns: 1fr;
+        }
+      }
+      @include xxs {
+        &_textbox {
+          padding: initial;
+        }
+        &_icons {
+          grid-template-columns: 1fr;
+          gap: 38px;
+        }
+      }
+    }
+  }
+}

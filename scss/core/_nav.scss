@@ -1,0 +1,51 @@
+.menumobile {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  z-index: 99;
+  overflow: hidden;
+  position: fixed;
+  background: var(--bg-cl);
+  @include transition(var(--t));
+  @include visible(0);
+  &.active {
+    @include visible(1);
+    @include transition(var(--t));
+  }
+  .nav {
+    height: 100%;
+    margin: auto 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    a {
+      @include text(dm, 2.6rem, 100%, var(--white-cl), uppercase);
+      letter-spacing: 0.14rem;
+      position: relative;
+      &.active {
+        &::before {
+          content: "";
+          background: var(--white-cl);
+          width: 98%;
+          height: 1px;
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          @include transition(var(--t));
+          @include transform(scale(1));
+        }
+      }
+    }
+  }
+  .blur {
+    @include transition(var(--t));
+    max-width: initial;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    @include transform(translate(-50%, -50%));
+    z-index: -1;
+  }
+}

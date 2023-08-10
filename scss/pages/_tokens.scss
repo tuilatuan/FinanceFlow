@@ -1,0 +1,18 @@
+.tokenspage {
+  .main {
+    .token {
+      padding-top: 192px;
+      &_textbox {
+        max-width: 580px;
+        margin: 0 auto;
+        text-align: center;
+        margin-bottom: 100px;
+        &-title {
+          margin-bottom: 16px;
+        }
+      }
+      &_list {
+      }
+    }
+  }
+}
