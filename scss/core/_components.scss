@@ -29,6 +29,15 @@ a {
 .--h4 {
   @include text(db, 2.2rem, 3.1rem, var(--white-cl));
 }
+.--h5 {
+  @include text(db, var(--fs-h5), var(--lh-h5), var(--white-cl));
+
+  letter-spacing: var(--lt-h5);
+}
+.link {
+  text-decoration: underline;
+  color: var(--white-cl);
+}
 .label {
   @include text(db, var(--fs-lb), var(--lh-lb), var(--white-cl), uppercase);
   letter-spacing: var(--ls-lb);
@@ -37,7 +46,7 @@ a {
   @include text(dr, var(--fs-body1), var(--lh-body1), var(--white-cl));
 }
 strong {
-  font-family: ab; // optional
+  font-family: db; // optional
 }
 
 .--hidden {
@@ -101,6 +110,25 @@ sup {
     @include transition(var(--t));
     background: var(--hover-cl);
     color: var(--white-cl);
+  }
+}
+.btnhvblue {
+  background: var(--hover-cl);
+  padding: 27px 32px;
+  border-radius: 80px;
+  cursor: pointer;
+  @include transition(var(--t));
+  @include mid(true);
+  @include text(db, var(--fs-btn), var(--lh-btn), var(--white-cl), uppercase);
+  letter-spacing: 1.6px;
+  max-height: 56px;
+  gap: 8px;
+  a {
+    color: var(--white-cl);
+  }
+  &:hover {
+    @include transition(var(--t));
+    background: var(--main-cl);
   }
 }
 .lgcompany {
@@ -167,17 +195,27 @@ sup {
     }
   }
 }
+.bloglist {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--gap26);
+  @include sm {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
 .blogcard {
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
+  grid-template-columns: 1fr 1fr;
   overflow: hidden;
   border-radius: var(--brus);
   background: var(--dark-blue);
   gap: var(--gap);
+  grid-auto-flow: row;
 
   .blogimg {
-    grid-column: 7/13;
-
+    grid-area: 1/2/2/3;
     aspect-ratio: 586/334;
     width: 100%;
     position: relative;
@@ -188,27 +226,27 @@ sup {
     }
   }
   .bloginfo {
-    grid-column: 1/7;
-    grid-row: 1/2;
+    grid-area: 1/1/2/2;
 
-    padding: 55px 78px 58px 48px;
+    padding: 58px 78px 36px 48px;
     margin-top: initial;
     z-index: 1;
     position: relative;
     .content {
       .title {
-        @include overtext(2);
+        @include text(db, var(--fs-blog), var(--lh-blog), var(--white-cl));
+        letter-spacing: var(--lt-tblog);
       }
       .btnblue {
         max-width: max-content;
         @include text(dm, var(--fs-tag), var(--lh-tag), var(--white-cl), uppercase);
         letter-spacing: var(--ls-tag);
         padding: 9px 15px;
-        margin-bottom: 24px;
+        margin-bottom: 21px;
       }
       .desc {
-        margin-top: 16px;
-        margin-bottom: 30px;
+        margin-top: 6px;
+        margin-bottom: 0;
         @include overtext(3);
       }
     }
@@ -227,45 +265,192 @@ sup {
     display: flex;
     flex-direction: column;
     .blogimg {
+      grid-area: auto;
+
       aspect-ratio: 382/215;
-      width: 100%;
-      position: relative;
-      img {
-        @include midimg;
-      }
     }
     .bloginfo {
+      grid-area: auto;
+
       padding: 0 23px 34px 30px;
-      margin-top: -18px;
-      z-index: 1;
-      position: relative;
+      margin-top: -33px;
       .content {
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         .title {
           @include overtext(2);
+          margin-bottom: 6px;
         }
         .btnblue {
-          max-width: max-content;
-          @include text(dm, var(--fs-tag), var(--lh-tag), var(--white-cl), uppercase);
-          letter-spacing: var(--ls-tag);
-          padding: 9px 15px;
           margin-bottom: 24px;
         }
         .desc {
-          margin-top: 16px;
           margin-bottom: 30px;
           @include overtext(3);
         }
       }
       .author {
+        display: flex;
         margin-top: 23px;
       }
     }
-    &:hover {
-      .blogimg {
-        img {
-          @include imghover(1.05);
+  }
+}
+.blogcardcolumn {
+  display: flex;
+  flex-direction: column;
+  .blogimg {
+    aspect-ratio: 382/215;
+    grid-area: auto;
+
+    width: 100%;
+    position: relative;
+  }
+  .bloginfo {
+    grid-area: auto;
+
+    padding: 0 23px 34px 30px;
+    margin-top: -45px;
+    z-index: 1;
+    position: relative;
+    .content {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      .title {
+        @include overtext(2);
+        margin-bottom: 0;
+      }
+      .btnblue {
+        max-width: max-content;
+        @include text(dm, var(--fs-tag), var(--lh-tag), var(--white-cl), uppercase);
+        letter-spacing: var(--ls-tag);
+        padding: 9px 15px;
+        margin-bottom: 24px;
+      }
+      .desc {
+        margin-top: 16px;
+        margin-bottom: 30px;
+        @include overtext(3);
+      }
+    }
+    .author {
+      display: flex;
+      margin-top: 23px;
+    }
+  }
+
+  @include xs {
+    .bloginfo {
+      margin-top: -30px;
+      .content {
+        .title {
+          @include overtext(initial);
         }
+        .desc {
+          @include overtext(initial);
+        }
+      }
+    }
+  }
+}
+.sub {
+  background: var(--main-cl);
+  padding-top: 64px;
+  padding-bottom: 84px;
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &_textbox {
+    @include mid(true);
+    max-width: 615px;
+    gap: 25px;
+  }
+  &_form {
+    width: 480px;
+    position: relative;
+    height: 80px;
+    &-inpt {
+      width: 100%;
+      height: 100%;
+      padding-left: 16px;
+      outline: none;
+      color: var(--black-cl);
+      border-radius: 100px;
+      position: relative;
+    }
+    &-btn {
+      position: absolute;
+      right: 8px;
+      top: 50%;
+      @include transform(translateY(-50%));
+    }
+  }
+  @include sm {
+    .container {
+      flex-direction: column;
+      gap: 20px;
+    }
+  }
+  @include xxs {
+    padding: 80px 0;
+    &_textbox {
+      flex-direction: column;
+      text-align: center;
+      gap: 32px;
+    }
+    &_form {
+      width: 100%;
+      height: auto;
+      &-inpt {
+        height: 80px;
+      }
+      &-btn {
+        position: relative;
+        width: 100%;
+        margin-top: 20px;
+        right: initial;
+        top: initial;
+        @include transform(translateY(0));
+      }
+    }
+  }
+}
+
+.textboxtop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 48px;
+  .text {
+    max-width: 480px;
+  }
+  @include sm {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 24px;
+    .text {
+      max-width: none;
+      margin-right: 0;
+    }
+  }
+}
+.textboxbtn {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 56px;
+  .grbtns {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    .btn {
+      width: max-content;
+      padding: 11px 24px;
+      line-height: 2.6rem;
+      font-family: dr;
+      text-transform: capitalize;
+      letter-spacing: 0;
+      &.active {
+        background: var(--main-cl);
       }
     }
   }

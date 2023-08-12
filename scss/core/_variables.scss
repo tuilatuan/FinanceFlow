@@ -1,6 +1,9 @@
 :root {
   /* Gap, MaxWidth Of Page, Container-Fluid, Container */
   --gap: 28px;
+  --gap26: 26px;
+  --gap16: 16px;
+  --gap24: 24px;
 
   --max-width-page: 2560px;
   --max-width-container-fluid: 1920px;
@@ -22,6 +25,10 @@
   --fs-h2: 4.2rem;
   --lh-h2: 5.5rem;
   --ls-h2: 0rem;
+
+  --fs-h5: 2.8rem;
+  --lh-h5: 3rem;
+  --ls-h5: 0.028rem;
 
   --fs-lb: 1.8rem;
   --lh-lb: 2.6rem;
@@ -45,6 +52,10 @@
   --lh-tag: 1.8rem;
   --ls-tag: 0.07rem;
 
+  --fs-blog: 2.8rem;
+  --lh-blog: 4rem;
+  --lt-blog: 0.028rem;
+
   // General Variable Demo
   --height-header: 132px;
   --height-button: 42px;
@@ -65,6 +76,7 @@
   @include xs {
     --container-max-width: 100%; // hoặc max-width: 100% tuỳ yêu cầu
     --gap: 15px;
+    --gap26: 16px;
 
     // DEMO
     --fs-h1: 3.8rem;
@@ -74,6 +86,10 @@
     --fs-h2: 2.8rem;
     --lh-h2: 3.6rem;
     --ls-h2: 0rem;
+
+    --fs-h5: 2.8rem;
+    --lh-h5: 3.6rem;
+    --ls-h5: 0rem;
 
     --fs-lb: 1.4rem;
     --lh-lb: 1.8rem;
@@ -96,6 +112,10 @@
     --fs-tag: 1.4rem;
     --lh-tag: 1.8rem;
     --ls-tag: 0.07rem;
+
+    --fs-tblog: 2.2rem;
+    --lh-tblog: 3.1rem;
+    --lt-tblog: 0rem;
   }
   @include xxs {
     --container-max-width: 100%;

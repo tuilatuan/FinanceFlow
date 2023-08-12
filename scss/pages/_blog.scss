@@ -2,6 +2,78 @@
   .main {
     .blog {
       margin-bottom: 92px;
+      padding-top: 200px;
+
+      @include xs {
+        padding-top: 121px;
+        &_top {
+          .desc {
+            margin-top: 16px;
+          }
+        }
+      }
+    }
+    .listblog {
+      padding-top: 152px;
+      padding-bottom: 80px;
+
+      &_paging {
+        display: flex;
+        gap: var(--gap16);
+        justify-content: center;
+        align-items: center;
+        height: 36px;
+        margin-top: 28px;
+        &-btn {
+          background: var(--dark-blue);
+          width: 36px;
+          height: 100%;
+          @include br(100px);
+          @include mid(true); // cursor: pointer;
+          .icon {
+            fill: var(--white-cl);
+          }
+          &.prev {
+            @include transform(rotate(180deg));
+          }
+          &.--disable-active {
+            filter: grayscale(57%);
+            background: rgba(255, 255, 255, 0.1);
+            pointer-events: none;
+            .icon {
+              fill: rgba(255, 255, 255, 0.1);
+            }
+          }
+        }
+        &-numpage {
+          @include mid(true);
+          gap: var(--gap16);
+
+          a {
+            color: var(--white-cl);
+            &.active {
+              color: var(--main-cl);
+            }
+            &:hover {
+              color: var(--main-cl);
+            }
+          }
+        }
+      }
+      @include xxs {
+        padding-top: 80px;
+        &_top {
+          flex-direction: column;
+          text-align: center;
+          &-btns {
+            flex-direction: column;
+            margin-top: 24px;
+            .btn {
+              width: 100%;
+            }
+          }
+        }
+      }
     }
   }
 }

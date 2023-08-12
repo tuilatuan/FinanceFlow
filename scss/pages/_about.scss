@@ -11,14 +11,7 @@
           margin-bottom: 21px;
         }
       }
-      &_top {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        &-desc {
-          max-width: 505px;
-        }
-      }
+
       &_list {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -173,7 +166,7 @@
           .content {
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: var(--gap16);
             .year {
               @include text(db, 2.8rem, 3rem, var(--white-cl), uppercase);
               letter-spacing: 0.028rem;
@@ -203,13 +196,9 @@
       }
       &_top {
         margin-bottom: 49px;
-        display: flex;
-        justify-content: space-between;
+
         &-title {
           text-transform: capitalize;
-        }
-        &-desc {
-          max-width: 496px;
         }
       }
       &_cards {

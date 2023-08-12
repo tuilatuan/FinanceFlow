@@ -28,7 +28,7 @@
         margin-top: 56px;
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 26px;
+        gap: var(--gap26);
         &-card {
           background: var(--dark-blue);
           border-radius: var(--brus);
@@ -49,7 +49,7 @@
               margin-top: 11px;
               display: flex;
               flex-direction: column;
-              gap: 16px;
+              gap: var(--gap16);
               margin-bottom: 56px;
             }
           }

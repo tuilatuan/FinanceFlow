@@ -1,0 +1,206 @@
+.contactpage {
+  .main {
+    .formcontact {
+      overflow: hidden;
+
+      position: relative;
+      padding-top: 212px;
+      &_title {
+        margin-bottom: 52px;
+      }
+      &_boxs {
+        display: flex;
+        justify-content: space-between;
+        &-form {
+          width: 753px;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 25px;
+          row-gap: 32px;
+          .item {
+            input,
+            textarea {
+              width: 100%;
+              margin-top: 12px;
+              padding: 20.5px 25px;
+              border-radius: 100px;
+              background: var(--dark-blue);
+              color: var(--white-cl);
+              outline: none;
+              &::placeholder {
+                color: var(--white-cl);
+              }
+            }
+            &.message {
+              grid-column: 1/3;
+              textarea {
+                border-radius: 14px;
+                width: 100%;
+                resize: none;
+                max-height: 162px;
+              }
+            }
+          }
+          .btn {
+            max-width: 205px;
+            margin-top: 10px;
+          }
+        }
+        &-intro {
+          max-width: 384px;
+          .heading {
+            @include text(db, 2.2rem, 3.1rem, var(--white-cl));
+            letter-spacing: 0.022rem;
+            margin-bottom: 12px;
+          }
+          .listcontact {
+            margin-top: 32px;
+            .item {
+              display: flex;
+              align-items: center;
+              gap: 15px;
+              &:not(:last-child) {
+                margin-bottom: 24px;
+              }
+              span {
+                color: var(--white-cl);
+              }
+            }
+          }
+        }
+      }
+      .blur {
+        position: absolute;
+        z-index: -1;
+        top: -50%;
+        right: 0;
+        @include transform(translate(34%, 8%));
+      }
+      @include md {
+        padding-top: 170px;
+      }
+      @include sm {
+        padding-top: 121px;
+
+        &_title {
+          margin-bottom: 40px;
+        }
+        &_boxs {
+          flex-direction: column;
+          width: 100%;
+          &-intro {
+            max-width: 100%;
+            margin-top: 48px;
+            .heading {
+              @include text(db, 2.8rem, 3.6rem, var(--white-cl));
+              letter-spacing: 0;
+              margin-bottom: 19px;
+            }
+            .listcontact {
+              margin-top: 24px;
+            }
+          }
+        }
+      }
+      @include xs {
+        &_boxs {
+          &-form {
+            width: 100%;
+          }
+        }
+      }
+      @include xxs {
+        &_boxs {
+          &-form {
+            grid-template-columns: 1fr;
+            gap: var(--gap24);
+            .item {
+              &.message {
+                grid-column: auto;
+              }
+            }
+            .btn {
+              margin-top: -2px;
+            }
+          }
+        }
+      }
+    }
+    .accordion {
+      padding: 120px 0;
+      &_title {
+        max-width: max-content;
+        margin: 0 auto;
+        text-transform: uppercase;
+        margin-bottom: 80px;
+      }
+      &_list {
+        max-width: 872px;
+        margin: 0 auto;
+        &-item {
+          border-bottom: 1px solid rgba($color: #fff, $alpha: 0.2);
+          .btns {
+            background: none;
+            cursor: pointer;
+            width: 100%;
+            height: 94px;
+            padding: 32px 8px;
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            @include transition(var(--t));
+            .title {
+              text-transform: capitalize;
+            }
+            .btn {
+              width: 27px;
+              @include mid(true);
+              position: relative;
+              .line {
+                display: block;
+                height: 2px;
+                width: 100%;
+                background: var(--white-cl);
+                @include transition(var(--t));
+                @include transform-origin(center);
+              }
+              .line1 {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                @include transform(translate(-50%, -50%) rotate(90deg));
+              }
+            }
+
+            // &:hover {
+            //   @include transition(var(--t));
+            //   background: var(--dark-blue);
+            // }
+            &.active {
+              .btn {
+                .line1 {
+                  @include transition(var(--t));
+                  @include transform(translate(-50%, -50%) rotate(0deg));
+                }
+              }
+            }
+          }
+          .panel {
+            max-width: 821px;
+            padding-left: 8px;
+            max-height: 0;
+            overflow: hidden;
+            @include transition(var(--t));
+          }
+        }
+      }
+      @include sm {
+        padding: 90px 0;
+        &_title {
+          margin-bottom: 32px;
+        }
+      }
+    }
+  }
+}
