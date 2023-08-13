@@ -4,7 +4,7 @@
       padding-top: 200px;
       padding-bottom: 35px;
       .container {
-        margin-left: 100px;
+        padding-left: 100px;
       }
       &_ath {
         margin-bottom: 40px;
@@ -18,7 +18,7 @@
       @include md {
         padding-top: 121px;
         .container {
-          margin-left: 0;
+          padding-left: 0;
         }
       }
       @include xs {
@@ -26,6 +26,7 @@
         .container {
           grid-template-columns: 1fr;
           gap: 32px;
+          padding-left: 0;
         }
         &_ath {
           grid-column: auto;

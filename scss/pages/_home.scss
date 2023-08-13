@@ -366,6 +366,7 @@
     }
     .review {
       position: relative;
+      overflow: hidden;
       .container {
         display: flex;
         flex-direction: column;
@@ -377,32 +378,41 @@
         margin-bottom: 33px;
       }
       &_carousel {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: var(--gap);
+        // height: 343px;
+        outline: none;
         &-item {
+          height: max-content;
+          width: 48%;
           background: var(--dark-blue);
           border-radius: 40px;
           padding: 65px 50px;
-          // opacity: 0.3;
+          margin-right: var(--gap26);
+          opacity: 0.3;
           .decs {
             margin-bottom: 25px;
+          }
+          &.is-selected {
+            opacity: 1;
           }
         }
       }
       &_dotted {
         @include mid(true);
-        gap: 14px;
-        margin-top: 40px;
-        .dot {
-          width: 14px;
-          height: 14px;
-          background: var(--white-cl);
-          opacity: 0.4;
-          border-radius: 50%;
-          cursor: pointer;
-          &.active {
-            opacity: 1;
+        margin-top: 8px;
+        ol {
+          gap: 14px;
+          @include mid(true);
+
+          .dot {
+            width: 14px;
+            height: 14px;
+            background: var(--white-cl);
+            opacity: 0.4;
+            border-radius: 50%;
+            cursor: pointer;
+            &.is-selected {
+              opacity: 1;
+            }
           }
         }
       }
@@ -410,6 +420,14 @@
         position: absolute;
         top: 0;
         z-index: -1;
+      }
+      @include sm {
+        &_carousel {
+          &-item {
+            max-width: 50%;
+            margin-right: 10px;
+          }
+        }
       }
       @include xs {
         &_top {
@@ -420,10 +438,20 @@
           }
         }
         &_carousel {
-          grid-template-columns: 1fr;
+          &-item {
+            max-width: 100%;
+          }
         }
         &_dotted {
           margin-top: 32px;
+          @include transition(var(--t));
+        }
+      }
+      @include xxs {
+        &_carousel {
+          &-item {
+            width: 100%;
+          }
         }
       }
     }
@@ -612,7 +640,7 @@
         &_list {
           &-item {
             .img {
-              margin-bottom: -445px;
+              margin-bottom: -50%;
             }
           }
         }

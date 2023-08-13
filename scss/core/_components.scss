@@ -277,7 +277,7 @@ sup {
       .content {
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         .title {
-          @include overtext(2);
+          @include overtext(initial);
           margin-bottom: 6px;
         }
         .btnblue {
@@ -285,7 +285,7 @@ sup {
         }
         .desc {
           margin-bottom: 30px;
-          @include overtext(3);
+          @include overtext(initial);
         }
       }
       .author {
@@ -453,5 +453,55 @@ sup {
         background: var(--main-cl);
       }
     }
+  }
+}
+.popupvideo {
+  width: 100%;
+  height: 100vh;
+  z-index: 100;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.95);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include visible(0);
+  @include transition(var(--t));
+  &_inner {
+    width: 80%;
+    height: 80%;
+    max-width: 1200px;
+    @include mid;
+    &-iframe {
+      width: 100%;
+      aspect-ratio: 16/9;
+      @include mid;
+      border: 5px solid var(--white-cl);
+      iframe {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+      }
+      .close {
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: var(--main-cl);
+        @include mid(1);
+        color: var(--white-cl);
+        font-size: 20px;
+        cursor: pointer;
+      }
+    }
+    @include sm {
+      width: calc(100% - 20px);
+    }
+  }
+  &.active {
+    @include transition(var(--t));
+    @include visible;
   }
 }
