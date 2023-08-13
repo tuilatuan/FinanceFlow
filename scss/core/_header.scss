@@ -3,7 +3,7 @@
   position: fixed;
   top: 0;
   height: 132px;
-  z-index: 50;
+  z-index: 99;
   &.active {
     height: 75px;
     background: linear-gradient(180deg, #000 0%, transparent 100%);
