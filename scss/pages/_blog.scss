@@ -16,7 +16,14 @@
     .listblog {
       padding-top: 152px;
       padding-bottom: 80px;
-
+      &_gr {
+        &-list {
+          display: none;
+          &.active {
+            display: grid;
+          }
+        }
+      }
       &_paging {
         display: flex;
         gap: var(--gap16);
@@ -29,20 +36,25 @@
           width: 36px;
           height: 100%;
           @include br(100px);
-          @include mid(true); // cursor: pointer;
+          @include mid(true);
+          cursor: pointer;
           .icon {
             fill: var(--white-cl);
           }
           &.prev {
             @include transform(rotate(180deg));
           }
+          &:hover {
+            background: var(--main-cl);
+          }
           &.--disable-active {
-            filter: grayscale(57%);
             background: rgba(255, 255, 255, 0.1);
             pointer-events: none;
-            .icon {
-              fill: rgba(255, 255, 255, 0.1);
-            }
+            fill: rgba(255, 255, 255, 0.1);
+
+            // .icon {
+            //   fill: rgba(255, 255, 255, 0.1);
+            // }
           }
         }
         &-numpage {

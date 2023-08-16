@@ -70,7 +70,7 @@ sup {
   @include mid(true);
   @include text(db, var(--fs-btn), var(--lh-btn), var(--white-cl), uppercase);
   letter-spacing: 1.6px;
-  max-height: 56px;
+  max-height: 70px;
   gap: 8px;
   a {
     color: var(--white-cl);
@@ -89,7 +89,6 @@ sup {
   @include mid(true);
   @include text(db, var(--fs-btn), var(--lh-btn), var(--white-cl), uppercase);
   letter-spacing: 1.6px;
-  max-height: 56px;
   &:hover {
     @include transition(var(--t));
     background: var(--hover-cl);
@@ -169,10 +168,16 @@ sup {
   flex-direction: row;
   align-items: center;
   gap: 22px;
-  height: 58px;
+  height: 60px;
   .img {
     border-radius: 50%;
     overflow: hidden;
+    position: relative;
+    height: 60px;
+    width: 60px;
+    img {
+      @include midimg;
+    }
   }
   .textbox {
     padding: 8px 0;

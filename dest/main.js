@@ -15,7 +15,6 @@ function navmobile() {
   }
   window.addEventListener("resize", function () {
     let sz = window.innerWidth;
-    console.log(sz);
     if (sz > 767) {
       removeactive();
     }
@@ -65,29 +64,42 @@ accordion();
 
 function sliderReview() {
   let review = document.querySelector(".main .review");
-  let num = 2;
-
-  window.addEventListener("resize", function () {
-    if (window.innerWidth < 600) {
-      let num = 1;
-    }
-  });
   if (document.contains(review) == true) {
     var elem = document.querySelector(".review_carousel");
-    console.log(elem);
-    var flkty = new Flickity(elem, {
-      // options
+    const flrespon = new FlickityResponsive(elem, {
       cellAlign: "left",
       contain: true,
       wrapAround: true,
-      groupCells: num,
-      adaptiveHeight: true,
-      initialIndex: 2,
+      groupCells: 2,
+      prevNextButtons: false,
+      // responsive: [
+      //   {
+      //     breakpoint: 1024,
+      //     settings: {
+      //       wrapAround: true,
+      //       cellAlign: "center",
+      //       groupCells: 2,
+      //     },
+      //   },
+      // ],
       on: {
         ready: function () {
-          let dotted = $(".flickity-page-dots");
-          paging = $(".review_dotted");
+          let dotted = $(".flickity-page-dots"),
+            post = document.querySelectorAll(".review_carousel .item"),
+            paging = $(".review_dotted");
           dotted.appendTo(paging);
+          //set heigthitem
+          let hmax = 0,
+            hitem = 0;
+          post.forEach(function (item, index) {
+            let hitem = item.scrollHeight;
+            if (hmax < hitem) {
+              hmax = hitem;
+            }
+          });
+          post.forEach(function (item, index) {
+            item.style.height = `${hmax}px`;
+          });
         },
       },
     });
@@ -95,27 +107,55 @@ function sliderReview() {
 }
 sliderReview();
 function popupVideo() {
-  let video = document.querySelector(".video_imgbox-img"),
+  let video = document.querySelector(".video .video_imgbox-img"),
     btnclose = document.querySelector(".popupvideo_inner-iframe .close"),
     iframevideo = document.querySelector(".popupvideo_inner-iframe iframe"),
     modalVideo = document.querySelector(".popupvideo");
-  video.addEventListener("click", function () {
-    modalVideo.classList.add("active");
-    homepage.classList.add("--disable-scroll");
-
-    let code = video.getAttribute("data-video-src");
-    iframevideo.setAttribute("src", `https://www.youtube.com/embed/${code}?autoplay=1`);
-  });
-  function closeModal() {
-    modalVideo.classList.remove("active");
-    iframevideo.setAttribute("src", ``);
-    homepage.classList.remove("--disable-scroll");
+  if (document.contains(video) == true) {
+    video.addEventListener("click", function () {
+      modalVideo.classList.add("active");
+      homepage.classList.add("--disable-scroll");
+      let code = video.getAttribute("data-video-src");
+      iframevideo.setAttribute("src", `https://www.youtube.com/embed/${code}?autoplay=1`);
+    });
+    function closeModal() {
+      modalVideo.classList.remove("active");
+      iframevideo.setAttribute("src", ``);
+      homepage.classList.remove("--disable-scroll");
+    }
+    btnclose.addEventListener("click", function () {
+      closeModal();
+    });
+    modalVideo.addEventListener("click", function () {
+      closeModal();
+    });
   }
-  btnclose.addEventListener("click", function () {
-    closeModal();
-  });
-  modalVideo.addEventListener("click", function () {
-    closeModal();
-  });
 }
 popupVideo();
+function changeBloglist() {
+  let btns = document.querySelectorAll(".listblog_top-btns .btn"),
+    list = document.querySelectorAll(".listblog_gr .listblog_gr-list");
+  function removeactive() {
+    btns.forEach(function (item, index) {
+      item.classList.remove("active");
+    });
+    list.forEach(function (item, index) {
+      item.classList.remove("active");
+    });
+  }
+  btns.forEach(function (item, index) {
+    item.addEventListener("click", function (e) {
+      e.preventDefault();
+      removeactive();
+      item.classList.add("active");
+      let typebtn = item.getAttribute("data-type");
+      list.forEach(function (item, index) {
+        let typeitem = item.getAttribute("data-type");
+        if (typeitem == typebtn) {
+          item.classList.add("active");
+        }
+      });
+    });
+  });
+}
+changeBloglist();

@@ -1,6 +1,7 @@
 .aboutpage {
   .main {
     .info {
+      padding-bottom: 232px;
       &_intro {
         padding-top: 192px;
         max-width: 700px;
@@ -68,6 +69,7 @@
         &_top {
           display: block;
           text-align: initial;
+          margin-bottom: 16px;
           &-desc {
             margin: 0;
             max-width: 100%;
@@ -76,6 +78,7 @@
         &_list {
           grid-template-columns: 1fr;
           grid-template-rows: initial;
+          margin-top: 16px;
           &-item {
             flex-direction: column;
           }
@@ -92,6 +95,7 @@
     }
     .our {
       overflow: hidden;
+      padding-bottom: 191px;
       .container {
         display: grid;
         grid-template-columns: repeat(12, 1fr);
@@ -134,9 +138,17 @@
       }
       @include sm {
         padding-bottom: 0;
+        padding-top: 40px;
+      }
+      @include xs {
+        &_img {
+          margin-top: 50px;
+          margin-bottom: 80px;
+        }
       }
     }
     .timeline {
+      padding-bottom: 120px;
       .container {
         display: grid;
         grid-template-columns: repeat(12, 1fr);
@@ -190,13 +202,17 @@
           grid-column: auto;
         }
       }
+      @include xs {
+        padding-bottom: 80px;
+        &_intro {
+          margin-bottom: 25px;
+        }
+      }
     }
     .team {
-      .container {
-      }
+      padding-bottom: 127px;
       &_top {
         margin-bottom: 49px;
-
         &-title {
           text-transform: capitalize;
         }
@@ -221,7 +237,7 @@
               @include midimg;
             }
           }
-          .info {
+          .infoathur {
             @include text(dr, 1.6rem, 1.8rem, var(--white-cl), uppercase);
             .name {
               cursor: pointer;
@@ -245,11 +261,15 @@
         }
       }
       @include xxs {
+        padding-bottom: 80px;
+
         &_top {
           flex-direction: column;
+          margin-bottom: 24px;
         }
         &_cards {
           grid-template-columns: 1fr;
+          gap: 16px;
           &-card {
             .info {
               text-align: center;
@@ -270,6 +290,13 @@
       }
       @include sm {
         padding-bottom: 75px;
+      }
+      @include xs {
+        padding-bottom: 80px;
+
+        &_listlogo {
+          margin-top: 48px;
+        }
       }
     }
   }

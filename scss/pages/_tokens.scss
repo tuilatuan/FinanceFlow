@@ -2,6 +2,7 @@
   .main {
     .token {
       padding-top: 192px;
+      padding-bottom: 120px;
       &_textbox {
         max-width: 580px;
         margin: 0 auto;
@@ -12,6 +13,78 @@
         }
       }
       &_list {
+        &-item {
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          max-height: 133px;
+          .text {
+            @include text(db, 1.6rem, 1.8rem, var(--white-cl), uppercase);
+            letter-spacing: 0.1rem;
+            padding: 40px 10px 40px 10px;
+          }
+          .col25 {
+            width: 25%;
+          }
+          .col20 {
+            width: 20%;
+          }
+          .col10 {
+            width: 10%;
+          }
+          .coin {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            padding: 40px 0;
+            .namecoin {
+              @include text(db, 1.8rem, 2rem, var(--white-cl), capitalize);
+            }
+          }
+          .desc {
+            padding: 40px 10px 40px 10px;
+          }
+          .web {
+            text-decoration: underline;
+            color: var(--white-cl);
+          }
+        }
+        &.mobile {
+          display: none;
+          flex-direction: column;
+          .itemmobile {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            padding: 32px 0;
+            .coin {
+              display: flex;
+              align-items: center;
+              gap: var(--gap16);
+            }
+            .title {
+              @include text(db, 1.6rem, 1.8rem, var(--white-cl), uppercase);
+              letter-spacing: 0.1rem;
+            }
+          }
+        }
+      }
+      @include xs {
+        padding-top: 121px;
+        padding-bottom: 80px;
+        &_textbox {
+          margin-bottom: 48px;
+        }
+        &_list {
+          &.desktop {
+            display: none;
+          }
+          &.mobile {
+            display: flex;
+          }
+        }
       }
     }
   }
