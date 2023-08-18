@@ -13,20 +13,28 @@
         align-items: center;
         padding-top: 100px;
       }
-
+      &_textbox {
+        position: relative;
+        z-index: 2;
+        width: 813px;
+      }
       &_plannet {
-        width: 650px;
+        width: 450px;
         position: relative;
 
         .plannet {
           max-width: initial;
-          margin-right: -210px;
+          position: absolute;
+          top: 50%;
+          left: 55%;
+
+          @include transform(translate(-50%, -50%));
         }
         .blur {
           position: absolute;
           z-index: -1;
           max-width: initial;
-          left: 70%;
+          left: 50%;
 
           top: 50%;
           @include transform(translate(-50%, -50%));
@@ -62,7 +70,9 @@
           gap: var(--gap);
         }
       }
-
+      @include lg {
+        overflow: hidden;
+      }
       @include sm {
         height: initial;
         padding-bottom: 30px;
@@ -72,13 +82,21 @@
         &_blur {
           display: none;
         }
+        &_textbox {
+          position: relative;
+          z-index: 2;
+          width: 100%;
+        }
         &_plannet {
           width: 100%;
           margin-top: 32px;
           .plannet {
             max-width: 100%;
-            margin-right: initial;
             margin: 0 auto;
+            position: relative;
+            left: initial;
+            top: initial;
+            @include transform(translate(0, 0));
           }
           .blur {
             left: 100%;
@@ -183,13 +201,13 @@
       @include sm {
         padding-top: 65px;
         &_grbox {
-          grid-template-columns: 1fr;
+          grid-template-columns: 1fr 1fr;
           grid-template-rows: max-content;
           gap: var(--gap);
-          margin-top: 14px;
+          margin-top: 50px;
           &-item {
             &.item3 {
-              grid-area: auto;
+              grid-area: 3/1/4/3;
               .textbox {
                 .text {
                   margin-top: 16px;
@@ -223,6 +241,15 @@
           text-align: initial;
           .text {
             max-width: none;
+          }
+        }
+        &_grbox {
+          grid-template-columns: 1fr;
+          margin-top: 14px;
+          &-item {
+            &.item3 {
+              grid-area: auto;
+            }
           }
         }
       }
@@ -305,6 +332,11 @@
           margin-right: auto;
         }
       }
+      @include xs {
+        &_img {
+          margin-top: 25px;
+        }
+      }
     }
     .explore {
       background: var(--main-cl);
@@ -378,12 +410,9 @@
     }
     .review {
       position: relative;
-      // overflow: hidden;
+      overflow: hidden;
       padding-top: 200px;
-      .container {
-        display: flex;
-        flex-direction: column;
-      }
+
       &_top {
         display: flex;
         justify-content: space-between;
@@ -392,6 +421,9 @@
       }
       &_carousel {
         // height: 343px;
+        .flickity-viewport {
+          height: 100%;
+        }
         outline: none;
         &-item {
           display: flex;
@@ -404,6 +436,7 @@
           padding: 65px 50px;
           margin-right: var(--gap26);
           opacity: 0.3;
+          @include transition(var(--t) opacity);
           .decs {
             margin-bottom: 25px;
           }
@@ -451,7 +484,8 @@
         }
         &_carousel {
           &-item {
-            width: 100%;
+            width: calc(100% - calc(var(--gap) * 2));
+            margin-right: 8px;
           }
         }
         &_dotted {

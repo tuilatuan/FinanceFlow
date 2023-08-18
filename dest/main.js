@@ -44,7 +44,7 @@ function accordion() {
   btnacc.forEach(function (item, index) {
     item.addEventListener("click", function (e) {
       var panel = item.nextElementSibling;
-      if (this.classList.contains("active")) {
+      if (this.classLihst.contains("active")) {
         this.classList.remove("active");
         panel.style.maxHeight = null;
       } else {
@@ -63,25 +63,17 @@ function accordion() {
 accordion();
 
 function sliderReview() {
-  let review = document.querySelector(".main .review");
+  let review = document.querySelector(".main .review"),
+    cel = 2;
   if (document.contains(review) == true) {
     var elem = document.querySelector(".review_carousel");
-    const flrespon = new FlickityResponsive(elem, {
-      cellAlign: "left",
+    var flrespon = new Flickity(elem, {
+      cellAlign: "center",
       contain: true,
       wrapAround: true,
+      initialIndex: 2,
       groupCells: 2,
       prevNextButtons: false,
-      // responsive: [
-      //   {
-      //     breakpoint: 1024,
-      //     settings: {
-      //       wrapAround: true,
-      //       cellAlign: "center",
-      //       groupCells: 2,
-      //     },
-      //   },
-      // ],
       on: {
         ready: function () {
           let dotted = $(".flickity-page-dots"),
@@ -103,8 +95,65 @@ function sliderReview() {
         },
       },
     });
+    function setHeight() {}
+    window.addEventListener("resize", function () {
+      sz = window.innerWidth;
+      if (sz <= 768) {
+        var flrespon = new Flickity(elem, {
+          cellAlign: "center",
+          groupCells: 1,
+          on: {
+            ready: function () {
+              let dotted = $(".flickity-page-dots"),
+                paging = $(".review_dotted");
+              dotted.appendTo(paging);
+              //set heigthitem
+              post = document.querySelectorAll(".review_carousel .item");
+              let hmax = 0,
+                hitem = 0;
+              post.forEach(function (item, index) {
+                let hitem = item.scrollHeight;
+                if (hmax < hitem) {
+                  hmax = hitem;
+                }
+              });
+              post.forEach(function (item, index) {
+                item.style.height = `${hmax}px`;
+              });
+            },
+          },
+        });
+      } else {
+        var flrespon = new Flickity(elem, {
+          groupCells: 2,
+
+          on: {
+            ready: function () {
+              let dotted = $(".flickity-page-dots"),
+                paging = $(".review_dotted");
+              dotted.appendTo(paging);
+              //set heigthitem
+
+              post = document.querySelectorAll(".review_carousel .item");
+              let hmax = 0,
+                hitem = 0;
+              post.forEach(function (item, index) {
+                let hitem = item.scrollHeight;
+                if (hmax < hitem) {
+                  hmax = hitem;
+                }
+              });
+              post.forEach(function (item, index) {
+                item.style.height = `${hmax}px`;
+              });
+            },
+          },
+        });
+      }
+    });
   }
 }
+
 sliderReview();
 function popupVideo() {
   let video = document.querySelector(".video .video_imgbox-img"),
