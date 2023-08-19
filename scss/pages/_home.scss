@@ -410,8 +410,8 @@
     }
     .review {
       position: relative;
-      overflow: hidden;
       padding-top: 200px;
+      overflow: hidden;
 
       &_top {
         display: flex;
@@ -423,13 +423,14 @@
         // height: 343px;
         .flickity-viewport {
           height: 100%;
+          overflow: initial;
         }
         outline: none;
         &-item {
           display: flex;
           flex-direction: column;
           justify-content: space-between;
-          height: auto;
+          height: max-content;
           width: calc(calc(100% / 2) - calc(var(--gap26) / 2));
           background: var(--dark-blue);
           border-radius: 40px;
@@ -437,20 +438,21 @@
           margin-right: var(--gap26);
           opacity: 0.3;
           @include transition(var(--t) opacity);
-          .decs {
+          .desc {
             margin-bottom: 25px;
+            height: auto;
           }
           &.is-selected {
             opacity: 1;
+            @include transition(var(--t) opacity);
           }
         }
-      }
-      &_dotted {
-        @include mid(true);
-        margin-top: 40px;
-        ol {
-          gap: 14px;
+        .flickity-page-dots {
           @include mid(true);
+          margin-top: 40px;
+          bottom: 0;
+          gap: 14px;
+          position: relative;
 
           .dot {
             width: 14px;
@@ -459,8 +461,11 @@
             opacity: 0.4;
             border-radius: 50%;
             cursor: pointer;
+            @include transition(var(--t) opacity);
+
             &.is-selected {
               opacity: 1;
+              @include transition(var(--t) opacity);
             }
           }
         }

@@ -64,96 +64,78 @@ accordion();
 
 function sliderReview() {
   let review = document.querySelector(".main .review"),
-    cel = 2;
-  if (document.contains(review) == true) {
-    var elem = document.querySelector(".review_carousel");
-    var flrespon = new Flickity(elem, {
-      cellAlign: "center",
-      contain: true,
-      wrapAround: true,
-      initialIndex: 2,
-      groupCells: 2,
-      prevNextButtons: false,
-      on: {
-        ready: function () {
-          let dotted = $(".flickity-page-dots"),
-            post = document.querySelectorAll(".review_carousel .item"),
-            paging = $(".review_dotted");
-          dotted.appendTo(paging);
-          //set heigthitem
-          let hmax = 0,
-            hitem = 0;
-          post.forEach(function (item, index) {
-            let hitem = item.scrollHeight;
-            if (hmax < hitem) {
-              hmax = hitem;
-            }
-          });
-          post.forEach(function (item, index) {
-            item.style.height = `${hmax}px`;
-          });
-        },
-      },
-    });
-    function setHeight() {}
-    window.addEventListener("resize", function () {
-      sz = window.innerWidth;
-      if (sz <= 768) {
-        var flrespon = new Flickity(elem, {
-          cellAlign: "center",
-          groupCells: 1,
-          on: {
-            ready: function () {
-              let dotted = $(".flickity-page-dots"),
-                paging = $(".review_dotted");
-              dotted.appendTo(paging);
-              //set heigthitem
-              post = document.querySelectorAll(".review_carousel .item");
-              let hmax = 0,
-                hitem = 0;
-              post.forEach(function (item, index) {
-                let hitem = item.scrollHeight;
-                if (hmax < hitem) {
-                  hmax = hitem;
-                }
-              });
-              post.forEach(function (item, index) {
-                item.style.height = `${hmax}px`;
-              });
-            },
-          },
-        });
-      } else {
-        var flrespon = new Flickity(elem, {
-          groupCells: 2,
-
-          on: {
-            ready: function () {
-              let dotted = $(".flickity-page-dots"),
-                paging = $(".review_dotted");
-              dotted.appendTo(paging);
-              //set heigthitem
-
-              post = document.querySelectorAll(".review_carousel .item");
-              let hmax = 0,
-                hitem = 0;
-              post.forEach(function (item, index) {
-                let hitem = item.scrollHeight;
-                if (hmax < hitem) {
-                  hmax = hitem;
-                }
-              });
-              post.forEach(function (item, index) {
-                item.style.height = `${hmax}px`;
-              });
-            },
-          },
-        });
+    post = document.querySelectorAll(".review_carousel .item "),
+    desc = document.querySelectorAll(".review_carousel .item .desc");
+  function setH() {
+    let hmaxItem = 0,
+      hitem = 0;
+    // desc.forEach(function (item, index) {
+    //   let hdesc = item.scrollHeight;
+    //   if (hmaxDesc < hdesc) {
+    //     hmaxDesc = hdesc;
+    //   }
+    // });
+    // desc.forEach(function (item, index) {
+    //   item.style.height = `${hmaxDesc}px`;
+    // });
+    post.forEach(function (item, index) {
+      let hitem = item.offsetHeight;
+      if (hmaxItem < hitem) {
+        hmaxItem = hitem;
       }
     });
+    post.forEach(function (item, index) {
+      item.style.height = `${hmaxItem}px`;
+    });
   }
-}
+  window.addEventListener("resize", function () {
+    setH();
+  });
+  $(".review_carousel").flickityResponsive({
+    cellAlign: "left",
+    contain: true,
+    wrapAround: true,
+    groupCells: 2,
+    initialIndex: 1,
+    prevNextButtons: false,
+    on: {
+      ready: function () {
+        // console.log(1);
+        // // let dotted = $(".flickity-page-dots");
+        // // paging = $(".review_dotted");
+        // // dotted.appendTo(paging);
 
+        setH();
+      },
+    },
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          groupCells: 1,
+          cellAlign: "center",
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          groupCells: 1,
+          cellAlign: "center",
+          on: {
+            ready: function () {
+              // console.log(1);
+              // // let dotted = $(".flickity-page-dots");
+              // // paging = $(".review_dotted");
+              // // dotted.appendTo(paging);
+
+              setH();
+            },
+          },
+        },
+      },
+    ],
+  });
+}
 sliderReview();
 function popupVideo() {
   let video = document.querySelector(".video .video_imgbox-img"),
