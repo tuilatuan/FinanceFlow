@@ -1,278 +1,326 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0 , maximum-scale=1.0, user-scalabel=0" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>FinanceFlow</title>
 
-    <meta name="title" content="FinanceFlow" />
-    <meta name="description" content="" />
-    <meta name="keyword" content="" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0 , maximum-scale=1.0, user-scalabel=0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>FinanceFlow</title>
 
-    <link rel="canonical" href="https://cfdcircle.vn" />
-    <link rel="icon" href="favicon.ico" />
+  <meta name="title" content="FinanceFlow" />
+  <meta name="description" content="" />
+  <meta name="keyword" content="" />
 
-    <!-- Meta Tag Facebook -->
-    <meta property="og:locale" content="en" />
-    <meta property="og:type" content="article" />
-    <meta property="og:title" content="FinanceFlow" />
-    <meta property="og:description" content="" />
-    <meta property="og:url" content="" />
-    <meta property="og:site_name" content="FinanceFlow" />
-    <meta property="og:image" content="" />
+  <link rel="canonical" href="https://cfdcircle.vn" />
+  <link rel="icon" href="favicon.ico" />
 
-    <!-- Meta Tag Twitter -->
-    <meta name="twitter:card" content="" />
-    <meta name="twitter:site" content="" />
-    <meta name="twitter:title" content="" />
-    <meta name="twitter:description" content="" />
-    <meta name="twitter:image" content="" />
+  <!-- Meta Tag Facebook -->
+  <meta property="og:locale" content="en" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="FinanceFlow" />
+  <meta property="og:description" content="" />
+  <meta property="og:url" content="" />
+  <meta property="og:site_name" content="FinanceFlow" />
+  <meta property="og:image" content="" />
 
-    <style>
-      /* CSS Loading Here */
-    </style>
+  <!-- Meta Tag Twitter -->
+  <meta name="twitter:card" content="" />
+  <meta name="twitter:site" content="" />
+  <meta name="twitter:title" content="" />
+  <meta name="twitter:description" content="" />
+  <meta name="twitter:image" content="" />
 
-    <link rel="stylesheet" href="dest/style.min.css" />
-    <link rel="stylesheet" href="dest/fonts.css" />
-  </head>
+  <style>
+    /* CSS Loading Here */
+    .loading {
+      width: 100%;
+      height: 100vh;
+      background: var(--bg-cl);
+      top: 0;
+      position: fixed;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      visibility: visible;
+      opacity: 1;
+    }
 
-  <body class="contactpage">
-    <header class="header">
-      <div class="container">
-        <div class="header_left">
-          <div class="header_left-logo">
-            <a href="#">
-              <h1>
-                <picture>
-                  <source media="(max-width: 768px)" srcset="./img/logo-crypto.svg" />
-                  <img src="./img/logo-finanlow.svg" alt="" />
-                </picture>
-              </h1>
-            </a>
-          </div>
-          <nav class="header_left-nav">
-            <a href="index.html">home</a>
-            <a href="about.html">about</a>
-            <a href="pricing.html">pricing</a>
-            <a href="tokens.html">tokens</a>
-            <a href="blog.html">blog</a>
-            <a href="contact.html" class="active">contact us</a>
-          </nav>
-        </div>
+    .loading .loading__inner {
+      width: 160px;
+      height: 4px;
+      border-radius: 10px;
+      background: var(--main-cl);
+      position: relative;
+      overflow: hidden;
+    }
+    .loading .loading__inner .loading__inner-progess {
+      height: 100%;
+      width: 0%;
+      background: var(--white-cl);
+      position: absolute;
+    }
 
-        <div class="header_btn btnblue">
-          <a href="https://cfdcircle.vn/" class="text">download app</a>
-          <div class="btnmobile">
-            <span class="line l1"></span>
-            <span class="line l2"></span>
-            <span class="line l3"></span>
-          </div>
-        </div>
-      </div>
-    </header>
-    <div class="menumobile">
-      <nav class="nav">
-        <a href="index.html">home</a>
-        <a href="about.html">about</a>
-        <a href="pricing.html">pricing</a>
-        <a href="tokens.html">tokens</a>
-        <a href="blog.html">blog</a>
-        <a href="contact.html" class="active">contact us</a>
-        <a href="https://cfdcircle.vn/"><button class="btn btnblue">download app</button></a>
-      </nav>
-      <img src="./img/blur3.png" alt="" class="blur" />
+    .loading .loading__percent {
+      font-family: db;
+      font-size: 16px;
+      line-height: 100%;
+      color: var(--white-cl);
+      margin-top: 13px;
+      text-align: center;
+    }
+    .loading.--is-loaded {
+      visibility: hidden;
+      opacity: 0;
+    }
+  </style>
+
+  <link rel="stylesheet" href="dest/style.min.css" />
+  <link rel="stylesheet" href="dest/fonts.css" />
+</head>
+
+<body class="contactpage --disable-scroll">
+  <div class="loading">
+    <div class="loading__inner">
+      <div class="loading__inner-progess"></div>
     </div>
-    <main class="main">
-    
-      <section class="formcontact">
-        <div class="container">
-          <div class="formcontact_title --h2">Get in touch</div>
-          <div class="formcontact_boxs">
-            <form class="formcontact_boxs-form">
-              <div class="item name">
-                <label for="name" class="label">name*</label>
-                <input type="text" placeholder="Full Name" value="" name="name" id="name" />
-              </div>
-              <div class="item email">
-                <label for="email" class="label">email*</label>
-                <input type="email" placeholder="email@example.com" value="" name="email" id="email" />
-              </div>
-              <div class="item company">
-                <label for="company" class="label">Company</label>
-                <input type="company" placeholder="Company Name" value="" name="company" id="company" />
-              </div>
-              <div class="item subject">
-                <label for="subject" class="label">subject*</label>
-                <input type="subject" placeholder="How can we help?" value="" name="subject" id="subject" />
-              </div>
-              <div class="item message">
-                <label for="message" class="label">message</label>
-                <textarea
-                  type="message"
-                  placeholder="Your Message"
-                  value=""
-                  name="message"
-                  id="message"
-                  cols="30"
-                  rows="10"
-                ></textarea>
-              </div>
-              <button type="submit " class="btn btnblue">Send Message</button>
-            </form>
-            <div class="formcontact_boxs-intro">
-              <h5 class="heading">Want to reach us directly?</h5>
-              <p class="desc">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Id dui pharetra elementum sit id sagittis non
-                donec egestas.
-              </p>
-              <div class="listcontact">
-                <a href="#" class="item">
-                  <img src="./img/i-mailblue.svg" alt="" class="img" />
-                  <span>contact@example.com</span>
-                </a>
-                <a href="#" class="item">
-                  <img src="./img/i-mailblue.svg" alt="" class="img" />
-                  <span>support@example.com</span>
-                </a>
-                <a href="#" class="item">
-                  <img src="./img/i-mailblue.svg" alt="" class="img" />
-                  <span>press@example.com</span>
-                </a>
-              </div>
-            </div>
-          </div>
+    <div class="loading__percent"></div>
+  </div>
+  <header class="header">
+    <div class="container">
+      <div class="header__left">
+        <div class="header__left--logo">
+          <a href="index.html">
+            <img src="./img/logo-finanlow.svg" alt="" />
+          </a>
         </div>
-        <div class="blur">
-          <img src="./img/blur1.png" alt="">
-        </div>
-      </section>
-      <section class="accordion">
-        <div class="container">
-          <h2 class="accordion_title --h2">faq</h2>
-          <div class="accordion_list">
-            <div class="accordion_list-item">
-              <div class="btns">
-                <span class="title --h5">Question 1</span>
-                <div class="btn">
-                  <span class="line line1"></span>
-                  <span class="line line2"></span>
-                </div>
-              </div>
-              <p class="panel">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Id dui pharetra elementum sit id sagittis non
-                donec egestas.
-              </p>
-            </div>
-            <div class="accordion_list-item">
-              <div class="btns">
-                <span class="title --h5">Question 2</span>
-                <div class="btn">
-                  <span class="line line1"></span>
-                  <span class="line line2"></span>
-                </div>
-              </div>
-              <p class="panel">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Id dui pharetra elementum sit id sagittis non
-                donec egestas.
-              </p>
-            </div>
-            <div class="accordion_list-item">
-              <div class="btns">
-                <span class="title --h5">Question 3</span>
-                <div class="btn">
-                  <span class="line line1"></span>
-                  <span class="line line2"></span>
-                </div>
-              </div>
-              <p class="panel">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Id dui pharetra elementum sit id sagittis non
-                donec egestas.
-              </p>
-            </div>
-            <div class="accordion_list-item">
-              <div class="btns">
-                <span class="title --h5">Question 4</span>
-                <div class="btn">
-                  <span class="line line1"></span>
-                  <span class="line line2"></span>
-                </div>
-              </div>
-              <p class="panel">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Id dui pharetra elementum sit id sagittis non
-                donec egestas.
-              </p>
-            </div>
-            <div class="accordion_list-item">
-              <div class="btns">
-                <span class="title --h5">Question 5</span>
-                <div class="btn">
-                  <span class="line line1"></span>
-                  <span class="line line2"></span>
-                </div>
-              </div>
-              <p class="panel">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Id dui pharetra elementum sit id sagittis non
-                donec egestas.
-              </p>
-            </div>
-        </div>
-      </section>
-    </main>
-    <footer class="footer">
-      <div class="container">
-        <div class="footer_top">
-          <div class="footer_top-logo">
-            <a href="#">
-              <h1>
-                <picture>
-                  <source media="(max-width: 768px)" srcset="./img/logo-crypto.svg" />
-                  <img src="./img/logo-finanlow.svg" alt="" />
-                </picture>
-              </h1>
-            </a>
-          </div>
-          <div class="footer_top-social">
-            <a href=""><img src="./img/i-insta.svg" alt="" /></a>
-            <a href=""><img src="./img/i-facebook.svg" alt="" /></a>
-            <a href=""><img src="./img/i-linked.svg" alt="" /></a>
-          </div>
-        </div>
-        <div class="footer_center">
-          <div class="footer_center-menu">
-            <span class="labelmenu">menu</span>
-            <ul class="nav">
-              <li class="item active"><a href="#">home</a></li>
-              <li class="item"><a href="#">about</a></li>
-              <li class="item"><a href="#">pricing</a></li>
-              <li class="item"><a href="#">tokens</a></li>
-              <li class="item"><a href="#">blog</a></li>
-              <li class="item"><a href="#">about us</a></li>
-            </ul>
-          </div>
-          <div class="footer_center-btnbox">
-            <span class="label">Download our Application</span>
-            <p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sed nulla integer</p>
-            <div class="btnlist">
-              <div class="btn btnblue">
-                <img src="./img/i-apple.svg" alt="" />
-                <span>App Store</span>
-              </div>
-              <div class="btn btnblue">
-                <img src="./img/i-androi.svg" alt="" />
-                <span>play store</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="footer_bottom">
-          <span>© 2023 CFD Circle, Inc.</span>
+        <ul class="header__left--nav">
+          <li><a href="./">home</a></li>
+          <li><a href="about.html">about</a></li>
+          <li><a href="pricing.html">pricing</a></li>
+          <li><a href="tokens.html">tokens</a></li>
+          <li><a href="blog.html">blog</a></li>
+          <li><a href="contact.html" class="active">contact us</a></li>
+        </ul>
+      </div>
+
+      <div class="header__btn btnblue">
+        <a href="https://cfdcircle.vn/" class="text">download app</a>
+        <div class="btnmobile">
+          <span class="line l1"></span>
+          <span class="line l2"></span>
+          <span class="line l3"></span>
         </div>
       </div>
-    </footer>
+    </div>
+  </header>
+  <div class="menumobile">
+    <ul class="nav">
+      <li><a href="./" >home</a></li>
+      <li><a href="about.html">about</a></li>
+      <li><a href="pricing.html">pricing</a></li>
+      <li><a href="tokens.html">tokens</a></li>
+      <li><a href="blog.html">blog</a></li>
+      <li><a href="contact.html" class="active">contact us</a></li>
+      <a href="https://cfdcircle.vn/" class="btn btnblue">download app</a>
+    </ul>
+    <img src="./img/blur3.png" alt="" class="blur" />
+  </div>
+  <main class="main">
+    
+    <section class="formcontact">
+      <div class="container">
+        <h1 class="formcontact__title --h1">Get in touch</h1>
+        <div class="formcontact__boxs">
+          <form   class="formcontact__boxs--form" onsubmit="return validateForm()">
+            <div class="formgr name">
+              <label for="name" class="label">name*</label>
+              <input type="text" placeholder="Full Name" value="" name="name" id="name"  />
+              <p class="messageipt"></p>
+            </div>
+            <div class="formgr email">
+              <label for="email" class="label">email*</label>
+              <input type="email" placeholder="Email@example.com" value="" name="email" id="email"  />
+              <p class="messageipt"></p>
 
-    <!-- Javascript -->
-    <script type="text/javascript" src="dest/jsmain.min.js"></script>
-    <script type="text/javascript" src="dest/main.js"></script>
-  </body>
+            </div>
+            <div class="formgr company">
+              <label for="company" class="label">Company</label>
+              <input type="company" placeholder="Company Name" value="" name="company" id="company" />
+              <p class="messageipt"></p>
+
+            </div>
+            <div class="formgr subject">
+              <label for="subject" class="label">subject*</label>
+              <input type="subject" placeholder="How can we help?" value="" name="subject" id="subject"  />
+              <p class="messageipt"></p>
+
+            </div>
+            <div class="formgr message">
+              <label for="message" class="label">message</label>
+              <textarea type="message" placeholder="Your Message" value="" name="message" id="message" cols="30"
+                rows="10"></textarea>
+              <p class="messageipt"></p>
+
+            </div>
+            <button type="submit" class="btn btnblue">Send Message</button>
+          </form>
+          <div class="formcontact__boxs--intro">
+            <h5 class="heading">Want to reach us directly?</h5>
+            <p class="desc">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Id dui pharetra elementum sit id sagittis non
+              donec egestas.
+            </p>
+            <div class="listcontact">
+              <a href="mailto:contact@example.com" class="item">
+                <img src="./img/i-mailblue.svg" alt="" class="img" />
+                <span>contact@example.com</span>
+              </a>
+              <a href="mailto:contact@example.com" class="item">
+                <img src="./img/i-mailblue.svg" alt="" class="img" />
+                <span>support@example.com</span>
+              </a>
+              <a href="mailto:contact@example.com" class="item">
+                <img src="./img/i-mailblue.svg" alt="" class="img" />
+                <span>press@example.com</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="blur">
+        <img src="./img/blur1.png" alt="">
+      </div>
+    </section>
+    <section class="accordion">
+      <div class="container">
+        <h1 class="accordion__title --h1">faq</h1>
+        <div class="accordion__list">
+          <div class="accordion__list--item">
+            <div class="btns">
+              <span class="title ">Question 1</span>
+              <div class="btn">
+                <span class="line line1"></span>
+                <span class="line line2"></span>
+              </div>
+            </div>
+            <p class="panel">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Id dui pharetra elementum sit id sagittis non
+              donec egestas.
+            </p>
+          </div>
+          <div class="accordion__list--item">
+            <div class="btns">
+              <span class="title ">Question 2</span>
+              <div class="btn">
+                <span class="line line1"></span>
+                <span class="line line2"></span>
+              </div>
+            </div>
+            <p class="panel">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Id dui pharetra elementum sit id sagittis non
+              donec egestas.
+            </p>
+          </div>
+          <div class="accordion__list--item">
+            <div class="btns">
+              <span class="title ">Question 3</span>
+              <div class="btn">
+                <span class="line line1"></span>
+                <span class="line line2"></span>
+              </div>
+            </div>
+            <p class="panel">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Id dui pharetra elementum sit id sagittis non
+              donec egestas.
+            </p>
+          </div>
+          <div class="accordion__list--item">
+            <div class="btns">
+              <span class="title ">Question 4</span>
+              <div class="btn">
+                <span class="line line1"></span>
+                <span class="line line2"></span>
+              </div>
+            </div>
+            <p class="panel">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Id dui pharetra elementum sit id sagittis non
+              donec egestas.
+            </p>
+          </div>
+          <div class="accordion__list--item">
+            <div class="btns">
+              <span class="title ">Question 5</span>
+              <div class="btn">
+                <span class="line line1"></span>
+                <span class="line line2"></span>
+              </div>
+            </div>
+            <p class="panel">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Id dui pharetra elementum sit id sagittis non
+              donec egestas.
+            </p>
+          </div>
+        </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__top--logo">
+          <a href="index.html">
+            <h1>
+              <picture>
+                <source media="(max-width: 768px)" srcset="./img/logo-crypto.svg" />
+                <img src="./img/logo-finanlow.svg" alt="" />
+              </picture>
+            </h1>
+          </a>
+        </div>
+        <div class="footer__top--social">
+          <a href="https://cfdcircle.vn" target="_blank"><img src="./img/i-insta.svg" alt="" /></a>
+          <a href="https://cfdcircle.vn" target="_blank"><img src="./img/i-facebook.svg" alt="" /></a>
+          <a href="https://cfdcircle.vn" target="_blank"><img src="./img/i-linked.svg" alt="" /></a>
+        </div>
+      </div>
+      <div class="footer__center">
+        <div class="footer__center--menu">
+          <span class="labelmenu">menu</span>
+          <ul class="nav">
+            <li class="item active"><a href="index.html">home</a></li>
+            <li class="item"><a href="about.html">about</a></li>
+            <li class="item"><a href="pricing.html">pricing</a></li>
+            <li class="item"><a href="tokens.html">tokens</a></li>
+            <li class="item"><a href="blog.html">blog</a></li>
+            <li class="item"><a href="contact.html">about us</a></li>
+          </ul>
+        </div>
+        <div class="footer__center--btnbox">
+          <span class="label">Download our Application</span>
+          <p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sed nulla integer</p>
+          <div class="btnlist">
+            <a href="https://cfdcircle.vn" target="_blank" class="btn btnblue">
+              <img src="./img/i-apple.svg" alt="" />
+              <span>App Store</span>
+            </a>
+            <a href="https://cfdcircle.vn" target="_blank" class="btn btnblue">
+              <img src="./img/i-androi.svg" alt="" />
+              <span>play store</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2023 CFD Circle, Inc.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Javascript -->
+  <script type="text/javascript" src="dest/jsmain.min.js"></script>
+  <script type="text/javascript" src="dest/main.js"></script>
+
+</body>
+
 </html>

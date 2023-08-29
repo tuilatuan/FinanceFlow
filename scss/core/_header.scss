@@ -2,11 +2,15 @@
   width: 100%;
   position: fixed;
   top: 0;
+  left: 0;
   height: 132px;
   z-index: 99;
+  @include transition(var(--t));
   &.active {
     height: 75px;
     background: linear-gradient(180deg, #000 0%, transparent 100%);
+    // background: var(--main-cl);
+    @include transition(var(--t));
   }
   .container {
     height: 100%;
@@ -14,13 +18,14 @@
     align-items: center;
     justify-content: space-between;
   }
-  &_left {
+  &__left {
     display: flex;
-    &-logo {
+    &--logo {
       padding-right: 30px;
       border-right: 1px solid var(--bg-cl);
+      @include mid(true);
     }
-    &-nav {
+    &--nav {
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -68,7 +73,7 @@
     }
   }
 
-  &_btn {
+  &__btn {
     max-height: 56px;
     .text {
       color: var(--white-cl);
@@ -124,16 +129,16 @@
   }
   @include sm {
     height: 75px;
-    &_left {
-      &-nav {
+    &__left {
+      &--nav {
         display: none;
       }
-      &-logo {
+      &--logo {
         padding-right: initial;
         border: none;
       }
     }
-    &_btn {
+    &__btn {
       width: 45px;
       height: 45px;
       padding: 13px 10px;
@@ -147,8 +152,8 @@
   }
   @include xs {
     height: 73px;
-    &_left {
-      &-nav {
+    &__left {
+      &--nav {
         padding-left: px;
 
         display: none;

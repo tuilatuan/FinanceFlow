@@ -9,23 +9,23 @@
         height: 100%;
         @include mid(true);
       }
-      &_textbox {
+      &__textbox {
         max-width: 560px;
         text-align: center;
-        &-num {
+        &--num {
           @include text(db, 18rem, 16rem, var(--main-cl));
           margin-bottom: 15px;
         }
-        &-desc {
+        &--desc {
           margin-top: 16px;
         }
-        &-grbtn {
+        &--grbtn {
           @include mid(true);
           gap: 23px;
           margin-top: 40px;
         }
       }
-      &_blur {
+      &__blur {
         @include mid;
         max-width: initial;
         height: 100%;
@@ -35,12 +35,12 @@
         overflow: hidden;
       }
       @include xs {
-        &_textbox {
-          &-num {
+        &__textbox {
+          &--num {
             @include text(db, 12rem, 12rem, var(--main-cl));
             margin-bottom: 32px;
           }
-          &-grbtn {
+          &--grbtn {
             flex-direction: column;
             gap: 23px;
             margin-top: 32px;
@@ -51,12 +51,12 @@
         }
       }
       @include xxxs {
-        &_textbox {
-          &-num {
+        &__textbox {
+          &--num {
             @include text(db, 9rem, 9rem, var(--main-cl));
             margin-bottom: 25px;
           }
-          &-grbtn {
+          &--grbtn {
             gap: 15px;
             margin-top: 16px;
           }

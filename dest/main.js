@@ -1,3 +1,41 @@
+function initLoaded() {
+  let loadedCount = 0,
+    imgs = document.querySelectorAll("img").length,
+    body = document.querySelector("body");
+
+  let imgLoaded = imagesLoaded(body);
+
+  imgLoaded
+    .on("progress", (instance) => {
+      loadedCount++;
+      percent = Math.floor((loadedCount / imgs) * 100);
+      handleLoading(percent);
+    })
+    .on("always", (instance) => {
+      console.log("always");
+    })
+    .on("fail", (instance) => {
+      console.log("fail");
+    })
+    .on("done", (instance) => {
+      console.log("done");
+      hideLoad();
+      sliderReview();
+    });
+
+  function handleLoading(percent) {
+    const progess = document.querySelector(".loading__inner-progess"),
+      textProgess = document.querySelector(".loading__percent");
+    progess.style.width = `${percent}%`;
+    textProgess.innerHTML = `${percent}%`;
+  }
+  function hideLoad() {
+    let load = document.querySelector(".loading");
+    body.classList.remove("--disable-scroll");
+    load.classList.add("--is-loaded");
+  }
+}
+initLoaded();
 let homepage = document.querySelector("body"),
   header = document.querySelector(".header");
 function navmobile() {
@@ -33,7 +71,7 @@ document.addEventListener("scroll", function () {
   setHeader();
 });
 function accordion() {
-  let btnacc = document.querySelectorAll(".accordion_list-item .btns");
+  let btnacc = document.querySelectorAll(".accordion__list--item .btns");
   function removeactive() {
     btnacc.forEach(function (item, index) {
       item.classList.remove("active");
@@ -44,7 +82,7 @@ function accordion() {
   btnacc.forEach(function (item, index) {
     item.addEventListener("click", function (e) {
       var panel = item.nextElementSibling;
-      if (this.classLihst.contains("active")) {
+      if (this.classList.contains("active")) {
         this.classList.remove("active");
         panel.style.maxHeight = null;
       } else {
@@ -61,86 +99,10 @@ function accordion() {
   });
 }
 accordion();
-
-function sliderReview() {
-  let review = document.querySelector(".main .review"),
-    post = document.querySelectorAll(".review_carousel .item "),
-    desc = document.querySelectorAll(".review_carousel .item .desc");
-  function setH() {
-    let hmaxItem = 0,
-      hitem = 0;
-    // desc.forEach(function (item, index) {
-    //   let hdesc = item.scrollHeight;
-    //   if (hmaxDesc < hdesc) {
-    //     hmaxDesc = hdesc;
-    //   }
-    // });
-    // desc.forEach(function (item, index) {
-    //   item.style.height = `${hmaxDesc}px`;
-    // });
-    post.forEach(function (item, index) {
-      let hitem = item.offsetHeight;
-      if (hmaxItem < hitem) {
-        hmaxItem = hitem;
-      }
-    });
-    post.forEach(function (item, index) {
-      item.style.height = `${hmaxItem}px`;
-    });
-  }
-  window.addEventListener("resize", function () {
-    setH();
-  });
-  $(".review_carousel").flickityResponsive({
-    cellAlign: "left",
-    contain: true,
-    wrapAround: true,
-    groupCells: 2,
-    initialIndex: 1,
-    prevNextButtons: false,
-    on: {
-      ready: function () {
-        // console.log(1);
-        // // let dotted = $(".flickity-page-dots");
-        // // paging = $(".review_dotted");
-        // // dotted.appendTo(paging);
-
-        setH();
-      },
-    },
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          groupCells: 1,
-          cellAlign: "center",
-        },
-      },
-      {
-        breakpoint: 768,
-        settings: {
-          groupCells: 1,
-          cellAlign: "center",
-          on: {
-            ready: function () {
-              // console.log(1);
-              // // let dotted = $(".flickity-page-dots");
-              // // paging = $(".review_dotted");
-              // // dotted.appendTo(paging);
-
-              setH();
-            },
-          },
-        },
-      },
-    ],
-  });
-}
-sliderReview();
 function popupVideo() {
-  let video = document.querySelector(".video .video_imgbox-img"),
-    btnclose = document.querySelector(".popupvideo_inner-iframe .close"),
-    iframevideo = document.querySelector(".popupvideo_inner-iframe iframe"),
+  let video = document.querySelector(".video .video__imgbox--img"),
+    btnclose = document.querySelector(".popupvideo__inner--iframe .close"),
+    iframevideo = document.querySelector(".popupvideo__inner--iframe iframe"),
     modalVideo = document.querySelector(".popupvideo");
   if (document.contains(video) == true) {
     video.addEventListener("click", function () {
@@ -164,8 +126,8 @@ function popupVideo() {
 }
 popupVideo();
 function changeBloglist() {
-  let btns = document.querySelectorAll(".listblog_top-btns .btn"),
-    list = document.querySelectorAll(".listblog_gr .listblog_gr-list");
+  let btns = document.querySelectorAll(".listblog__top--btns .btn"),
+    list = document.querySelectorAll(".listblog__gr .listblog__gr--list");
   function removeactive() {
     btns.forEach(function (item, index) {
       item.classList.remove("active");
@@ -189,4 +151,91 @@ function changeBloglist() {
     });
   });
 }
+
 changeBloglist();
+function validateForm() {
+  let from = document.querySelector(".formcontact__boxs--form "),
+    inputName = document.querySelector(".name input"),
+    inputSub = document.querySelector(".subject input");
+  (email = document.querySelector(".formgr input[type='email']")),
+    (gremail = document.querySelector(".formcontact__boxs--form .email"));
+  kq = true;
+  const emailRegex = /^\S+@\S+\.\S+/;
+  // /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+  if (email.value == null || email.value == "") {
+    gremail.classList.add("err");
+    document.querySelector(".email .messageipt").innerHTML = "Please  fill in this field";
+    return false;
+  } else if (emailRegex.test(email.value) == false) {
+    gremail.classList.add("err");
+    document.querySelector(".email .messageipt").innerHTML = "Wrong Format";
+    return false;
+  }
+  if (inputName.value == null || inputName.value == "") {
+    document.querySelector(".naem .messageipt").innerHTML = "Please  fill in this field";
+    document.querySelector(".formcontact__boxs--form .name").classList.add("err");
+    return false;
+  }
+  if (inputSub.value == null || inputSub.value == "") {
+    document.querySelector(".subject .messageipt").innerHTML = "Please  fill in this field";
+    document.querySelector(".formcontact__boxs--form .subject").classList.add("err");
+    return false;
+  }
+  return true;
+}
+// desc = document.querySelectorAll(".review__carousel .item .desc");
+
+function sliderReview() {
+  let review = document.querySelector(".main .review .review__carousel");
+  var flktySlide = new FlickityResponsive(review, {
+    cellAlign: "left",
+    contain: true,
+    wrapAround: true,
+    groupCells: 2,
+    initialIndex: 1,
+    prevNextButtons: false,
+    on: {
+      ready: function () {
+        setH();
+      },
+    },
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          cellAlign: "center",
+        },
+      },
+
+      {
+        breakpoint: 768,
+        settings: {
+          groupCells: 1,
+        },
+      },
+    ],
+  });
+
+  function setH() {
+    let contents = document.querySelectorAll(".review__carousel .item .desc");
+    // slides = document.querySelectorAll(".review__carousel .item");
+    let hmaxItem = 0,
+      hitem = 0;
+
+    contents.forEach(function (item, index) {
+      item.style.height = `auto`;
+      hitem = item.offsetHeight;
+      console.log(hitem);
+      if (hmaxItem < hitem) {
+        hmaxItem = hitem;
+      }
+    });
+    contents.forEach(function (item) {
+      item.style.height = `${hmaxItem}px`;
+    });
+  }
+  window.addEventListener("resize", () => {
+    setH();
+    flktySlide.resize();
+  });
+}

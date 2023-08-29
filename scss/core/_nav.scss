@@ -1,42 +1,48 @@
 .menumobile {
   width: 100%;
   height: 100vh;
-  position: relative;
-  z-index: 20;
-  overflow: hidden;
   position: fixed;
   top: 0;
+  z-index: 20;
+  overflow: hidden;
   background: var(--bg-cl);
   @include transition(var(--t));
   @include visible(0);
+  @include mid(true);
   &.active {
-    @include visible(1);
     @include transition(var(--t));
+    @include visible(1);
   }
   .nav {
     height: 100%;
-    margin: auto 0;
+    left: 50%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 40px;
+    @include transition(var(--t));
+    gap: 25px;
     a {
-      @include text(dm, 2.6rem, 100%, var(--white-cl), uppercase);
+      @include text(db, 2.6rem, 100%, var(--white-cl), uppercase);
       letter-spacing: 0.14rem;
       position: relative;
+      padding: 10px 0;
       &.active {
         &::before {
           content: "";
           background: var(--white-cl);
-          width: 98%;
+          width: 100%;
           height: 1px;
           position: absolute;
-          left: 0;
-          bottom: 0;
+          left: 50%;
+          bottom: 8px;
+          @include transform(translate(-50%, -50%) scale(1));
           @include transition(var(--t));
-          @include transform(scale(1));
         }
+      }
+      &.btn {
+        padding-left: 32px;
+        padding-right: 32px;
       }
     }
   }
@@ -48,6 +54,31 @@
     left: 50%;
     @include transform(translate(-50%, -50%));
     z-index: -1;
+  }
+
+  @include maxW(700px) {
+    @include landscape() {
+      min-height: 500px;
+      overflow-y: scroll;
+      padding-top: 73px;
+      .nav {
+        height: initial;
+        padding: 100px 0;
+      }
+    }
+  }
+  // @include sm {
+  // }
+  @include xs {
+    .nav {
+      a {
+        font-size: 1.8rem;
+        // .btn {
+        //   padding: 18px 22px;
+        //   font-size: 1.8rem;
+        // }
+      }
+    }
   }
   @include xxxs {
     .nav {

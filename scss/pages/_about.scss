@@ -2,23 +2,23 @@
   .main {
     .info {
       padding-bottom: 232px;
-      &_intro {
+      &__intro {
         padding-top: 192px;
         max-width: 700px;
         margin: 0 auto;
         text-align: center;
         margin-bottom: 122px;
-        &-title {
+        &--title {
           margin-bottom: 21px;
         }
       }
 
-      &_list {
+      &__list {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: var(--gap);
         margin-top: 29px;
-        &-item {
+        &--item {
           display: flex;
           align-items: flex-start;
           padding: 58px 32px;
@@ -35,7 +35,7 @@
           }
         }
       }
-      &_blur {
+      &__blur {
         max-width: initial;
         position: absolute;
         z-index: -1;
@@ -45,50 +45,51 @@
       @include sm {
         overflow: hidden;
         padding-bottom: 0;
-        &_intro {
+        &__intro {
           margin-bottom: 60px;
           padding-top: 120px;
         }
-        &_top {
+        &__top {
           display: block;
           text-align: center;
-          &-desc {
-            margin: 0 auto;
-          }
         }
-        &_blur {
+        &__blur {
           left: -50%;
         }
       }
       @include xs {
-        &_intro {
+        &__intro {
           text-align: initial;
           margin-bottom: 48px;
           padding-top: 121px;
         }
-        &_top {
+        &__top {
           display: block;
           text-align: initial;
           margin-bottom: 16px;
-          &-desc {
-            margin: 0;
+          &--desc {
             max-width: 100%;
           }
         }
-        &_list {
+        &__list {
           grid-template-columns: 1fr;
           grid-template-rows: initial;
           margin-top: 16px;
-          &-item {
+          &--item {
             flex-direction: column;
           }
         }
-        &_blur {
+        &__blur {
           left: -70%;
         }
       }
       @include xxs {
-        &_blur {
+        &__intro {
+          &--title {
+            margin-bottom: 16px;
+          }
+        }
+        &__blur {
           left: -200%;
         }
       }
@@ -101,10 +102,10 @@
         grid-template-columns: repeat(12, 1fr);
         gap: var(--gap);
       }
-      &_content {
+      &__content {
         grid-column: 1/8;
         padding-right: 80px;
-        &-item {
+        &--item {
           &:not(:last-child) {
             margin-bottom: 78px;
           }
@@ -116,20 +117,20 @@
           }
         }
       }
-      &_img {
+      &__img {
         grid-column: 8/13;
         margin-right: -157px;
       }
       @include md {
-        padding-bottom: 0;
+        padding-bottom: 80px;
         .container {
           grid-template-columns: 1fr;
         }
-        &_content {
+        &__content {
           grid-column: initial;
           padding-right: initial;
         }
-        &_img {
+        &__img {
           grid-column: initial;
           max-width: max-content;
           margin: 0 auto;
@@ -137,14 +138,14 @@
         }
       }
       @include sm {
-        padding-bottom: 0;
-        padding-top: 40px;
+        padding-top: 44px;
       }
       @include xs {
-        &_img {
-          margin-top: 50px;
-          margin-bottom: 80px;
-        }
+        // &__img {
+        //   margin-top: 50px;
+        //   margin-bottom: 80px;
+        //   margin-right: -50px;
+        // }
       }
     }
     .timeline {
@@ -155,7 +156,7 @@
         gap: var(--gap);
         position: relative;
       }
-      &_intro {
+      &__intro {
         grid-column: 1/5;
         height: 240px;
         max-width: 385px;
@@ -165,12 +166,12 @@
           margin-bottom: 16px;
         }
       }
-      &_list {
+      &__list {
         grid-column: 6/13;
         display: flex;
         flex-direction: column;
         gap: 80px;
-        .item {
+        &--item {
           padding-bottom: 40px;
           display: flex;
           gap: 54px;
@@ -190,7 +191,7 @@
         .container {
           grid-template-columns: 1fr;
         }
-        &_intro {
+        &__intro {
           grid-column: auto;
           position: relative;
           max-width: 100%;
@@ -198,30 +199,30 @@
           height: auto;
           margin-bottom: 40px;
         }
-        &_list {
+        &__list {
           grid-column: auto;
         }
       }
       @include xs {
         padding-bottom: 80px;
-        &_intro {
+        &__intro {
           margin-bottom: 25px;
         }
       }
     }
     .team {
       padding-bottom: 127px;
-      &_top {
+      &__top {
         margin-bottom: 49px;
-        &-title {
+        &--title {
           text-transform: capitalize;
         }
       }
-      &_cards {
+      &__cards {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         gap: 38px;
-        &-card {
+        &--card {
           border-radius: var(--brus);
           padding: 24px;
           background: var(--dark-blue);
@@ -243,12 +244,9 @@
               cursor: pointer;
 
               @include text(db, 1.6rem, 1.8rem, var(--white-cl), uppercase);
-              margin-bottom: 18px;
             }
-            :hover {
-              .name {
-                color: var(--main-cl);
-              }
+            .job {
+              margin-top: 13px;
             }
           }
           &:hover {
@@ -260,17 +258,22 @@
           }
         }
       }
+      @include sm {
+        &__cards {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
       @include xxs {
         padding-bottom: 80px;
 
-        &_top {
+        &__top {
           flex-direction: column;
           margin-bottom: 24px;
         }
-        &_cards {
+        &__cards {
           grid-template-columns: 1fr;
           gap: 16px;
-          &-card {
+          &--card {
             .info {
               text-align: center;
             }
@@ -280,7 +283,7 @@
     }
     .lgcompany {
       padding-bottom: 230px;
-      &_textbox {
+      &__textbox {
         margin-bottom: 5px;
         .text {
           max-width: 500px;
@@ -294,7 +297,7 @@
       @include xs {
         padding-bottom: 80px;
 
-        &_listlogo {
+        &__listlogo {
           margin-top: 48px;
         }
       }

@@ -31,37 +31,80 @@
 
     <style>
       /* CSS Loading Here */
+      .loading {
+        width: 100%;
+        height: 100vh;
+        background: var(--bg-cl);
+        top: 0;
+        position: fixed;
+        z-index: 999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        visibility: visible;
+        opacity: 1;
+      }
+
+      .loading .loading__inner {
+        width: 160px;
+        height: 4px;
+        border-radius: 10px;
+        background: var(--main-cl);
+        position: relative;
+        overflow: hidden;
+      }
+      .loading .loading__inner .loading__inner-progess {
+        height: 100%;
+        width: 0%;
+        background: var(--white-cl);
+        position: absolute;
+      }
+
+      .loading .loading__percent {
+        font-family: db;
+        font-size: 16px;
+        line-height: 100%;
+        color: var(--white-cl);
+        margin-top: 13px;
+        text-align: center;
+      }
+      .loading.--is-loaded {
+        visibility: hidden;
+        opacity: 0;
+      }
     </style>
 
     <link rel="stylesheet" href="dest/style.min.css" />
     <link rel="stylesheet" href="dest/fonts.css" />
   </head>
 
-  <body class="tokenspage">
+  <body class="tokenspage --disable-scroll">
+    <div class="loading">
+      <div class="loading__inner">
+        <div class="loading__inner-progess"></div>
+      </div>
+      <div class="loading__percent"></div>
+    </div>
     <header class="header">
       <div class="container">
-        <div class="header_left">
-          <div class="header_left-logo">
-            <a href="#">
-              <h1>
-                <picture>
-                  <source media="(max-width: 768px)" srcset="./img/logo-crypto.svg" />
-                  <img src="./img/logo-finanlow.svg" alt="" />
-                </picture>
-              </h1>
+        <div class="header__left">
+          <div class="header__left--logo">
+            <a href="index.html">
+              <img src="./img/logo-finanlow.svg" alt="" />
             </a>
           </div>
-          <nav class="header_left-nav">
-            <a href="index.html">home</a>
-            <a href="about.html">about</a>
-            <a href="pricing.html">pricing</a>
-            <a href="#" class="active">tokens</a>
-            <a href="blog.html">blog</a>
-            <a href="contact.html">contact us</a>
-          </nav>
+          <ul class="header__left--nav">
+            <li><a href="./">home</a></li>
+            <li><a href="about.html">about</a></li>
+            <li><a href="pricing.html">pricing</a></li>
+            <li><a href="tokens.html" class="active">tokens</a></li>
+            <li><a href="blog.html">blog</a></li>
+            <li><a href="contact.html">contact us</a></li>
+          </ul>
         </div>
 
-        <div class="header_btn btnblue">
+        <div class="header__btn btnblue">
           <a href="https://cfdcircle.vn/" class="text">download app</a>
           <div class="btnmobile">
             <span class="line l1"></span>
@@ -72,36 +115,36 @@
       </div>
     </header>
     <div class="menumobile">
-      <nav class="nav">
-        <a href="index.html">home</a>
-        <a href="about.html">about</a>
-        <a href="pricing.html">pricing</a>
-        <a href="#" class="active">tokens</a>
-        <a href="blog.html">blog</a>
-        <a href="contact.html">contact us</a>
-        <a href="https://cfdcircle.vn/"><button class="btn btnblue">download app</button></a>
-      </nav>
+      <ul class="nav">
+        <li><a href="./">home</a></li>
+        <li><a href="about.html">about</a></li>
+        <li><a href="pricing.html">pricing</a></li>
+        <li><a href="tokens.html" class="active">tokens</a></li>
+        <li><a href="blog.html">blog</a></li>
+        <li><a href="contact.html">contact us</a></li>
+        <a href="https://cfdcircle.vn/" class="btn btnblue">download app</a>
+      </ul>
       <img src="./img/blur3.png" alt="" class="blur" />
     </div>
     <main class="main">
       <section class="token">
         <div class="container">
-          <div class="token_textbox">
-            <h2 class="token_textbox-title --h2">Tokens</h2>
-            <p class="token_textbox-desc">
+          <div class="token__textbox">
+            <h1 class="token__textbox--title --h1">Tokens</h1>
+            <p class="token__textbox--desc">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Feugiat nulla suspendisse tortor aenean dis
               placerat. Scelerisque
             </p>
           </div>
-          <div class="token_list desktop">
-            <div class="token_list-item itemrow">
+          <div class="token__list desktop">
+            <div class="token__list--item itemrow">
               <span class="text name col25">name</span>
               <span class="text desc col25">Description</span>
               <span class="text market col20">market cap</span>
               <span class="text volume col20">volume</span>
               <span class="text web col10">website</span>
             </div>
-            <div class="token_list-item itemrow">
+            <div class="token__list--item itemrow">
               <div class="coin col25">
                 <img src="./img/i-bigcon.svg" alt="" class="logo" />
                 <span class="namecoin">Bitcoin</span>
@@ -110,9 +153,9 @@
               <span class="desc col25">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </span>
               <span class="market col20">$252,844,036,453 USD</span>
               <span class="volume col20">$252,844,036,453 USD</span>
-              <a href="#" class="web col10">Visit Website</a>
+              <a href="https://cfdcircle.vn" class="web col10">Visit Website</a>
             </div>
-            <div class="token_list-item itemrow">
+            <div class="token__list--item itemrow">
               <div class="coin col25">
                 <img src="./img/i-etherum.svg" alt="" class="logo" />
                 <span class="namecoin">Etherium</span>
@@ -121,9 +164,9 @@
               <span class="desc col25">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </span>
               <span class="market col20">$252,844,036,453 USD</span>
               <span class="volume col20">$252,844,036,453 USD</span>
-              <a href="#" class="web col10">Visit Website</a>
+              <a href="https://cfdcircle.vn" class="web col10">Visit Website</a>
             </div>
-            <div class="token_list-item itemrow">
+            <div class="token__list--item itemrow">
               <div class="coin col25">
                 <img src="./img/i-litecoin.svg" alt="" class="logo" />
                 <span class="namecoin">Litecoin</span>
@@ -132,22 +175,21 @@
               <span class="desc col25">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </span>
               <span class="market col20">$252,844,036,453 USD</span>
               <span class="volume col20">$252,844,036,453 USD</span>
-              <a href="#" class="web col10">Visit Website</a>
+              <a href="https://cfdcircle.vn" class="web col10">Visit Website</a>
             </div>
-            <div class="token_list-item itemrow">
+            <div class="token__list--item itemrow">
               <div class="coin col25">
                 <img src="./img/i-tron.svg" alt="" class="logo" />
                 <span class="namecoin">TRON</span>
-                <img src="" alt="" class="type" />
               </div>
               <span class="desc col25">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </span>
               <span class="market col20">$252,844,036,453 USD</span>
               <span class="volume col20">$252,844,036,453 USD</span>
-              <a href="#" class="web col10">Visit Website</a>
+              <a href="https://cfdcircle.vn" class="web col10">Visit Website</a>
             </div>
           </div>
-          <div class="token_list mobile">
-            <div class="token_list-box itemmobile">
+          <div class="token__list mobile">
+            <div class="token__list--box itemmobile">
               <span class="name title">name</span>
               <div class="coin col25">
                 <img src="./img/i-bigcon.svg" alt="" class="logo" />
@@ -155,19 +197,19 @@
                 <img src="./img/i-btc.svg" alt="" class="type" />
               </div>
             </div>
-            <div class="token_list-box itemmobile">
+            <div class="token__list--box itemmobile">
               <span class="desc title">Description</span>
               <p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
             </div>
-            <div class="token_list-box itemmobile">
+            <div class="token__list--box itemmobile">
               <span class="market title">Market Cap</span>
               <span class="price">$252,844,036,453 USD</span>
             </div>
-            <div class="token_list-box itemmobile">
+            <div class="token__list--box itemmobile">
               <span class="volume title">Volume</span>
               <span class="price">$30,504,879,301 USD"? </span>
             </div>
-            <div class="token_list-box itemmobile">
+            <div class="token__list--box itemmobile">
               <span class="web title">Website</span>
               <a href="https://cfdcircle.vn" class="link">Visit Website</a>
             </div>
@@ -177,9 +219,9 @@
     </main>
     <footer class="footer">
       <div class="container">
-        <div class="footer_top">
-          <div class="footer_top-logo">
-            <a href="#">
+        <div class="footer__top">
+          <div class="footer__top--logo">
+            <a href="index.html">
               <h1>
                 <picture>
                   <source media="(max-width: 768px)" srcset="./img/logo-crypto.svg" />
@@ -188,40 +230,40 @@
               </h1>
             </a>
           </div>
-          <div class="footer_top-social">
-            <a href=""><img src="./img/i-insta.svg" alt="" /></a>
-            <a href=""><img src="./img/i-facebook.svg" alt="" /></a>
-            <a href=""><img src="./img/i-linked.svg" alt="" /></a>
+          <div class="footer__top--social">
+            <a href="https://cfdcircle.vn" target="_blank"><img src="./img/i-insta.svg" alt="" /></a>
+            <a href="https://cfdcircle.vn" target="_blank"><img src="./img/i-facebook.svg" alt="" /></a>
+            <a href="https://cfdcircle.vn" target="_blank"><img src="./img/i-linked.svg" alt="" /></a>
           </div>
         </div>
-        <div class="footer_center">
-          <div class="footer_center-menu">
+        <div class="footer__center">
+          <div class="footer__center--menu">
             <span class="labelmenu">menu</span>
             <ul class="nav">
-              <li class="item active"><a href="#">home</a></li>
-              <li class="item"><a href="#">about</a></li>
-              <li class="item"><a href="#">pricing</a></li>
-              <li class="item"><a href="#">tokens</a></li>
-              <li class="item"><a href="#">blog</a></li>
-              <li class="item"><a href="#">about us</a></li>
+              <li class="item active"><a href="index.html">home</a></li>
+              <li class="item"><a href="about.html">about</a></li>
+              <li class="item"><a href="pricing.html">pricing</a></li>
+              <li class="item"><a href="tokens.html">tokens</a></li>
+              <li class="item"><a href="blog.html">blog</a></li>
+              <li class="item"><a href="contact.html">about us</a></li>
             </ul>
           </div>
-          <div class="footer_center-btnbox">
+          <div class="footer__center--btnbox">
             <span class="label">Download our Application</span>
             <p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sed nulla integer</p>
             <div class="btnlist">
-              <div class="btn btnblue">
+              <a href="https://cfdcircle.vn" target="_blank" class="btn btnblue">
                 <img src="./img/i-apple.svg" alt="" />
                 <span>App Store</span>
-              </div>
-              <div class="btn btnblue">
+              </a>
+              <a href="https://cfdcircle.vn" target="_blank" class="btn btnblue">
                 <img src="./img/i-androi.svg" alt="" />
                 <span>play store</span>
-              </div>
+              </a>
             </div>
           </div>
         </div>
-        <div class="footer_bottom">
+        <div class="footer__bottom">
           <span>© 2023 CFD Circle, Inc.</span>
         </div>
       </div>

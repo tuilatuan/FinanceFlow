@@ -3,42 +3,46 @@
     .price {
       padding-top: 172px;
       padding-bottom: 255px;
-      &_textbox {
+      &__textbox {
         max-width: 660px;
         margin: 0 auto;
         text-align: center;
         padding: 0 46px;
-        &-title {
+        &--title {
           margin-bottom: 16px;
         }
       }
-      &_icons {
+      &__icons {
         // display: flex;
         // justify-content: space-between;
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         margin-top: 40px;
-        &-item {
+        &--item {
           display: flex;
           gap: 24px;
           align-items: center;
         }
       }
-      &_list {
+      &__list {
         margin-top: 56px;
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: var(--gap26);
-        &-card {
+        &--card {
           background: var(--dark-blue);
           border-radius: var(--brus);
           padding: 48px 30px 42px;
           .priceinfo {
             margin-bottom: 40px;
+            .pri {
+              @include text(db, 4.2rem, 5.5rem, var(--white-cl));
+            }
             .tag {
-              max-width: 81px;
-              padding: 9px 14px;
+              max-width: max-content;
+              padding: 0 14px;
               margin-bottom: 16px;
+              height: 36px;
             }
             .desc {
               margin-top: 19px;
@@ -51,6 +55,11 @@
               flex-direction: column;
               gap: var(--gap16);
               margin-bottom: 56px;
+              margin-left: 17px;
+              li {
+                list-style-type: disc;
+                line-height: 2rem;
+              }
             }
           }
         }
@@ -58,19 +67,38 @@
       @include sm {
         padding-top: 90px;
         padding-bottom: 96px;
-        &_icons {
+        &__icons {
           grid-template-columns: 1fr 1fr;
           gap: var(--gap);
         }
-        &_list {
+        &__list {
           grid-template-columns: 1fr;
         }
       }
       @include xxs {
-        &_textbox {
+        &__textbox {
           padding: initial;
+          text-align: initial;
         }
-        &_icons {
+        &__list {
+          margin-top: 48px;
+          &--card {
+            .priceinfo {
+              .tag {
+                margin-bottom: 18px;
+              }
+              .desc {
+                margin-top: 17px;
+              }
+            }
+            .info {
+              .list {
+                margin-bottom: 54px;
+              }
+            }
+          }
+        }
+        &__icons {
           grid-template-columns: 1fr;
           gap: 38px;
         }

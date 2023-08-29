@@ -6,7 +6,9 @@
 
       @include xs {
         padding-top: 121px;
-        &_top {
+        margin-bottom: 80px;
+        &__top {
+          margin-bottom: 46px;
           .desc {
             margin-top: 16px;
           }
@@ -16,74 +18,103 @@
     .listblog {
       padding-top: 152px;
       padding-bottom: 80px;
-      &_gr {
-        &-list {
+      &__gr {
+        &--list {
           display: none;
           &.active {
             display: grid;
           }
         }
       }
-      &_paging {
+      &__paging {
         display: flex;
         gap: var(--gap16);
         justify-content: center;
         align-items: center;
         height: 36px;
         margin-top: 28px;
-        &-btn {
+        &--btn {
           background: var(--dark-blue);
           width: 36px;
           height: 100%;
           @include br(100px);
           @include mid(true);
           cursor: pointer;
+          @include transition(var(--t));
           .icon {
-            fill: var(--white-cl);
+            path {
+              stroke: var(--white-cl);
+            }
           }
           &.prev {
             @include transform(rotate(180deg));
           }
           &:hover {
             background: var(--main-cl);
+            @include transition(var(--t));
           }
           &.--disable-active {
             background: rgba(255, 255, 255, 0.1);
             pointer-events: none;
             fill: rgba(255, 255, 255, 0.1);
 
-            // .icon {
-            //   fill: rgba(255, 255, 255, 0.1);
-            // }
+            .icon {
+              path {
+                stroke: rgba(255, 255, 255, 0.1);
+              }
+            }
           }
         }
-        &-numpage {
-          @include mid(true);
-          gap: var(--gap16);
+        &--numpage {
+          ul {
+            @include mid(true);
+            gap: var(--gap16);
+            a {
+              color: var(--white-cl);
+              @include transition(var(--t));
+              padding: 4px 8px;
 
-          a {
-            color: var(--white-cl);
-            &.active {
-              color: var(--main-cl);
+              &.active {
+                color: var(--main-cl);
+                @include transition(var(--t));
+              }
+              &:hover {
+                color: var(--main-cl);
+                @include transition(var(--t));
+              }
             }
-            &:hover {
-              color: var(--main-cl);
-            }
+          }
+        }
+      }
+      @include sm {
+        &__gr {
+          &--list {
+            grid-template-columns: 1fr 1fr;
+          }
+        }
+      }
+      @include xs {
+        &__gr {
+          &--list {
+            grid-template-columns: 1fr;
           }
         }
       }
       @include xxs {
         padding-top: 80px;
-        &_top {
+        &__top {
           flex-direction: column;
           text-align: center;
-          &-btns {
+          &--btns {
             flex-direction: column;
             margin-top: 24px;
             .btn {
               width: 100%;
             }
           }
+        }
+        &__paging {
+          margin-top: 16px;
         }
       }
     }

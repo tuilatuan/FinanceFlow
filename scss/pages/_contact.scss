@@ -5,19 +5,20 @@
 
       position: relative;
       padding-top: 212px;
-      &_title {
+      &__title {
         margin-bottom: 52px;
       }
-      &_boxs {
+      &__boxs {
         display: flex;
         justify-content: space-between;
-        &-form {
+        &--form {
           width: 753px;
           display: grid;
           grid-template-columns: 1fr 1fr;
           gap: 25px;
           row-gap: 32px;
-          .item {
+          .formgr {
+            position: relative;
             input,
             textarea {
               width: 100%;
@@ -25,11 +26,24 @@
               padding: 20.5px 25px;
               border-radius: 100px;
               background: var(--dark-blue);
+              border: 1p solid var(--bg-cl);
               color: var(--white-cl);
-              outline: none;
+
               &::placeholder {
                 color: var(--white-cl);
               }
+              &:active {
+                outline: 1px solid var(--white-cl);
+              }
+              &:focus {
+                outline: 1px solid var(--main-cl);
+              }
+            }
+            .messageipt {
+              @include visible(0);
+              color: #ee0303;
+              position: absolute;
+              bottom: -32px;
             }
             &.message {
               grid-column: 1/3;
@@ -40,13 +54,22 @@
                 max-height: 162px;
               }
             }
+            &.err {
+              input,
+              textarea {
+                outline: 1px solid #ee0303;
+              }
+              .messageipt {
+                @include visible(1);
+              }
+            }
           }
           .btn {
             max-width: 205px;
             margin-top: 10px;
           }
         }
-        &-intro {
+        &--intro {
           max-width: 384px;
           .heading {
             @include text(db, 2.2rem, 3.1rem, var(--white-cl));
@@ -78,17 +101,23 @@
       }
       @include md {
         padding-top: 170px;
+        &__boxs {
+          gap: 20px;
+        }
       }
       @include sm {
         padding-top: 121px;
 
-        &_title {
+        &__title {
           margin-bottom: 40px;
         }
-        &_boxs {
+        &__boxs {
           flex-direction: column;
           width: 100%;
-          &-intro {
+          &--form {
+            width: 100%;
+          }
+          &--intro {
             max-width: 100%;
             margin-top: 48px;
             .heading {
@@ -103,18 +132,19 @@
         }
       }
       @include xs {
-        &_boxs {
-          &-form {
+        &__boxs {
+          &--form {
             width: 100%;
           }
         }
       }
       @include xxs {
-        &_boxs {
-          &-form {
+        &__boxs {
+          gap: 0;
+          &--form {
             grid-template-columns: 1fr;
             gap: var(--gap24);
-            .item {
+            .formgr {
               &.message {
                 grid-column: auto;
               }
@@ -128,23 +158,23 @@
     }
     .accordion {
       padding: 120px 0;
-      &_title {
+      &__title {
         max-width: max-content;
         margin: 0 auto;
         text-transform: uppercase;
         margin-bottom: 80px;
       }
-      &_list {
+      &__list {
         max-width: 872px;
         margin: 0 auto;
-        &-item {
+        &--item {
           border-bottom: 1px solid rgba($color: #fff, $alpha: 0.2);
           .btns {
             background: none;
             cursor: pointer;
             width: 100%;
             height: 94px;
-            padding: 32px 8px;
+            padding: 0 8px;
             position: relative;
             display: flex;
             justify-content: space-between;
@@ -152,6 +182,8 @@
             @include transition(var(--t));
             .title {
               text-transform: capitalize;
+              @include text(db, 2.8rem, 3rem, var(--white-cl));
+              letter-spacing: 0.028rem;
             }
             .btn {
               width: 27px;
@@ -197,8 +229,27 @@
       }
       @include sm {
         padding: 90px 0;
-        &_title {
+        &__title {
           margin-bottom: 32px;
+        }
+      }
+      @include xs {
+        &__list {
+          &--item {
+            .btns {
+              padding: 0 0;
+              height: 78px;
+              .title {
+                font-size: 1.8rem;
+              }
+              .btn {
+                width: 15px;
+              }
+            }
+            .panel {
+              padding-left: 0px;
+            }
+          }
         }
       }
     }

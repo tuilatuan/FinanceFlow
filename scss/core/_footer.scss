@@ -1,21 +1,21 @@
 .footer {
   background: var(--dark-blue);
   padding-top: 56px;
-  &_top {
+  &__top {
     display: flex;
     justify-content: space-between;
     margin-bottom: 92px;
-    &-social {
+    &--social {
       display: flex;
       gap: 12px;
     }
   }
-  &_center {
+  &__center {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     gap: 26px;
     margin-bottom: 125px;
-    &-menu {
+    &--menu {
       grid-area: 1/1/2/4;
       .labelmenu {
         display: block;
@@ -27,44 +27,49 @@
       }
       .nav {
         width: 100%;
-        column-count: 2;
-        column-gap: 117px;
+        // column-count: 2;
+        // column-gap: 50px;
         margin-top: 25px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
         .item {
+          width: 50%;
           list-style: none;
           a {
-            @include text(dm, 1.4rem, 1.6rem, var(--white-cl), uppercase);
-            letter-spacing: 0.014rem;
+            @include text(dm, 1.4rem, normal, var(--white-cl), uppercase);
+            letter-spacing: 0.14rem;
             position: relative;
             overflow: hidden;
             cursor: pointer;
+            padding: 5px 0;
             &::before {
               content: "";
               background: var(--white-cl);
-              width: 98%;
+              width: 100%;
               height: 1px;
               position: absolute;
-              left: 0;
-              bottom: 0;
+              left: 50%;
+              bottom: 5px;
               @include transition(var(--t));
-              @include transform(scale(0));
+              @include transform(translate(-50%, -50%) scale(0));
             }
             &:hover {
               &::before {
-                @include transform(scale(1));
+                @include transform(translate(-50%, -50%) scale(1));
                 @include transition(var(--t));
               }
             }
           }
           &.active {
             a {
-              letter-spacing: 1.5%;
+              letter-spacing: 1.5px;
             }
           }
         }
       }
     }
-    &-btnbox {
+    &--btnbox {
       grid-area: 1/8/2/13;
       background: rgba(255, 255, 255, 0.1);
       border-radius: var(--brus);
@@ -75,13 +80,16 @@
       }
       .btnlist {
         display: flex;
-        justify-content: space-between;
+        // justify-content: space-between;
         align-items: center;
         gap: 16px;
+        .btn {
+          padding: 27px 32px;
+        }
       }
     }
   }
-  &_bottom {
+  &__bottom {
     padding: 32px 0;
     border-top: 1px solid rgba(255, 255, 255, 0.3);
     span {
@@ -89,40 +97,40 @@
     }
   }
   @include md {
-    &_center {
-      grid-template-columns: 1fr 1fr;
+    &__center {
       margin-bottom: 75px;
-      &-menu {
-        grid-area: 1/1/2/2;
+      &--menu {
+        grid-area: 1/1/2/5;
       }
-      &-btnbox {
-        grid-area: 1/2/2/3;
+      &--btnbox {
+        grid-area: 1/6/2/13;
       }
     }
   }
   @include sm {
-    &_center {
-      grid-template-columns: 1fr;
+    &__center {
       margin-bottom: 32px;
 
-      &-menu {
-        grid-area: auto;
+      &--menu {
+        // grid-area: auto;
         .nav {
-          text-align: center;
+          // text-align: center;
         }
       }
-      &-btnbox {
-        grid-area: auto;
+      &--btnbox {
+        grid-area: 1/5/2/13;
       }
     }
-    &_bottom {
+    &__bottom {
       text-align: center;
     }
   }
-  @include xs {
-    &_center {
+  @include maxW(795px) {
+    &__center {
+      grid-template-columns: 1fr;
       gap: 50px;
-      &-menu {
+      &--menu {
+        grid-area: auto;
         .nav {
           .item {
             &.active {
@@ -134,7 +142,8 @@
           }
         }
       }
-      &-btnbox {
+      &--btnbox {
+        grid-area: auto;
         .btnlist {
           flex-direction: column;
           .btn {
@@ -143,7 +152,7 @@
         }
       }
     }
-    &_top {
+    &__top {
       flex-direction: column;
       justify-content: center;
       align-items: center;
@@ -152,8 +161,8 @@
     }
   }
   @include xxs {
-    &_center {
-      &-menu {
+    &__center {
+      &--menu {
         grid-area: auto;
         .nav {
           text-align: initial;

@@ -31,37 +31,80 @@
 
     <style>
       /* CSS Loading Here */
+      .loading {
+        width: 100%;
+        height: 100vh;
+        background: var(--bg-cl);
+        top: 0;
+        position: fixed;
+        z-index: 999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        visibility: visible;
+        opacity: 1;
+      }
+
+      .loading .loading__inner {
+        width: 160px;
+        height: 4px;
+        border-radius: 10px;
+        background: var(--main-cl);
+        position: relative;
+        overflow: hidden;
+      }
+      .loading .loading__inner .loading__inner-progess {
+        height: 100%;
+        width: 0%;
+        background: var(--white-cl);
+        position: absolute;
+      }
+
+      .loading .loading__percent {
+        font-family: db;
+        font-size: 16px;
+        line-height: 100%;
+        color: var(--white-cl);
+        margin-top: 13px;
+        text-align: center;
+      }
+      .loading.--is-loaded {
+        visibility: hidden;
+        opacity: 0;
+      }
     </style>
 
     <link rel="stylesheet" href="dest/style.min.css" />
     <link rel="stylesheet" href="dest/fonts.css" />
   </head>
 
-  <body class="erropage">
+  <body class="erropage --disable-scroll">
+    <div class="loading">
+      <div class="loading__inner">
+        <div class="loading__inner-progess"></div>
+      </div>
+      <div class="loading__percent"></div>
+    </div>
     <header class="header">
       <div class="container">
-        <div class="header_left">
-          <div class="header_left-logo">
-            <a href="#">
-              <h1>
-                <picture>
-                  <source media="(max-width: 768px)" srcset="./img/logo-crypto.svg" />
-                  <img src="./img/logo-finanlow.svg" alt="" />
-                </picture>
-              </h1>
+        <div class="header__left">
+          <div class="header__left--logo">
+            <a href="index.html">
+              <img src="./img/logo-finanlow.svg" alt="" />
             </a>
           </div>
-          <nav class="header_left-nav">
-            <a href="index.html">home</a>
-            <a href="about.html">about</a>
-            <a href="">pricing</a>
-            <a href="">tokens</a>
-            <a href="">blog</a>
-            <a href="">contact us</a>
-          </nav>
+          <ul class="header__left--nav">
+            <li><a href="./">home</a></li>
+            <li><a href="about.html">about</a></li>
+            <li><a href="pricing.html">pricing</a></li>
+            <li><a href="tokens.html">tokens</a></li>
+            <li><a href="blog.html">blog</a></li>
+            <li><a href="contact.html">contact us</a></li>
+          </ul>
         </div>
 
-        <div class="header_btn btnblue">
+        <div class="header__btn btnblue">
           <a href="https://cfdcircle.vn/" class="text">download app</a>
           <div class="btnmobile">
             <span class="line l1"></span>
@@ -72,32 +115,32 @@
       </div>
     </header>
     <div class="menumobile">
-      <nav class="nav">
-        <a href="index.html">home</a>
-        <a href="/about.html">about</a>
-        <a href="">pricing</a>
-        <a href="">tokens</a>
-        <a href="">blog</a>
-        <a href="">contact us</a>
-        <a href="https://cfdcircle.vn/"><button class="btn btnblue">download app</button></a>
-      </nav>
+      <ul class="nav">
+        <li><a href="./">home</a></li>
+        <li><a href="about.html">about</a></li>
+        <li><a href="pricing.html">pricing</a></li>
+        <li><a href="tokens.html">tokens</a></li>
+        <li><a href="blog.html">blog</a></li>
+        <li><a href="contact.html">contact us</a></li>
+        <a href="https://cfdcircle.vn/" class="btn btnblue">download app</a>
+      </ul>
       <img src="./img/blur3.png" alt="" class="blur" />
     </div>
     <main class="main">
       <section class="erro">
         <div class="container">
-          <div class="erro_textbox">
-            <h2 class="erro_textbox-num">404</h2>
-            <h3 class="erro_textbox-title --h3">Page Not Found</h3>
-            <p class="erro_textbox-desc">
+          <div class="erro__textbox">
+            <h2 class="erro__textbox--num">404</h2>
+            <h3 class="erro__textbox--title --h3">Page Not Found</h3>
+            <p class="erro__textbox--desc">
               The page you're looking for can't be found. Double-check the URL and try again. Or click the button below.
             </p>
-            <div class="erro_textbox-grbtn">
-              <a href="#" class="btn btnblue">view pricing</a>
-              <a href="#" class="btn btngray">go home</a>
+            <div class="erro__textbox--grbtn">
+              <a href="pricing.html" class="btn btnblue">view pricing</a>
+              <a href="index.html" class="btn btngray">go home</a>
             </div>
           </div>
-          <img src="./img/blur404.png" alt="" class="erro_blur" />
+          <img src="./img/blur404.png" alt="" class="erro__blur" />
         </div>
       </section>
     </main>

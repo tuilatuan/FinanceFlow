@@ -31,37 +31,80 @@
 
     <style>
       /* CSS Loading Here */
+      .loading {
+        width: 100%;
+        height: 100vh;
+        background: var(--bg-cl);
+        top: 0;
+        position: fixed;
+        z-index: 999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        visibility: visible;
+        opacity: 1;
+      }
+
+      .loading .loading__inner {
+        width: 160px;
+        height: 4px;
+        border-radius: 10px;
+        background: var(--main-cl);
+        position: relative;
+        overflow: hidden;
+      }
+      .loading .loading__inner .loading__inner-progess {
+        height: 100%;
+        width: 0%;
+        background: var(--white-cl);
+        position: absolute;
+      }
+
+      .loading .loading__percent {
+        font-family: db;
+        font-size: 16px;
+        line-height: 100%;
+        color: var(--white-cl);
+        margin-top: 13px;
+        text-align: center;
+      }
+      .loading.--is-loaded {
+        visibility: hidden;
+        opacity: 0;
+      }
     </style>
 
     <link rel="stylesheet" href="dest/style.min.css" />
     <link rel="stylesheet" href="dest/fonts.css" />
   </head>
 
-  <body class="blogpage">
+  <body class="blogpage --disable-scroll">
+    <div class="loading">
+      <div class="loading__inner">
+        <div class="loading__inner-progess"></div>
+      </div>
+      <div class="loading__percent"></div>
+    </div>
     <header class="header">
       <div class="container">
-        <div class="header_left">
-          <div class="header_left-logo">
-            <a href="#">
-              <h1>
-                <picture>
-                  <source media="(max-width: 768px)" srcset="./img/logo-crypto.svg" />
-                  <img src="./img/logo-finanlow.svg" alt="" />
-                </picture>
-              </h1>
+        <div class="header__left">
+          <div class="header__left--logo">
+            <a href="index.html">
+              <img src="./img/logo-finanlow.svg" alt="" />
             </a>
           </div>
-          <nav class="header_left-nav">
-            <a href="index.html">home</a>
-            <a href="about.html">about</a>
-            <a href="pricing.html">pricing</a>
-            <a href="tokens.html">tokens</a>
-            <a href="blog.html" class="active">blog</a>
-            <a href="contact.html">contact us</a>
-          </nav>
+          <ul class="header__left--nav">
+            <li><a href="./">home</a></li>
+            <li><a href="about.html">about</a></li>
+            <li><a href="pricing.html">pricing</a></li>
+            <li><a href="tokens.html">tokens</a></li>
+            <li><a href="blog.html" class="active">blog</a></li>
+            <li><a href="contact.html">contact us</a></li>
+          </ul>
         </div>
 
-        <div class="header_btn btnblue">
+        <div class="header__btn btnblue">
           <a href="https://cfdcircle.vn/" class="text">download app</a>
           <div class="btnmobile">
             <span class="line l1"></span>
@@ -72,42 +115,43 @@
       </div>
     </header>
     <div class="menumobile">
-      <nav class="nav">
-        <a href="index.html">home</a>
-        <a href="about.html">about</a>
-        <a href="pricing.html">pricing</a>
-        <a href="tokens.html">tokens</a>
-        <a href="blog.html" class="active">blog</a>
-        <a href="contact.html">contact us</a>
-        <a href="https://cfdcircle.vn/"><button class="btn btnblue">download app</button></a>
-      </nav>
+      <ul class="nav">
+        <li><a href="./">home</a></li>
+        <li><a href="about.html">about</a></li>
+        <li><a href="pricing.html">pricing</a></li>
+        <li><a href="tokens.html">tokens</a></li>
+        <li><a href="blog.html" class="active">blog</a></li>
+        <li><a href="contact.html">contact us</a></li>
+        <a href="https://cfdcircle.vn/" class="btn btnblue">download app</a>
+      </ul>
       <img src="./img/blur3.png" alt="" class="blur" />
     </div>
     <main class="main">
       <section class="blog">
         <div class="container">
-          <div class="blog_top textboxtop">
-            <h2 class="blog_top-title --h2">Blog</h2>
+          <div class="blog__top textboxtop">
+            <h1 class="blog__top--title --h1">Blog</h1>
             <p class="desc text">
               Blog Lorem ipsum dolor sit amet, consectetur adipiscing elit. Feugiat nulla suspendisse tortor aenean dis
               placerat.
             </p>
           </div>
-          <div class="blog_item blogcard">
+          <div class="blog__item blogcardrow">
             <div class="blogimg">
-              <img src="./img/imgBlogcard1.jpg" alt="" />
+              <a href="blogpost.html"><img src="./img/imgBlogcard1.jpg" alt="" /></a>
             </div>
             <div class="bloginfo">
               <div class="content">
                 <div class="btnblue">product</div>
-                <a href="blogpost.html">
-                  <h4 class="title">Cryptocurrency Explained With Pros and Cons for Investment</h4>
-                </a>
+                <h2 class="title">
+                  <a href="blogpost.html" class="--h2">Cryptocurrency Explained With Pros and Cons for Investment</a>
+                </h2>
+
                 <p class="desc">
                   Lorem ipsum dolor sit ametero irseo, consectetur adipiscing elit. Scelerisque viverra donec diammeo.
                 </p>
               </div>
-              <div class="author">
+              <a href="#" class="author">
                 <div class="img">
                   <img src="./img/athurimg.jpg" alt="" />
                 </div>
@@ -115,52 +159,50 @@
                   <span class="name">John carter</span>
                   <p class="text">August 2, 2021</p>
                 </div>
-              </div>
+              </a>
             </div>
           </div>
         </div>
       </section>
       <section class="sub">
         <div class="container">
-          <div class="sub_textbox">
+          <div class="sub__textbox">
             <img src="./img/i-mail.jpg" alt="" class="icon" />
-            <h3 class="sub_textbox-title --h3">Subscribe to our crypto news weekly newsletter!</h3>
+            <h2 class="sub__textbox-title --h2">Subscribe to our crypto news weekly newsletter!</h2>
           </div>
-          <form action="" method="get" class="sub_form">
-            <input type="text" placeholder="Enter email address" class="sub_form-inpt" />
-            <button class="sub_form-btn btnhvblue">Subscribe</button>
+          <form action="" method="get" class="sub__form">
+            <input type="text" placeholder="Enter email address" class="sub__form--inpt" />
+            <button class="sub__form--btn btnhvblue">Subscribe</button>
           </form>
         </div>
       </section>
       <section class="listblog">
         <div class="container">
-          <div class="listblog_top textboxbtn">
-            <h3 class="listblog_top-title --h3">Latest Posts</h3>
-            <div class="listblog_top-btns grbtns">
+          <div class="listblog__top textboxbtn">
+            <h2 class="listblog__top--title --h2">Latest Posts</h2>
+            <div class="listblog__top--btns grbtns">
               <a href="#" class="btn btngray active" data-type="all">all</a>
               <a href="#" class="btn btngray" data-type="product">apps</a>
               <a href="#" class="btn btngray" data-type="tutorial">products</a>
               <a href="#" class="btn btngray" data-type="apps">tutorial</a>
             </div>
           </div>
-          <div class="listblog_gr">
-            <div class="listblog_gr-list bloglist active" data-type="all">
+          <div class="listblog__gr">
+            <div class="listblog__gr--list bloglist active" data-type="all">
               <div class="item blogcard blogcardcolumn">
                 <div class="blogimg">
-                  <img src="./img/imgBlogcard1.jpg" alt="" />
+                  <a href="blogpost.html"><img src="./img/imgBlogcard1.jpg" alt="" /></a>
                 </div>
                 <div class="bloginfo">
                   <div class="content">
                     <div class="btnblue">product</div>
-                    <a href="blogpost.html">
-                      <h4 class="title">Cryptocurrency Explained With Pros and Cons for Investment</h4>
-                    </a>
+                    <h3 class="title"><a href="blogpost.html" class="--h3">The Basics about Cryptocurrency</a></h3>
                     <p class="desc">
                       Lorem ipsum dolor sit ametero irseo, consectetur adipiscing elit. Scelerisque viverra donec
                       diammeo.
                     </p>
                   </div>
-                  <div class="author">
+                  <a href="#" class="author">
                     <div class="img">
                       <img src="./img/athurimg.jpg" alt="" />
                     </div>
@@ -168,25 +210,25 @@
                       <span class="name">John carter</span>
                       <p class="text">August 2, 2021</p>
                     </div>
-                  </div>
+                  </a>
                 </div>
               </div>
               <div class="item blogcard blogcardcolumn">
                 <div class="blogimg">
-                  <img src="./img/imgBlogcard2.jpg" alt="" />
+                  <a href="blogpost.html">
+                    <img src="./img/imgBlogcard2.jpg" alt="" />
+                  </a>
                 </div>
                 <div class="bloginfo">
                   <div class="content">
                     <div class="btnblue">product</div>
-                    <a href="blogpost.html">
-                      <h4 class="title --h4">The Basics about Cryptocurrency</h4>
-                    </a>
+                    <h3 class="title"><a href="blogpost.html" class="--h3">The Basics about Cryptocurrency</a></h3>
                     <p class="desc">
                       Lorem ipsum dolor sit ametero irseo, consectetur adipiscing elit. Scelerisque viverra donec
                       diammeo.
                     </p>
                   </div>
-                  <div class="author">
+                  <a href="#" class="author">
                     <div class="img">
                       <img src="./img/athurimg.jpg" alt="" />
                     </div>
@@ -194,25 +236,23 @@
                       <span class="name">John carter</span>
                       <p class="text">August 2, 2021</p>
                     </div>
-                  </div>
+                  </a>
                 </div>
               </div>
               <div class="item blogcard blogcardcolumn">
                 <div class="blogimg">
-                  <img src="./img/imgBlogcard3.jpg" alt="" />
+                  <a href="blogpost.html"> <img src="./img/imgBlogcard3.jpg" alt="" /></a>
                 </div>
                 <div class="bloginfo">
                   <div class="content">
                     <div class="btnblue">product</div>
-                    <a href="blogpost.html">
-                      <h4 class="title --h4">The Basics about Cryptocurrency</h4>
-                    </a>
+                    <h3 class="title"><a href="blogpost.html" class="--h3">The Basics about Cryptocurrency</a></h3>
                     <p class="desc">
                       Lorem ipsum dolor sit ametero irseo, consectetur adipiscing elit. Scelerisque viverra donec
                       diammeo.
                     </p>
                   </div>
-                  <div class="author">
+                  <a href="#" class="author">
                     <div class="img">
                       <img src="./img/athurimg.jpg" alt="" />
                     </div>
@@ -220,25 +260,25 @@
                       <span class="name">John carter</span>
                       <p class="text">August 2, 2021</p>
                     </div>
-                  </div>
+                  </a>
                 </div>
               </div>
               <div class="item blogcard blogcardcolumn">
                 <div class="blogimg">
-                  <img src="./img/imgBlogcard4.jpg" alt="" />
+                  <a href="blogpost.html">
+                    <img src="./img/imgBlogcard4.jpg" alt="" />
+                  </a>
                 </div>
                 <div class="bloginfo">
                   <div class="content">
                     <div class="btnblue">product</div>
-                    <a href="blogpost.html">
-                      <h4 class="title --h4">The Basics about Cryptocurrency</h4>
-                    </a>
+                    <h3 class="title"><a href="blogpost.html" class="--h3">The Basics about Cryptocurrency</a></h3>
                     <p class="desc">
                       Lorem ipsum dolor sit ametero irseo, consectetur adipiscing elit. Scelerisque viverra donec
                       diammeo.
                     </p>
                   </div>
-                  <div class="author">
+                  <a href="#" class="author">
                     <div class="img">
                       <img src="./img/athurimg.jpg" alt="" />
                     </div>
@@ -246,25 +286,25 @@
                       <span class="name">John carter</span>
                       <p class="text">August 2, 2021</p>
                     </div>
-                  </div>
+                  </a>
                 </div>
               </div>
               <div class="item blogcard blogcardcolumn">
                 <div class="blogimg">
-                  <img src="./img/imgBlogcard5.jpg" alt="" />
+                  <a href="blogpost.html">
+                    <img src="./img/imgBlogcard5.jpg" alt="" />
+                  </a>
                 </div>
                 <div class="bloginfo">
                   <div class="content">
                     <div class="btnblue">product</div>
-                    <a href="blogpost.html">
-                      <h4 class="title --h4">The Basics about Cryptocurrency</h4>
-                    </a>
+                    <h3 class="title"><a href="blogpost.html" class="--h3">The Basics about Cryptocurrency</a></h3>
                     <p class="desc">
                       Lorem ipsum dolor sit ametero irseo, consectetur adipiscing elit. Scelerisque viverra donec
                       diammeo.
                     </p>
                   </div>
-                  <div class="author">
+                  <a href="#" class="author">
                     <div class="img">
                       <img src="./img/athurimg.jpg" alt="" />
                     </div>
@@ -272,25 +312,25 @@
                       <span class="name">John carter</span>
                       <p class="text">August 2, 2021</p>
                     </div>
-                  </div>
+                  </a>
                 </div>
               </div>
               <div class="item blogcard blogcardcolumn">
                 <div class="blogimg">
-                  <img src="./img/imgBlogcard6.jpg" alt="" />
+                  <a href="blogpost.html">
+                    <img src="./img/imgBlogcard6.jpg" alt="" />
+                  </a>
                 </div>
                 <div class="bloginfo">
                   <div class="content">
                     <div class="btnblue">product</div>
-                    <a href="blogpost.html">
-                      <h4 class="title --h4">The Basics about Cryptocurrency</h4>
-                    </a>
+                    <h3 class="title"><a href="blogpost.html" class="--h3">The Basics about Cryptocurrency</a></h3>
                     <p class="desc">
                       Lorem ipsum dolor sit ametero irseo, consectetur adipiscing elit. Scelerisque viverra donec
                       diammeo.
                     </p>
                   </div>
-                  <div class="author">
+                  <a href="#" class="author">
                     <div class="img">
                       <img src="./img/athurimg.jpg" alt="" />
                     </div>
@@ -298,27 +338,27 @@
                       <span class="name">John carter</span>
                       <p class="text">August 2, 2021</p>
                     </div>
-                  </div>
+                  </a>
                 </div>
               </div>
             </div>
-            <div class="listblog_gr-list bloglist" data-type="product">
+            <div class="listblog__gr--list bloglist" data-type="product">
               <div class="item blogcard blogcardcolumn">
                 <div class="blogimg">
-                  <img src="./img/imgBlogcard1.jpg" alt="" />
+                  <a href="blogpost.html">
+                    <img src="./img/imgBlogcard1.jpg" alt="" />
+                  </a>
                 </div>
                 <div class="bloginfo">
                   <div class="content">
                     <div class="btnblue">product</div>
-                    <a href="blogpost.html">
-                      <h4 class="title">Cryptocurrency Explained With Pros and Cons for Investment</h4>
-                    </a>
+                    <h3 class="title"><a href="blogpost.html" class="--h3">The Basics about Cryptocurrency</a></h3>
                     <p class="desc">
                       Lorem ipsum dolor sit ametero irseo, consectetur adipiscing elit. Scelerisque viverra donec
                       diammeo.
                     </p>
                   </div>
-                  <div class="author">
+                  <a href="#" class="author">
                     <div class="img">
                       <img src="./img/athurimg.jpg" alt="" />
                     </div>
@@ -326,25 +366,25 @@
                       <span class="name">John carter</span>
                       <p class="text">August 2, 2021</p>
                     </div>
-                  </div>
+                  </a>
                 </div>
               </div>
               <div class="item blogcard blogcardcolumn">
                 <div class="blogimg">
-                  <img src="./img/imgBlogcard1.jpg" alt="" />
+                  <a href="blogpost.html">
+                    <img src="./img/imgBlogcard1.jpg" alt="" />
+                  </a>
                 </div>
                 <div class="bloginfo">
                   <div class="content">
                     <div class="btnblue">product</div>
-                    <a href="blogpost.html">
-                      <h4 class="title --h4">The Basics about Cryptocurrency</h4>
-                    </a>
+                    <h3 class="title"><a href="blogpost.html" class="--h3">The Basics about Cryptocurrency</a></h3>
                     <p class="desc">
                       Lorem ipsum dolor sit ametero irseo, consectetur adipiscing elit. Scelerisque viverra donec
                       diammeo.
                     </p>
                   </div>
-                  <div class="author">
+                  <a href="#" class="author">
                     <div class="img">
                       <img src="./img/athurimg.jpg" alt="" />
                     </div>
@@ -352,25 +392,25 @@
                       <span class="name">John carter</span>
                       <p class="text">August 2, 2021</p>
                     </div>
-                  </div>
+                  </a>
                 </div>
               </div>
               <div class="item blogcard blogcardcolumn">
                 <div class="blogimg">
-                  <img src="./img/imgBlogcard1.jpg" alt="" />
+                  <a href="blogpost.html">
+                    <img src="./img/imgBlogcard1.jpg" alt="" />
+                  </a>
                 </div>
                 <div class="bloginfo">
                   <div class="content">
                     <div class="btnblue">product</div>
-                    <a href="blogpost.html">
-                      <h4 class="title --h4">The Basics about Cryptocurrency</h4>
-                    </a>
+                    <h3 class="title"><a href="blogpost.html" class="--h3">The Basics about Cryptocurrency</a></h3>
                     <p class="desc">
                       Lorem ipsum dolor sit ametero irseo, consectetur adipiscing elit. Scelerisque viverra donec
                       diammeo.
                     </p>
                   </div>
-                  <div class="author">
+                  <a href="#" class="author">
                     <div class="img">
                       <img src="./img/athurimg.jpg" alt="" />
                     </div>
@@ -378,25 +418,25 @@
                       <span class="name">John carter</span>
                       <p class="text">August 2, 2021</p>
                     </div>
-                  </div>
+                  </a>
                 </div>
               </div>
               <div class="item blogcard blogcardcolumn">
                 <div class="blogimg">
-                  <img src="./img/imgBlogcard4.jpg" alt="" />
+                  <a href="blogpost.html">
+                    <img src="./img/imgBlogcard4.jpg" alt="" />
+                  </a>
                 </div>
                 <div class="bloginfo">
                   <div class="content">
                     <div class="btnblue">product</div>
-                    <a href="blogpost.html">
-                      <h4 class="title --h4">The Basics about Cryptocurrency</h4>
-                    </a>
+                    <h3 class="title"><a href="blogpost.html" class="--h3">The Basics about Cryptocurrency</a></h3>
                     <p class="desc">
                       Lorem ipsum dolor sit ametero irseo, consectetur adipiscing elit. Scelerisque viverra donec
                       diammeo.
                     </p>
                   </div>
-                  <div class="author">
+                  <a href="#" class="author">
                     <div class="img">
                       <img src="./img/athurimg.jpg" alt="" />
                     </div>
@@ -404,25 +444,25 @@
                       <span class="name">John carter</span>
                       <p class="text">August 2, 2021</p>
                     </div>
-                  </div>
+                  </a>
                 </div>
               </div>
               <div class="item blogcard blogcardcolumn">
                 <div class="blogimg">
-                  <img src="./img/imgBlogcard5.jpg" alt="" />
+                  <a href="blogpost.html">
+                    <img src="./img/imgBlogcard5.jpg" alt="" />
+                  </a>
                 </div>
                 <div class="bloginfo">
                   <div class="content">
                     <div class="btnblue">product</div>
-                    <a href="blogpost.html">
-                      <h4 class="title --h4">The Basics about Cryptocurrency</h4>
-                    </a>
+                    <h3 class="title"><a href="blogpost.html" class="--h3">The Basics about Cryptocurrency</a></h3>
                     <p class="desc">
                       Lorem ipsum dolor sit ametero irseo, consectetur adipiscing elit. Scelerisque viverra donec
                       diammeo.
                     </p>
                   </div>
-                  <div class="author">
+                  <a href="#" class="author">
                     <div class="img">
                       <img src="./img/athurimg.jpg" alt="" />
                     </div>
@@ -430,25 +470,25 @@
                       <span class="name">John carter</span>
                       <p class="text">August 2, 2021</p>
                     </div>
-                  </div>
+                  </a>
                 </div>
               </div>
               <div class="item blogcard blogcardcolumn">
                 <div class="blogimg">
-                  <img src="./img/imgBlogcard6.jpg" alt="" />
+                  <a href="blogpost.html">
+                    <img src="./img/imgBlogcard6.jpg" alt="" />
+                  </a>
                 </div>
                 <div class="bloginfo">
                   <div class="content">
                     <div class="btnblue">product</div>
-                    <a href="blogpost.html">
-                      <h4 class="title --h4">The Basics about Cryptocurrency</h4>
-                    </a>
+                    <h3 class="title"><a href="blogpost.html" class="--h3">The Basics about Cryptocurrency</a></h3>
                     <p class="desc">
                       Lorem ipsum dolor sit ametero irseo, consectetur adipiscing elit. Scelerisque viverra donec
                       diammeo.
                     </p>
                   </div>
-                  <div class="author">
+                  <a href="#" class="author">
                     <div class="img">
                       <img src="./img/athurimg.jpg" alt="" />
                     </div>
@@ -456,185 +496,27 @@
                       <span class="name">John carter</span>
                       <p class="text">August 2, 2021</p>
                     </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="listblog_gr-list bloglist" data-type="apps">
-              <div class="item blogcard blogcardcolumn">
-                <div class="blogimg">
-                  <img src="./img/imgBlogcard2.jpg" alt="" />
-                </div>
-                <div class="bloginfo">
-                  <div class="content">
-                    <div class="btnblue">product</div>
-                    <a href="blogpost.html">
-                      <h4 class="title">Cryptocurrency Explained With Pros and Cons for Investment</h4>
-                    </a>
-                    <p class="desc">
-                      Lorem ipsum dolor sit ametero irseo, consectetur adipiscing elit. Scelerisque viverra donec
-                      diammeo.
-                    </p>
-                  </div>
-                  <div class="author">
-                    <div class="img">
-                      <img src="./img/athurimg.jpg" alt="" />
-                    </div>
-                    <div class="textbox">
-                      <span class="name">John carter</span>
-                      <p class="text">August 2, 2021</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="item blogcard blogcardcolumn">
-                <div class="blogimg">
-                  <img src="./img/imgBlogcard2.jpg" alt="" />
-                </div>
-                <div class="bloginfo">
-                  <div class="content">
-                    <div class="btnblue">product</div>
-                    <a href="blogpost.html">
-                      <h4 class="title --h4">The Basics about Cryptocurrency</h4>
-                    </a>
-                    <p class="desc">
-                      Lorem ipsum dolor sit ametero irseo, consectetur adipiscing elit. Scelerisque viverra donec
-                      diammeo.
-                    </p>
-                  </div>
-                  <div class="author">
-                    <div class="img">
-                      <img src="./img/athurimg.jpg" alt="" />
-                    </div>
-                    <div class="textbox">
-                      <span class="name">John carter</span>
-                      <p class="text">August 2, 2021</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="item blogcard blogcardcolumn">
-                <div class="blogimg">
-                  <img src="./img/imgBlogcard2.jpg" alt="" />
-                </div>
-                <div class="bloginfo">
-                  <div class="content">
-                    <div class="btnblue">product</div>
-                    <a href="blogpost.html">
-                      <h4 class="title --h4">The Basics about Cryptocurrency</h4>
-                    </a>
-                    <p class="desc">
-                      Lorem ipsum dolor sit ametero irseo, consectetur adipiscing elit. Scelerisque viverra donec
-                      diammeo.
-                    </p>
-                  </div>
-                  <div class="author">
-                    <div class="img">
-                      <img src="./img/athurimg.jpg" alt="" />
-                    </div>
-                    <div class="textbox">
-                      <span class="name">John carter</span>
-                      <p class="text">August 2, 2021</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="item blogcard blogcardcolumn">
-                <div class="blogimg">
-                  <img src="./img/imgBlogcard4.jpg" alt="" />
-                </div>
-                <div class="bloginfo">
-                  <div class="content">
-                    <div class="btnblue">product</div>
-                    <a href="blogpost.html">
-                      <h4 class="title --h4">The Basics about Cryptocurrency</h4>
-                    </a>
-                    <p class="desc">
-                      Lorem ipsum dolor sit ametero irseo, consectetur adipiscing elit. Scelerisque viverra donec
-                      diammeo.
-                    </p>
-                  </div>
-                  <div class="author">
-                    <div class="img">
-                      <img src="./img/athurimg.jpg" alt="" />
-                    </div>
-                    <div class="textbox">
-                      <span class="name">John carter</span>
-                      <p class="text">August 2, 2021</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="item blogcard blogcardcolumn">
-                <div class="blogimg">
-                  <img src="./img/imgBlogcard5.jpg" alt="" />
-                </div>
-                <div class="bloginfo">
-                  <div class="content">
-                    <div class="btnblue">product</div>
-                    <a href="blogpost.html">
-                      <h4 class="title --h4">The Basics about Cryptocurrency</h4>
-                    </a>
-                    <p class="desc">
-                      Lorem ipsum dolor sit ametero irseo, consectetur adipiscing elit. Scelerisque viverra donec
-                      diammeo.
-                    </p>
-                  </div>
-                  <div class="author">
-                    <div class="img">
-                      <img src="./img/athurimg.jpg" alt="" />
-                    </div>
-                    <div class="textbox">
-                      <span class="name">John carter</span>
-                      <p class="text">August 2, 2021</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="item blogcard blogcardcolumn">
-                <div class="blogimg">
-                  <img src="./img/imgBlogcard6.jpg" alt="" />
-                </div>
-                <div class="bloginfo">
-                  <div class="content">
-                    <div class="btnblue">product</div>
-                    <a href="blogpost.html">
-                      <h4 class="title --h4">The Basics about Cryptocurrency</h4>
-                    </a>
-                    <p class="desc">
-                      Lorem ipsum dolor sit ametero irseo, consectetur adipiscing elit. Scelerisque viverra donec
-                      diammeo.
-                    </p>
-                  </div>
-                  <div class="author">
-                    <div class="img">
-                      <img src="./img/athurimg.jpg" alt="" />
-                    </div>
-                    <div class="textbox">
-                      <span class="name">John carter</span>
-                      <p class="text">August 2, 2021</p>
-                    </div>
-                  </div>
+                  </a>
                 </div>
               </div>
             </div>
-            <div class="listblog_gr-list bloglist" data-type="tutorial">
+            <div class="listblog__gr--list bloglist" data-type="apps">
               <div class="item blogcard blogcardcolumn">
                 <div class="blogimg">
-                  <img src="./img/imgBlogcard3.jpg" alt="" />
+                  <a href="blogpost.html">
+                    <img src="./img/imgBlogcard2.jpg" alt="" />
+                  </a>
                 </div>
                 <div class="bloginfo">
                   <div class="content">
                     <div class="btnblue">product</div>
-                    <a href="blogpost.html">
-                      <h4 class="title">Cryptocurrency Explained With Pros and Cons for Investment</h4>
-                    </a>
+                    <h3 class="title"><a href="blogpost.html" class="--h3">The Basics about Cryptocurrency</a></h3>
                     <p class="desc">
                       Lorem ipsum dolor sit ametero irseo, consectetur adipiscing elit. Scelerisque viverra donec
                       diammeo.
                     </p>
                   </div>
-                  <div class="author">
+                  <a href="#" class="author">
                     <div class="img">
                       <img src="./img/athurimg.jpg" alt="" />
                     </div>
@@ -642,25 +524,25 @@
                       <span class="name">John carter</span>
                       <p class="text">August 2, 2021</p>
                     </div>
-                  </div>
+                  </a>
                 </div>
               </div>
               <div class="item blogcard blogcardcolumn">
                 <div class="blogimg">
-                  <img src="./img/imgBlogcard3.jpg" alt="" />
+                  <a href="blogpost.html">
+                    <img src="./img/imgBlogcard2.jpg" alt="" />
+                  </a>
                 </div>
                 <div class="bloginfo">
                   <div class="content">
                     <div class="btnblue">product</div>
-                    <a href="blogpost.html">
-                      <h4 class="title --h4">The Basics about Cryptocurrency</h4>
-                    </a>
+                    <h3 class="title"><a href="blogpost.html" class="--h3">The Basics about Cryptocurrency</a></h3>
                     <p class="desc">
                       Lorem ipsum dolor sit ametero irseo, consectetur adipiscing elit. Scelerisque viverra donec
                       diammeo.
                     </p>
                   </div>
-                  <div class="author">
+                  <a href="#" class="author">
                     <div class="img">
                       <img src="./img/athurimg.jpg" alt="" />
                     </div>
@@ -668,25 +550,25 @@
                       <span class="name">John carter</span>
                       <p class="text">August 2, 2021</p>
                     </div>
-                  </div>
+                  </a>
                 </div>
               </div>
               <div class="item blogcard blogcardcolumn">
                 <div class="blogimg">
-                  <img src="./img/imgBlogcard3.jpg" alt="" />
+                  <a href="blogpost.html">
+                    <img src="./img/imgBlogcard2.jpg" alt="" />
+                  </a>
                 </div>
                 <div class="bloginfo">
                   <div class="content">
                     <div class="btnblue">product</div>
-                    <a href="blogpost.html">
-                      <h4 class="title --h4">The Basics about Cryptocurrency</h4>
-                    </a>
+                    <h3 class="title"><a href="blogpost.html" class="--h3">The Basics about Cryptocurrency</a></h3>
                     <p class="desc">
                       Lorem ipsum dolor sit ametero irseo, consectetur adipiscing elit. Scelerisque viverra donec
                       diammeo.
                     </p>
                   </div>
-                  <div class="author">
+                  <a href="#" class="author">
                     <div class="img">
                       <img src="./img/athurimg.jpg" alt="" />
                     </div>
@@ -694,25 +576,25 @@
                       <span class="name">John carter</span>
                       <p class="text">August 2, 2021</p>
                     </div>
-                  </div>
+                  </a>
                 </div>
               </div>
               <div class="item blogcard blogcardcolumn">
                 <div class="blogimg">
-                  <img src="./img/imgBlogcard4.jpg" alt="" />
+                  <a href="blogpost.html">
+                    <img src="./img/imgBlogcard4.jpg" alt="" />
+                  </a>
                 </div>
                 <div class="bloginfo">
                   <div class="content">
                     <div class="btnblue">product</div>
-                    <a href="blogpost.html">
-                      <h4 class="title --h4">The Basics about Cryptocurrency</h4>
-                    </a>
+                    <h3 class="title"><a href="blogpost.html" class="--h3">The Basics about Cryptocurrency</a></h3>
                     <p class="desc">
                       Lorem ipsum dolor sit ametero irseo, consectetur adipiscing elit. Scelerisque viverra donec
                       diammeo.
                     </p>
                   </div>
-                  <div class="author">
+                  <a href="#" class="author">
                     <div class="img">
                       <img src="./img/athurimg.jpg" alt="" />
                     </div>
@@ -720,25 +602,25 @@
                       <span class="name">John carter</span>
                       <p class="text">August 2, 2021</p>
                     </div>
-                  </div>
+                  </a>
                 </div>
               </div>
               <div class="item blogcard blogcardcolumn">
                 <div class="blogimg">
-                  <img src="./img/imgBlogcard5.jpg" alt="" />
+                  <a href="blogpost.html">
+                    <img src="./img/imgBlogcard5.jpg" alt="" />
+                  </a>
                 </div>
                 <div class="bloginfo">
                   <div class="content">
                     <div class="btnblue">product</div>
-                    <a href="blogpost.html">
-                      <h4 class="title --h4">The Basics about Cryptocurrency</h4>
-                    </a>
+                    <h3 class="title"><a href="blogpost.html" class="--h3">The Basics about Cryptocurrency</a></h3>
                     <p class="desc">
                       Lorem ipsum dolor sit ametero irseo, consectetur adipiscing elit. Scelerisque viverra donec
                       diammeo.
                     </p>
                   </div>
-                  <div class="author">
+                  <a href="#" class="author">
                     <div class="img">
                       <img src="./img/athurimg.jpg" alt="" />
                     </div>
@@ -746,25 +628,25 @@
                       <span class="name">John carter</span>
                       <p class="text">August 2, 2021</p>
                     </div>
-                  </div>
+                  </a>
                 </div>
               </div>
               <div class="item blogcard blogcardcolumn">
                 <div class="blogimg">
-                  <img src="./img/imgBlogcard6.jpg" alt="" />
+                  <a href="blogpost.html">
+                    <img src="./img/imgBlogcard6.jpg" alt="" />
+                  </a>
                 </div>
                 <div class="bloginfo">
                   <div class="content">
                     <div class="btnblue">product</div>
-                    <a href="blogpost.html">
-                      <h4 class="title --h4">The Basics about Cryptocurrency</h4>
-                    </a>
+                    <h3 class="title"><a href="blogpost.html" class="--h3">The Basics about Cryptocurrency</a></h3>
                     <p class="desc">
                       Lorem ipsum dolor sit ametero irseo, consectetur adipiscing elit. Scelerisque viverra donec
                       diammeo.
                     </p>
                   </div>
-                  <div class="author">
+                  <a href="#" class="author">
                     <div class="img">
                       <img src="./img/athurimg.jpg" alt="" />
                     </div>
@@ -772,26 +654,186 @@
                       <span class="name">John carter</span>
                       <p class="text">August 2, 2021</p>
                     </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="listblog__gr--list bloglist" data-type="tutorial">
+              <div class="item blogcard blogcardcolumn">
+                <div class="blogimg">
+                  <a href="blogpost.html">
+                    <img src="./img/imgBlogcard3.jpg" alt="" />
+                  </a>
+                </div>
+                <div class="bloginfo">
+                  <div class="content">
+                    <div class="btnblue">product</div>
+                    <h3 class="title"><a href="blogpost.html" class="--h3">The Basics about Cryptocurrency</a></h3>
+                    <p class="desc">
+                      Lorem ipsum dolor sit ametero irseo, consectetur adipiscing elit. Scelerisque viverra donec
+                      diammeo.
+                    </p>
                   </div>
+                  <a href="#" class="author">
+                    <div class="img">
+                      <img src="./img/athurimg.jpg" alt="" />
+                    </div>
+                    <div class="textbox">
+                      <span class="name">John carter</span>
+                      <p class="text">August 2, 2021</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="item blogcard blogcardcolumn">
+                <div class="blogimg">
+                  <a href="blogpost.html">
+                    <img src="./img/imgBlogcard3.jpg" alt="" />
+                  </a>
+                </div>
+                <div class="bloginfo">
+                  <div class="content">
+                    <div class="btnblue">product</div>
+                    <h3 class="title"><a href="blogpost.html" class="--h3">The Basics about Cryptocurrency</a></h3>
+                    <p class="desc">
+                      Lorem ipsum dolor sit ametero irseo, consectetur adipiscing elit. Scelerisque viverra donec
+                      diammeo.
+                    </p>
+                  </div>
+                  <a href="#" class="author">
+                    <div class="img">
+                      <img src="./img/athurimg.jpg" alt="" />
+                    </div>
+                    <div class="textbox">
+                      <span class="name">John carter</span>
+                      <p class="text">August 2, 2021</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="item blogcard blogcardcolumn">
+                <div class="blogimg">
+                  <a href="blogpost.html">
+                    <img src="./img/imgBlogcard3.jpg" alt="" />
+                  </a>
+                </div>
+                <div class="bloginfo">
+                  <div class="content">
+                    <div class="btnblue">product</div>
+                    <h3 class="title"><a href="blogpost.html" class="--h3">The Basics about Cryptocurrency</a></h3>
+                    <p class="desc">
+                      Lorem ipsum dolor sit ametero irseo, consectetur adipiscing elit. Scelerisque viverra donec
+                      diammeo.
+                    </p>
+                  </div>
+                  <a href="#" class="author">
+                    <div class="img">
+                      <img src="./img/athurimg.jpg" alt="" />
+                    </div>
+                    <div class="textbox">
+                      <span class="name">John carter</span>
+                      <p class="text">August 2, 2021</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="item blogcard blogcardcolumn">
+                <div class="blogimg">
+                  <a href="blogpost.html">
+                    <img src="./img/imgBlogcard4.jpg" alt="" />
+                  </a>
+                </div>
+                <div class="bloginfo">
+                  <div class="content">
+                    <div class="btnblue">product</div>
+                    <h3 class="title"><a href="blogpost.html" class="--h3">The Basics about Cryptocurrency</a></h3>
+                    <p class="desc">
+                      Lorem ipsum dolor sit ametero irseo, consectetur adipiscing elit. Scelerisque viverra donec
+                      diammeo.
+                    </p>
+                  </div>
+                  <a href="#" class="author">
+                    <div class="img">
+                      <img src="./img/athurimg.jpg" alt="" />
+                    </div>
+                    <div class="textbox">
+                      <span class="name">John carter</span>
+                      <p class="text">August 2, 2021</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="item blogcard blogcardcolumn">
+                <div class="blogimg">
+                  <a href="blogpost.html">
+                    <img src="./img/imgBlogcard5.jpg" alt="" />
+                  </a>
+                </div>
+                <div class="bloginfo">
+                  <div class="content">
+                    <div class="btnblue">product</div>
+                    <h3 class="title"><a href="blogpost.html" class="--h3">The Basics about Cryptocurrency</a></h3>
+                    <p class="desc">
+                      Lorem ipsum dolor sit ametero irseo, consectetur adipiscing elit. Scelerisque viverra donec
+                      diammeo.
+                    </p>
+                  </div>
+                  <a href="#" class="author">
+                    <div class="img">
+                      <img src="./img/athurimg.jpg" alt="" />
+                    </div>
+                    <div class="textbox">
+                      <span class="name">John carter</span>
+                      <p class="text">August 2, 2021</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="item blogcard blogcardcolumn">
+                <div class="blogimg">
+                  <a href="blogpost.html">
+                    <img src="./img/imgBlogcard6.jpg" alt="" />
+                  </a>
+                </div>
+                <div class="bloginfo">
+                  <div class="content">
+                    <div class="btnblue">product</div>
+                    <h3 class="title"><a href="blogpost.html" class="--h3">The Basics about Cryptocurrency</a></h3>
+                    <p class="desc">
+                      Lorem ipsum dolor sit ametero irseo, consectetur adipiscing elit. Scelerisque viverra donec
+                      diammeo.
+                    </p>
+                  </div>
+                  <a href="#" class="author">
+                    <div class="img">
+                      <img src="./img/athurimg.jpg" alt="" />
+                    </div>
+                    <div class="textbox">
+                      <span class="name">John carter</span>
+                      <p class="text">August 2, 2021</p>
+                    </div>
+                  </a>
                 </div>
               </div>
             </div>
           </div>
-          <div class="listblog_paging">
-            <div class="listblog_paging-btn prev --disable-active">
+          <div class="listblog__paging">
+            <div class="listblog__paging--btn prev --disable-active">
               <!-- <img src="./img/arrow-nepr.svg" alt="" /> -->
               <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="8" height="13" viewBox="0 0 8 13" fill="none">
                 <path d="M1 1L6.5 6.5L1 12" stroke="white" stroke-width="2" stroke-linecap="round" />
               </svg>
             </div>
-            <div class="listblog_paging-numpage">
-              <a href="#" class="active">1</a>
-              <a href="#">2</a>
-              <a href="#">3</a>
+            <div class="listblog__paging--numpage">
+              <ul>
+                <li><a href="#" class="active">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+              </ul>
             </div>
-            <div class="listblog_paging-btn next">
+            <div class="listblog__paging--btn next">
               <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="8" height="13" viewBox="0 0 8 13" fill="none">
-                <path d="M1 1L6.5 6.5L1 12" stroke="white" stroke-width="2" stroke-linecap="round" />
+                <path d="M1 1L6.5 6.5L1 12" stroke="none" stroke-width="2" stroke-linecap="round" />
               </svg>
             </div>
           </div>
@@ -800,9 +842,9 @@
     </main>
     <footer class="footer">
       <div class="container">
-        <div class="footer_top">
-          <div class="footer_top-logo">
-            <a href="#">
+        <div class="footer__top">
+          <div class="footer__top--logo">
+            <a href="index.html">
               <h1>
                 <picture>
                   <source media="(max-width: 768px)" srcset="./img/logo-crypto.svg" />
@@ -811,40 +853,40 @@
               </h1>
             </a>
           </div>
-          <div class="footer_top-social">
-            <a href=""><img src="./img/i-insta.svg" alt="" /></a>
-            <a href=""><img src="./img/i-facebook.svg" alt="" /></a>
-            <a href=""><img src="./img/i-linked.svg" alt="" /></a>
+          <div class="footer__top--social">
+            <a href="https://cfdcircle.vn" target="_blank"><img src="./img/i-insta.svg" alt="" /></a>
+            <a href="https://cfdcircle.vn" target="_blank"><img src="./img/i-facebook.svg" alt="" /></a>
+            <a href="https://cfdcircle.vn" target="_blank"><img src="./img/i-linked.svg" alt="" /></a>
           </div>
         </div>
-        <div class="footer_center">
-          <div class="footer_center-menu">
-            <span class="label">menu</span>
+        <div class="footer__center">
+          <div class="footer__center--menu">
+            <span class="labelmenu">menu</span>
             <ul class="nav">
-              <li class="item active"><a href="#">home</a></li>
-              <li class="item"><a href="#">about</a></li>
-              <li class="item"><a href="#">pricing</a></li>
-              <li class="item"><a href="#">tokens</a></li>
-              <li class="item"><a href="#">blog</a></li>
-              <li class="item"><a href="#">about us</a></li>
+              <li class="item active"><a href="index.html">home</a></li>
+              <li class="item"><a href="about.html">about</a></li>
+              <li class="item"><a href="pricing.html">pricing</a></li>
+              <li class="item"><a href="tokens.html">tokens</a></li>
+              <li class="item"><a href="blog.html">blog</a></li>
+              <li class="item"><a href="contact.html">about us</a></li>
             </ul>
           </div>
-          <div class="footer_center-btnbox">
+          <div class="footer__center--btnbox">
             <span class="label">Download our Application</span>
             <p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sed nulla integer</p>
             <div class="btnlist">
-              <div class="btn btnblue">
+              <a href="https://cfdcircle.vn" target="_blank" class="btn btnblue">
                 <img src="./img/i-apple.svg" alt="" />
                 <span>App Store</span>
-              </div>
-              <div class="btn btnblue">
+              </a>
+              <a href="https://cfdcircle.vn" target="_blank" class="btn btnblue">
                 <img src="./img/i-androi.svg" alt="" />
                 <span>play store</span>
-              </div>
+              </a>
             </div>
           </div>
         </div>
-        <div class="footer_bottom">
+        <div class="footer__bottom">
           <span>© 2023 CFD Circle, Inc.</span>
         </div>
       </div>

@@ -31,37 +31,80 @@
 
     <style>
       /* CSS Loading Here */
+      .loading {
+        width: 100%;
+        height: 100vh;
+        background: var(--bg-cl);
+        top: 0;
+        position: fixed;
+        z-index: 999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        visibility: visible;
+        opacity: 1;
+      }
+
+      .loading .loading__inner {
+        width: 160px;
+        height: 4px;
+        border-radius: 10px;
+        background: var(--main-cl);
+        position: relative;
+        overflow: hidden;
+      }
+      .loading .loading__inner .loading__inner-progess {
+        height: 100%;
+        width: 0%;
+        background: var(--white-cl);
+        position: absolute;
+      }
+
+      .loading .loading__percent {
+        font-family: db;
+        font-size: 16px;
+        line-height: 100%;
+        color: var(--white-cl);
+        margin-top: 13px;
+        text-align: center;
+      }
+      .loading.--is-loaded {
+        visibility: hidden;
+        opacity: 0;
+      }
     </style>
 
     <link rel="stylesheet" href="dest/style.min.css" />
     <link rel="stylesheet" href="dest/fonts.css" />
   </head>
 
-  <body class="aboutpage">
+  <body class="aboutpage --disable-scroll">
+    <div class="loading">
+      <div class="loading__inner">
+        <div class="loading__inner-progess"></div>
+      </div>
+      <div class="loading__percent"></div>
+    </div>
     <header class="header">
       <div class="container">
-        <div class="header_left">
-          <div class="header_left-logo">
-            <a href="#">
-              <h1>
-                <picture>
-                  <source media="(max-width: 768px)" srcset="./img/logo-crypto.svg" />
-                  <img src="./img/logo-finanlow.svg" alt="" />
-                </picture>
-              </h1>
+        <div class="header__left">
+          <div class="header__left--logo">
+            <a href="index.html">
+              <img src="./img/logo-finanlow.svg" alt="" />
             </a>
           </div>
-          <nav class="header_left-nav">
-            <a href="index.html">home</a>
-            <a href="about.html " class="active">about</a>
-            <a href="pricing.html">pricing</a>
-            <a href="tokens.html">tokens</a>
-            <a href="blog.html">blog</a>
-            <a href="contact.html">contact us</a>
-          </nav>
+          <ul class="header__left--nav">
+            <li><a href="./" class="active">home</a></li>
+            <li><a href="about.html">about</a></li>
+            <li><a href="pricing.html">pricing</a></li>
+            <li><a href="tokens.html">tokens</a></li>
+            <li><a href="blog.html">blog</a></li>
+            <li><a href="contact.html">contact us</a></li>
+          </ul>
         </div>
 
-        <div class="header_btn btnblue">
+        <div class="header__btn btnblue">
           <a href="https://cfdcircle.vn/" class="text">download app</a>
           <div class="btnmobile">
             <span class="line l1"></span>
@@ -72,35 +115,35 @@
       </div>
     </header>
     <div class="menumobile">
-      <nav class="nav">
-        <a href="index.html">home</a>
-        <a href="about.html " class="active">about</a>
-        <a href="pricing.html">pricing</a>
-        <a href="tokens.html">tokens</a>
-        <a href="blog.html">blog</a>
-        <a href="contact.html">contact us</a>
-        <a href="https://cfdcircle.vn/"><button class="btn btnblue">download app</button></a>
-      </nav>
+      <ul class="nav">
+        <li><a href="./">home</a></li>
+        <li><a href="about.html">about</a></li>
+        <li><a href="pricing.html">pricing</a></li>
+        <li><a href="tokens.html">tokens</a></li>
+        <li><a href="blog.html" class="active">blog</a></li>
+        <li><a href="contact.html">contact us</a></li>
+        <a href="https://cfdcircle.vn/" class="btn btnblue">download app</a>
+      </ul>
       <img src="./img/blur3.png" alt="" class="blur" />
     </div>
     <main class="main">
       <section class="info">
         <div class="container">
-          <div class="info_intro">
-            <h2 class="info_intro-title --h2">About Finance Flow</h2>
-            <p class="info_intro-desc">
+          <div class="info__intro">
+            <h1 class="info__intro--title --h1">About Finance Flow</h1>
+            <p class="info__intro--desc">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Feugiat nulla suspendisse tortor aenean dis
               placerat. Scelerisque imperdiet vitae dolor non aliquam. Malesuada.
             </p>
           </div>
-          <div class="info_top textboxtop">
-            <h3 class="info_top-title --h3">What drives Finance Flow?</h3>
-            <div class="info_top-desc text">
+          <div class="info__top textboxtop">
+            <h2 class="info__top--title --h2">What drives Finance Flow?</h2>
+            <div class="info__top--desc text">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Feugiat nulla suspendisse tortor aene.
             </div>
           </div>
-          <div class="info_list">
-            <div class="info_list-item">
+          <div class="info__list">
+            <div class="info__list--item">
               <img src="./img/i-contact.svg" alt="" class="img" />
               <div class="content">
                 <span class="label">Open Source</span>
@@ -110,7 +153,7 @@
                 </p>
               </div>
             </div>
-            <div class="info_list-item">
+            <div class="info__list--item">
               <img src="./img/i-words.svg" alt="" class="img" />
               <div class="content">
                 <span class="label">worldwide</span>
@@ -120,7 +163,7 @@
                 </p>
               </div>
             </div>
-            <div class="info_list-item">
+            <div class="info__list--item">
               <img src="./img/i-search.svg" alt="" class="img" />
               <div class="content">
                 <span class="label">Transparent</span>
@@ -130,7 +173,7 @@
                 </p>
               </div>
             </div>
-            <div class="info_list-item">
+            <div class="info__list--item">
               <img src="./img/i-compass.svg" alt="" class="img" />
               <div class="content">
                 <span class="label">Community Driven</span>
@@ -141,14 +184,14 @@
               </div>
             </div>
           </div>
-          <img src="./img/blur3.png" alt="" class="info_blur" />
+          <img src="./img/blur3.png" alt="" class="info__blur" />
         </div>
       </section>
       <section class="our">
         <div class="container">
-          <div class="our_content">
-            <div class="our_content-item">
-              <h3 class="title --h3">our mission</h3>
+          <div class="our__content">
+            <div class="our__content--item">
+              <h2 class="title --h2">our mission</h2>
               <div class="desc">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Parturient lorem purus justo, ultricies.
                 Sollicitudin odio elementum urna placerat lacus, vulputate. Non malesuada viverra et ultrices cras.
@@ -161,8 +204,8 @@
                 habitant. Elit eu penatibus congue orci turpis. Enim diam id.
               </div>
             </div>
-            <div class="our_content-item">
-              <h3 class="title --h3">our story</h3>
+            <div class="our__content--item">
+              <h2 class="title --h2">our story</h2>
               <div class="desc">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Parturient lorem purus justo, ultricies.
                 Sollicitudin odio elementum urna placerat lacus, vulputate. Non malesuada viverra et ultrices cras.
@@ -175,26 +218,23 @@
               </div>
             </div>
           </div>
-          <div class="our_img">
-            <picture>
-              <source media="(max-width: 1198.98px)" srcset="./img/planet.png" />
-              <img src="./img/ourimg.jpg" alt="" />
-            </picture>
+          <div class="our__img">
+            <img src="./img/ourimg.jpg" alt="" />
           </div>
         </div>
       </section>
       <section class="timeline">
         <div class="container">
-          <div class="timeline_intro">
-            <h3 class="title --h3">Timeline</h3>
+          <div class="timeline__intro">
+            <h2 class="title --h2">Timeline</h2>
             <p class="desc">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum
               tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae
               erat.
             </p>
           </div>
-          <div class="timeline_list">
-            <div class="item">
+          <div class="timeline__list">
+            <div class="timeline__list--item">
               <div class="point"><img src="./img/pointwhite.svg" alt="" /></div>
               <div class="content">
                 <span class="year">2014</span>
@@ -205,7 +245,7 @@
                 </p>
               </div>
             </div>
-            <div class="item">
+            <div class="timeline__list--item">
               <div class="point"><img src="./img/pointwhite.svg" alt="" /></div>
               <div class="content">
                 <span class="year">2016</span>
@@ -216,7 +256,7 @@
                 </p>
               </div>
             </div>
-            <div class="item">
+            <div class="timeline__list--item">
               <div class="point"><img src="./img/pointwhite.svg" alt="" /></div>
               <div class="content">
                 <span class="year">2018</span>
@@ -227,7 +267,7 @@
                 </p>
               </div>
             </div>
-            <div class="item">
+            <div class="timeline__list--item">
               <div class="point"><img src="./img/pointwhite.svg" alt="" /></div>
               <div class="content">
                 <span class="year">2022</span>
@@ -243,14 +283,14 @@
       </section>
       <section class="team">
         <div class="container">
-          <div class="team_top textboxtop">
-            <h2 class="team_top-title --h2">our team</h2>
-            <p class="team_top-desc text">
+          <div class="team__top textboxtop">
+            <h2 class="team__top--title --h2">our team</h2>
+            <p class="team__top--desc text">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Parturient lorem purus justo, ultricies.
             </p>
           </div>
-          <div class="team_cards">
-            <div class="team_cards-card">
+          <div class="team__cards">
+            <div class="team__cards--card">
               <div class="img">
                 <a href="#"><img src="./img/nguoi1.jpg" alt="" /></a>
               </div>
@@ -259,7 +299,7 @@
                 <p class="job">CEO & CO-Founder</p>
               </div>
             </div>
-            <div class="team_cards-card">
+            <div class="team__cards--card">
               <div class="img">
                 <a href="#"><img src="./img/nguoi2.jpg" alt="" /></a>
               </div>
@@ -268,7 +308,7 @@
                 <p class="job">Community Lead</p>
               </div>
             </div>
-            <div class="team_cards-card">
+            <div class="team__cards--card">
               <div class="img">
                 <a href="#"><img src="./img/nguoi3.jpg" alt="" /></a>
               </div>
@@ -282,13 +322,13 @@
       </section>
       <section class="lgcompany">
         <div class="container">
-          <div class="lgcompany_textbox">
+          <div class="lgcompany__textbox">
             <h2 class="title --h2">Investors</h2>
             <p class="text">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Parturient lorem purus justo, ultricies.
             </p>
           </div>
-          <div class="lgcompany_listlogo">
+          <div class="lgcompany__listlogo">
             <a href=""><img class="img" src="./img/i-company1.svg" alt="" /></a>
             <a href=""><img class="img" src="./img/i-company2.svg" alt="" /></a>
             <a href=""><img class="img" src="./img/i-company3.svg" alt="" /></a>
@@ -300,9 +340,9 @@
     </main>
     <footer class="footer">
       <div class="container">
-        <div class="footer_top">
-          <div class="footer_top-logo">
-            <a href="#">
+        <div class="footer__top">
+          <div class="footer__top--logo">
+            <a href="index.html">
               <h1>
                 <picture>
                   <source media="(max-width: 768px)" srcset="./img/logo-crypto.svg" />
@@ -311,40 +351,40 @@
               </h1>
             </a>
           </div>
-          <div class="footer_top-social">
-            <a href="https://www.facebook.com/cfdcircle"><img src="./img/i-insta.svg" alt="" /></a>
-            <a href="https://www.facebook.com/cfdcircle"><img src="./img/i-facebook.svg" alt="" /></a>
-            <a href="https://www.facebook.com/cfdcircle"><img src="./img/i-linked.svg" alt="" /></a>
+          <div class="footer__top--social">
+            <a href="https://cfdcircle.vn"><img src="./img/i-insta.svg" alt="" /></a>
+            <a href="https://cfdcircle.vn"><img src="./img/i-facebook.svg" alt="" /></a>
+            <a href="https://cfdcircle.vn"><img src="./img/i-linked.svg" alt="" /></a>
           </div>
         </div>
-        <div class="footer_center">
-          <div class="footer_center-menu">
+        <div class="footer__center">
+          <div class="footer__center--menu">
             <span class="labelmenu">menu</span>
             <ul class="nav">
-              <li class="item active"><a href="#">home</a></li>
-              <li class="item"><a href="#">about</a></li>
-              <li class="item"><a href="#">pricing</a></li>
-              <li class="item"><a href="#">tokens</a></li>
-              <li class="item"><a href="#">blog</a></li>
-              <li class="item"><a href="#">about us</a></li>
+              <li class="item active"><a href="index.html">home</a></li>
+              <li class="item"><a href="about.html">about</a></li>
+              <li class="item"><a href="pricing.html">pricing</a></li>
+              <li class="item"><a href="tokens.html">tokens</a></li>
+              <li class="item"><a href="blog.html">blog</a></li>
+              <li class="item"><a href="contact.html">about us</a></li>
             </ul>
           </div>
-          <div class="footer_center-btnbox">
+          <div class="footer__center--btnbox">
             <span class="label">Download our Application</span>
             <p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sed nulla integer</p>
             <div class="btnlist">
-              <div class="btn btnblue">
+              <a href="https://cfdcircle.vn" class="btn btnblue">
                 <img src="./img/i-apple.svg" alt="" />
                 <span>App Store</span>
-              </div>
-              <div class="btn btnblue">
+              </a>
+              <a href="https://cfdcircle.vn" class="btn btnblue">
                 <img src="./img/i-androi.svg" alt="" />
                 <span>play store</span>
-              </div>
+              </a>
             </div>
           </div>
         </div>
-        <div class="footer_bottom">
+        <div class="footer__bottom">
           <span>© 2023 CFD Circle, Inc.</span>
         </div>
       </div>
