@@ -302,16 +302,17 @@ sup {
     }
     .bloginfo {
       grid-area: auto;
-
       padding: 0 23px 34px 30px;
       margin-top: -33px;
       .content {
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         .title {
-          font-size: 2.2rem;
-          line-height: 3.1rem;
-          @include overtext(initial);
-          margin-bottom: 6px;
+          a {
+            font-size: 2.2rem;
+            line-height: 3.1rem;
+            @include overtext(initial);
+            margin-bottom: 6px;
+          }
         }
         .btnblue {
           margin-bottom: 24px;
@@ -452,6 +453,11 @@ sup {
     &__textbox {
       flex-direction: column;
       text-align: center;
+    }
+    &__form {
+      &--inpt {
+        padding-right: 16px;
+      }
     }
   }
   @include xxs {
